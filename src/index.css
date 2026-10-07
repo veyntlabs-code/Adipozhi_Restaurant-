@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Outfit", "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-primary-500: #de2b2b;
+  --color-primary-900: #7c2627;
+  --color-primary-300: #f5dbca;
+  --color-on-primary: #f8efdc;
+  --color-secondary-500: #91964f;
+  --color-secondary-700: #273e2a;
+  --color-cream: #f8efdc;
+  --color-cream-light: #fbf6ec;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f8efdc;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Delice signature double rule */
+.c-double-rule {
+  color: currentColor;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  height: 4px;
+  margin: 0;
+  opacity: 0.35;
+}
+
+/* Delice scalloped circular stamp */
+.c-stamp {
+  border-radius: 9999px;
+  border: 1px dashed currentColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 1 / 1;
+}
+
+/* Custom scrollbar matching delice palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8efdc;
+}
+::-webkit-scrollbar-thumb {
+  background: #7c2627;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #de2b2b;
+}
+
+/* Animation utilities */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 24s linear infinite;
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+

@@ -1,0 +1,410 @@
+.dich-wrapper {
+  --bg: #de2b2b; /* Match Adipozhi Red */
+  --ink: #f8efdc; /* Match Adipozhi Cream */
+
+  --dur: 1.5s;
+  --ease: cubic-bezier(.75, 0, 0, 1);
+  --parallax-scale: 1.1;
+  --hover: .3s;
+  
+  font-family: 'Switzer', 'Playfair Display', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: clamp(12px, 1vw, 18px);
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  overflow: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dich-wrapper * { box-sizing: border-box; margin: 0; padding: 0 }
+
+.dich-wrapper .page {
+  margin: 0 auto;
+  padding: 2.4vw 1.35vw 5.4vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dich-wrapper .topbar {
+  position: absolute;
+  inset: 5px 6px auto 6px;
+  z-index: 9999;
+  line-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--bg) !important;
+  mix-blend-mode: exclusion;
+}
+
+.dich-wrapper .topbar-title {
+  position: absolute;
+  top: 1px;
+  left: var(--title-x, 38vw);
+}
+.dich-wrapper .topbar-nums  { text-align: end }
+.dich-wrapper .topbar-gap   { margin-right: 1.23vw }
+.dich-wrapper .topbar-tail  { display: inline-block; margin-right: 2.3vw }
+
+.dich-wrapper .t-topbar-text { display: inline-block }
+.dich-wrapper #nav-left, .dich-wrapper #nav-right { cursor: pointer }
+
+.dich-wrapper .footer     { position: absolute; inset: auto 6px 6px auto; line-height: 70% }
+.dich-wrapper .footer-gap { margin-right: 1.6vw }
+
+.dich-wrapper .canvas {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  margin-top: auto;
+}
+
+.dich-wrapper .canvas.no-anim .item,
+.dich-wrapper .canvas.no-anim .item .img,
+.dich-wrapper .canvas.no-anim .item .img-inner,
+.dich-wrapper .canvas.no-anim .hero2,
+.dich-wrapper .canvas.no-anim .hero2 .img,
+.dich-wrapper .canvas.no-anim .hero2 .top-svg,
+.dich-wrapper .canvas.no-anim .scroll-card .img { transition: none }
+
+.dich-wrapper .item {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition:
+    top var(--dur) var(--ease),
+    left var(--dur) var(--ease),
+    width var(--dur) var(--ease),
+    height var(--dur) var(--ease);
+  will-change: top, left, width, height, clip-path;
+}
+.dich-wrapper .item.on { display: flex }
+
+.dich-wrapper .item .img,
+.dich-wrapper .scroll-card .img,
+.dich-wrapper .hero2 .img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  clip-path: inset(0 0 0 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.dich-wrapper .item .img {
+  flex: 1;
+  min-height: 0;
+  contain: paint;
+  transition:
+    clip-path var(--dur) var(--ease),
+    height var(--dur) var(--ease),
+    flex-basis var(--dur) var(--ease);
+}
+
+.dich-wrapper .hero2 .img {
+  position: absolute;
+  inset: 0;
+  contain: paint;
+  clip-path: inset(99.9% 0 0 0);
+  transition: clip-path var(--dur) var(--ease);
+}
+
+.dich-wrapper .scroll-card .img {
+  height: 100%;
+  contain: paint;
+  will-change: clip-path;
+}
+
+.dich-wrapper .p-wrap {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.dich-wrapper .img-inner,
+.dich-wrapper .sc-inner,
+.dich-wrapper .cover-ov {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  transform: scale(var(--parallax-scale));
+  transform-origin: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.dich-wrapper .img-inner,
+.dich-wrapper .sc-inner {
+  background-size: cover;
+  background-position: center;
+  transition:
+    transform var(--dur) var(--ease),
+    background-position var(--dur) var(--ease);
+}
+
+.dich-wrapper .cover-ov { z-index: 2; will-change: clip-path }
+
+.dich-wrapper .cover-ov-inner {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dich-wrapper .top-svg {
+  width: calc(100% + 3px);
+  min-width: calc(100% + 3px);
+  height: auto;
+  position: absolute;
+  inset: -0.5px auto auto -0.5px;
+  z-index: 9999;
+  clip-path: inset(0 0 99.9% 0);
+  transition:
+    clip-path var(--dur) var(--ease),
+    top var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.dich-wrapper .item.large .top-svg { clip-path: inset(0 0 0 0) !important }
+
+.dich-wrapper .hero2 .top-svg {
+  clip-path: none !important;
+  transition: transform var(--dur) var(--ease);
+}
+
+.dich-wrapper .hero2 {
+  position: absolute;
+  z-index: 4;
+  display: none;
+  overflow: hidden;
+  transition:
+    top var(--dur) var(--ease),
+    left var(--dur) var(--ease),
+    width var(--dur) var(--ease),
+    height var(--dur) var(--ease);
+}
+.dich-wrapper .hero2.on { display: block }
+
+.dich-wrapper .scroll-col {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: visible;
+  display: none;
+  z-index: 3;
+  will-change: transform;
+}
+.dich-wrapper .scroll-col.on { display: block }
+
+.dich-wrapper .scroll-card { position: absolute; left: 0; width: 100% }
+
+.dich-wrapper .t-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.dich-wrapper .t-text {
+  display: inline-block;
+  transform: translateY(120%);
+  pointer-events: none;
+  will-change: transform;
+  --capDir: 1;
+}
+.dich-wrapper .t-text.is-active { pointer-events: auto }
+
+@keyframes textEnter {
+  from { transform: translateY(calc(-120% * var(--capDir))) }
+  to   { transform: translateY(0%) }
+}
+@keyframes textExit {
+  from { transform: translateY(0%) }
+  to   { transform: translateY(calc(120% * var(--capDir))) }
+}
+
+.dich-wrapper .idx-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  width: 0.6em;
+  text-align: right;
+}
+.dich-wrapper .index { display: inline-block; transform: translateY(0%) }
+
+.dich-wrapper .item .cap,
+.dich-wrapper .scroll-card .cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0;
+  bottom: -3vw !important;
+  padding-top: 1.2vw;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.dich-wrapper .scroll-card .cap { position: absolute; left: 0; right: 0 }
+
+.dich-wrapper .cap .t-text      { transform: translateY(var(--capY, 120%)) }
+.dich-wrapper .cap.show .t-text { --capY: 0%; animation: textEnter var(--dur) var(--ease) both; pointer-events: auto }
+.dich-wrapper .cap.hide .t-text { --capY: var(--capOut, 120%); animation: textExit var(--dur) var(--ease) both }
+.dich-wrapper .cap.dir-up .t-text { --capDir: -1; --capOut: -120% }
+
+.dich-wrapper .item .cap.cover-swap .t-text { animation-duration: 700ms }
+
+.dich-wrapper .item .cap .t-col,
+.dich-wrapper .scroll-card .cap .t-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dich-wrapper .item .cap .t-col.r,
+.dich-wrapper .scroll-card .cap .t-col.r { align-items: flex-end; text-align: right }
+
+.dich-wrapper .item .cap .t-mask,
+.dich-wrapper .scroll-card .cap .t-mask {
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.dich-wrapper .text-wrapper {
+  position: absolute;
+  width: 56vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  top: 1.5vw;
+  transition: top var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.dich-wrapper .text-wrapper--main   { right: 0 }
+.dich-wrapper .text-wrapper--mirror { left: 0 }
+
+.dich-wrapper #canvas[data-pair="1"] .text-wrapper { top: 0 }
+
+.dich-wrapper .top-row, .dich-wrapper .middle-row, .dich-wrapper .bottom-row {
+  display: grid !important;
+  grid-template-areas: "stack";
+  width: 100%;
+}
+
+.dich-wrapper .middle-row { margin-top: 8.8vw; position: relative }
+.dich-wrapper .bottom-row { margin-top: auto }
+
+.dich-wrapper .text-wrapper--main   .bottom-row { padding-left: 9.55vw }
+.dich-wrapper .text-wrapper--mirror .bottom-row { padding-right: 9.55vw }
+
+.dich-wrapper .visibility {
+  grid-area: stack;
+  display: block !important;
+  pointer-events: none;
+}
+
+.dich-wrapper .svg-arrow { width: 0.9vw }
+
+.dich-wrapper .svg-arrows {
+  width: 3vw;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.dich-wrapper .svg-slot { transition: margin 0s, transform 0s }
+
+.dich-wrapper .nav-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.dich-wrapper .nav-btn:focus { outline: none }
+.dich-wrapper .nav-btn:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+.dich-wrapper .nav-num-wrapper,
+.dich-wrapper .svg-arrow-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dich-wrapper .nav-num-wrapper { margin-right: 1vw; margin-top: -0.23vw; vertical-align: top }
+.dich-wrapper .svg-arrow-wrapper { vertical-align: middle }
+
+.dich-wrapper .nav-num  { display: inline-block }
+.dich-wrapper .svg-arrow { display: inline-flex; align-items: center; justify-content: center }
+
+.dich-wrapper .nav-num.duplicate,
+.dich-wrapper .svg-arrow.duplicate { position: absolute; top: 0; left: 0 }
+
+.dich-wrapper .nav-num.duplicate,
+.dich-wrapper .is--prev .svg-arrow.duplicate { transform: translateX(105%) }
+.dich-wrapper .is--next .svg-arrow.duplicate { transform: translateX(-105%) }
+
+.dich-wrapper .nav-num-wrapper:hover .original,
+.dich-wrapper .svg-arrow-wrapper.is--prev:hover .original,
+.dich-wrapper .nav-num-wrapper:not(:hover) .duplicate,
+.dich-wrapper .svg-arrow-wrapper.is--prev:not(:hover) .duplicate {
+  animation: outLeft var(--hover) forwards ease-in-out;
+}
+
+.dich-wrapper .nav-num-wrapper:hover .duplicate,
+.dich-wrapper .svg-arrow-wrapper.is--prev:hover .duplicate,
+.dich-wrapper .nav-num-wrapper:not(:hover) .original,
+.dich-wrapper .svg-arrow-wrapper.is--prev:not(:hover) .original {
+  animation: inRight var(--hover) forwards ease-in-out;
+}
+
+.dich-wrapper .svg-arrow-wrapper.is--next:hover .original,
+.dich-wrapper .svg-arrow-wrapper.is--next:not(:hover) .duplicate {
+  animation: outRight var(--hover) forwards ease-in-out;
+}
+
+.dich-wrapper .svg-arrow-wrapper.is--next:hover .duplicate,
+.dich-wrapper .svg-arrow-wrapper.is--next:not(:hover) .original {
+  animation: inLeft var(--hover) forwards ease-in-out;
+}
+
+.beast-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+}
+.beast-canvas.show { opacity: 1 }
+
+body.beast-on .item .img,
+body.beast-on .scroll-card .img,
+body.beast-on .hero2 .img { opacity: 0 !important }
