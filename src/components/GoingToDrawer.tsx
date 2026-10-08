@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
@@ -15,17 +15,27 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
   onClose,
   lang
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm" data-lenis-prevent>
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="w-screen max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl p-6 sm:p-8 overflow-y-auto"
+              className="w-screen max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl p-6 sm:p-8 overflow-y-auto overscroll-contain min-h-0"
             >
               <div className="space-y-6">
                 {/* Header */}

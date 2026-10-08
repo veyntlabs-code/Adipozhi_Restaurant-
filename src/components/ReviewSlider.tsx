@@ -182,29 +182,10 @@ export default function ReviewSlider({
 
                 const x = c.loop ? wrap(raw + c.step, span) - c.step : raw
 
-                const distance = x + c.slideWidth / 2 - half
-                let scale: number
-                let push: number
-                if (distance > 0) {
-                    scale = Math.min(c.maxScale, 1 + distance / c.width)
-                    push = (scale - 1) * c.slideWidth * 0.75
-                } else {
-                    scale = Math.max(c.minScale, 1 + distance / c.width)
-                    push = 0
-                }
-
-                const left = c.flip ? c.width - c.slideWidth - (x + push) : x + push
-                node.style.transform = `translate3d(${left}px, -50%, 0) scale(${scale})`
-
-                if (c.dim > 0 && scale < 1) {
-                    const t = (1 - scale) / Math.max(0.001, 1 - c.minScale)
-                    node.style.filter = `brightness(${1 - t * c.dim})`
-                } else {
-                    node.style.filter = "none"
-                }
-                
-                // Adjust z-index based on scale (closest is on top)
-                node.style.zIndex = Math.round(scale * 100).toString()
+                const left = c.flip ? c.width - c.slideWidth - x : x
+                node.style.transform = `translate3d(${left}px, -50%, 0)`
+                node.style.filter = "none"
+                node.style.zIndex = "1"
             }
         }
 

@@ -1,19 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  X, 
-  ShoppingBag, 
-  ExternalLink, 
-  Phone, 
-  MessageSquare, 
-  Sparkles, 
-  Flame, 
-  Clock, 
-  MapPin, 
-  Star, 
-  CheckCircle2,
-  Bike,
+import {
+  X,
+  ShoppingBag,
+  ExternalLink,
+  Phone,
+  MessageSquare,
+  Flame,
+  Clock,
+  MapPin,
+  Star,
   Package
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
@@ -30,7 +27,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
 }) => {
   const [copiedNumber, setCopiedNumber] = useState(false);
 
-  const swiggyUrl = 'https://www.swiggy.com/city/kanyakumari/adipozhi-family-restaurant';
+  const swiggyUrl = 'https://www.swiggy.com/city/nagercoil/adipozhi-family-restaurant-colachel-monday-market-rest1346460';
   const zomatoUrl = 'https://www.zomato.com/kanyakumari/adipozhi-family-restaurant';
   const whatsappUrl = `https://wa.me/919585154254?text=${encodeURIComponent(
     'Hello Adipozhi Family Restaurant! I would like to place a food order for takeaway parcel / delivery.'
@@ -42,16 +39,31 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
     setTimeout(() => setCopiedNumber(false), 2000);
   };
 
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/65 backdrop-blur-sm flex justify-end">
+        <div
+          className="fixed inset-0 z-50 overflow-hidden bg-black/65 backdrop-blur-sm flex justify-end"
+          data-lenis-prevent
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
             className="fixed inset-0"
+            aria-label="Close drawer backdrop"
           />
 
           <motion.div
@@ -59,7 +71,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl h-full z-10 overflow-hidden"
+            className="relative w-full max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col shadow-2xl h-[100dvh] max-h-[100dvh] z-10 overflow-hidden"
           >
             {/* Header */}
             <div className="p-5 border-b border-[#1a1a1a]/15 flex items-center justify-between bg-white shrink-0">
@@ -75,7 +87,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     Order Online
                   </h2>
                   <p className="text-[11px] text-[#1a1a1a]/60 mt-0.5 font-medium">
-                    Delivery via Swiggy & Zomato · Direct Parcel
+                    Delivery via Swiggy &amp; Zomato · Direct Parcel
                   </p>
                 </div>
               </div>
@@ -83,14 +95,14 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                 type="button"
                 onClick={onClose}
                 className="p-2 rounded-full hover:bg-[#1a1a1a]/10 text-[#1a1a1a] transition-colors cursor-pointer"
-                aria-label="Close"
+                aria-label="Close order drawer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Body */}
-            <div className="flex-1 overflow-y-auto p-5 space-y-5">
+            {/* Body — min-h-0 required for flex child scrolling */}
+            <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain p-5 space-y-5">
               {/* Rating Banner */}
               <div className="bg-white p-3.5 rounded-2xl border border-[#1a1a1a]/10 flex items-center justify-between shadow-xs">
                 <div className="flex items-center gap-2">
@@ -140,7 +152,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     href={swiggyUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#fc8019] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#fc8019] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                   >
                     <span>Order on Swiggy</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -171,7 +183,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                       </div>
                     </div>
                     <span className="px-2.5 py-1 rounded-full bg-black/25 text-[10px] font-bold tracking-wider uppercase border border-white/20">
-                      Offers & Gold
+                      Offers &amp; Gold
                     </span>
                   </div>
 
@@ -183,7 +195,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     href={zomatoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#e23744] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#e23744] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                   >
                     <span>Order on Zomato</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -200,7 +212,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-[#1a1a1a]">
-                        Direct Call & WhatsApp Parcel
+                        Direct Call &amp; WhatsApp Parcel
                       </h4>
                       <span className="text-[10px] font-semibold text-emerald-700 block">
                         No App Commission · Fresh Hot Packing
@@ -292,4 +304,3 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
     </AnimatePresence>
   );
 };
-

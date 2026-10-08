@@ -37,30 +37,46 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
   lang
 }) => {
   const [serviceType, setServiceType] = useState<'on_site' | 'takeout' | 'delivery'>('on_site');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedDiet, setSelectedDiet] = useState<'all' | 'veg' | 'non-veg' | 'bestseller'>('all');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['all']);
+  const [showMobileCategoryFilter, setShowMobileCategoryFilter] = useState(false);
+  const [selectedDiet, setSelectedDiet] = useState<'all' | 'veg' | 'non-veg'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [addedItemNotice, setAddedItemNotice] = useState<string | null>(null);
   
   const searchParams = useSearchParams();
 
+  const toggleCategory = (catId: string) => {
+    if (catId === 'all') {
+      setSelectedCategories(['all']);
+    } else {
+      setSelectedCategories(prev => {
+        const newCats = prev.filter(c => c !== 'all');
+        if (newCats.includes(catId)) {
+          const filtered = newCats.filter(c => c !== catId);
+          return filtered.length === 0 ? ['all'] : filtered;
+        } else {
+          return [...newCats, catId];
+        }
+      });
+    }
+  };
+
   useEffect(() => {
     const category = searchParams.get('category');
     if (category) {
-      setSelectedCategory(category);
+      setSelectedCategories([category]);
     }
   }, [searchParams]);
 
   const filteredDishes = useMemo(() => {
     return MENU_ITEMS.filter((dish) => {
       // Category filter
-      if (selectedCategory !== 'all' && dish.category !== selectedCategory) {
+      if (!selectedCategories.includes('all') && !selectedCategories.includes(dish.category)) {
         return false;
       }
       // Diet filter
       if (selectedDiet === 'veg' && !dish.isVeg) return false;
       if (selectedDiet === 'non-veg' && dish.isVeg) return false;
-      if (selectedDiet === 'bestseller' && !dish.tags?.some(t => ['Bestseller', 'Signature', 'Must Try', 'Chef Pick', '#1 Bestseller'].includes(t))) return false;
 
       // Search filter
       if (searchQuery.trim()) {
@@ -73,7 +89,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
       }
       return true;
     });
-  }, [selectedCategory, selectedDiet, searchQuery]);
+  }, [selectedCategories, selectedDiet, searchQuery]);
 
   const handleAdd = (dish: MenuItem, variantLabel?: string, variantPrice?: number) => {
     const itemToAdd: MenuItem = variantPrice
@@ -155,7 +171,6 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
           <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
             {[
               { id: 'all', label: 'All Items' },
-              { id: 'bestseller', label: 'Bestsellers' },
               { id: 'veg', label: 'Pure Veg' },
               { id: 'non-veg', label: 'Non-Veg' }
             ].map((diet) => (
@@ -194,8 +209,8 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
           </div>
         </div>
 
-        {/* 21 Categories Carousel Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto py-3.5 scrollbar-none border-b border-[#1a1a1a]/10">
+        {/* 21 Categories Bar (Desktop) */}
+        <div className="hidden md:flex flex-wrap items-center gap-2 py-3.5 border-b border-[#1a1a1a]/10">
           {MENU_CATEGORIES.map((cat) => {
             const count = cat.id === 'all'
               ? MENU_ITEMS.length
@@ -204,22 +219,38 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
             return (
               <button
                 key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => toggleCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
-                  selectedCategory === cat.id
+                  selectedCategories.includes(cat.id)
                     ? 'bg-[#1a1a1a] text-[#f8efdc] font-bold shadow-sm'
                     : 'bg-white/70 text-[#1a1a1a]/80 hover:bg-white border border-[#1a1a1a]/10'
                 }`}
               >
                 <span>{cat.name}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  selectedCategory === cat.id ? 'bg-white/20 text-[#f8efdc]' : 'bg-black/5 text-[#1a1a1a]/50'
+                  selectedCategories.includes(cat.id) ? 'bg-white/20 text-[#f8efdc]' : 'bg-black/5 text-[#1a1a1a]/50'
                 }`}>
                   {count}
                 </span>
               </button>
             );
           })}
+        </div>
+
+        {/* Mobile Filter Button */}
+        <div className="flex md:hidden py-3 items-center justify-between border-b border-[#1a1a1a]/10">
+          <span className="text-sm font-bold text-[#1a1a1a]">
+            {selectedCategories.includes('all') 
+              ? 'All Categories' 
+              : `${selectedCategories.length} Categories Selected`}
+          </span>
+          <button 
+            onClick={() => setShowMobileCategoryFilter(true)}
+            className="flex items-center gap-1.5 px-4 py-2 bg-white rounded-full border border-[#1a1a1a]/20 text-xs font-bold text-[#1a1a1a] shadow-sm cursor-pointer"
+          >
+            <Filter className="w-3.5 h-3.5" />
+            Filter
+          </button>
         </div>
       </div>
 
@@ -236,7 +267,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
             </p>
             <button
               onClick={() => {
-                setSelectedCategory('all');
+                setSelectedCategories(['all']);
                 setSelectedDiet('all');
                 setSearchQuery('');
               }}
@@ -246,9 +277,22 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-            {filteredDishes.map((dish) => {
-              const displayPrice = dish.priceDisplay
+          <div className="space-y-10 sm:space-y-14">
+            {MENU_CATEGORIES.filter(c => c.id !== 'all').map((cat) => {
+              const categoryDishes = filteredDishes.filter(d => d.category === cat.id);
+              if (categoryDishes.length === 0) return null;
+
+              return (
+                <div key={cat.id} className="scroll-mt-24" id={`category-${cat.id}`}>
+                  <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#1a1a1a] mb-4 border-b border-[#1a1a1a]/10 pb-2 flex items-center justify-between">
+                    <span>{cat.name}</span>
+                    <span className="text-xs sm:text-sm font-medium text-[#1a1a1a]/50 bg-white px-2.5 py-0.5 rounded-full border border-[#1a1a1a]/10">
+                      {categoryDishes.length}
+                    </span>
+                  </h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 auto-rows-fr">
+                    {categoryDishes.map((dish) => {
+                      const displayPrice = dish.priceDisplay
                 ? dish.priceDisplay
                 : dish.isSeasonalPrice
                   ? 'Seasonal Price'
@@ -263,17 +307,21 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                   transition={{ duration: 0.25 }}
                   className="bg-white rounded-2xl border border-[#1a1a1a]/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden h-full"
                 >
-                  {/* Dish Image */}
-                  {dish.image && (
-                    <div className="w-full h-28 sm:h-48 overflow-hidden bg-[#f8efdc]/50 shrink-0">
+                  {/* Dish Image or Placeholder */}
+                  <div className="w-full h-28 sm:h-48 overflow-hidden bg-[#f8efdc]/50 shrink-0 flex items-center justify-center">
+                    {dish.image ? (
                       <img 
                         src={dish.image} 
                         alt={dish.name} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-[#1a1a1a]/5">
+                        <Utensils className="w-8 h-8 sm:w-12 sm:h-12 text-[#1a1a1a]/15" />
+                      </div>
+                    )}
+                  </div>
 
                   <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
                     <div>
@@ -375,6 +423,10 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                 </motion.div>
               );
             })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </section>
@@ -403,6 +455,59 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
             >
               View Order
             </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Category Filter Modal */}
+      <AnimatePresence>
+        {showMobileCategoryFilter && (
+          <motion.div
+            initial={{ opacity: 0, y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[60] flex flex-col bg-[#f8efdc]"
+          >
+            <div className="flex items-center justify-between px-4 py-4 border-b border-[#1a1a1a]/10 bg-white shadow-sm z-10">
+              <h2 className="text-lg font-bold font-serif text-[#1a1a1a]">Filter Categories</h2>
+              <button onClick={() => setShowMobileCategoryFilter(false)} className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] text-xl px-2">
+                ✕
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4 space-y-2 bg-[#f8efdc]">
+              {MENU_CATEGORIES.map((cat) => {
+                const isSelected = selectedCategories.includes(cat.id);
+                const count = cat.id === 'all'
+                  ? MENU_ITEMS.length
+                  : MENU_ITEMS.filter(i => i.category === cat.id).length;
+                  
+                return (
+                  <label key={cat.id} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/30 transition-colors cursor-pointer shadow-sm">
+                    <input 
+                      type="checkbox" 
+                      checked={isSelected}
+                      onChange={() => toggleCategory(cat.id)}
+                      className="w-5 h-5 rounded border-gray-300 text-[#de2b2b] focus:ring-[#de2b2b] cursor-pointer"
+                    />
+                    <span className={`text-sm flex-1 ${isSelected ? 'font-bold text-[#de2b2b]' : 'font-medium text-[#1a1a1a]'}`}>
+                      {cat.name}
+                    </span>
+                    <span className="text-xs font-bold text-[#1a1a1a]/50 bg-black/5 px-2 py-0.5 rounded-full">
+                      {count}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+            <div className="p-4 border-t border-[#1a1a1a]/10 bg-white shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-10">
+              <button 
+                onClick={() => setShowMobileCategoryFilter(false)}
+                className="w-full py-3.5 bg-[#de2b2b] text-[#f8efdc] font-bold uppercase rounded-full tracking-wider shadow-md hover:bg-[#c42525] transition-colors cursor-pointer"
+              >
+                Show Results
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

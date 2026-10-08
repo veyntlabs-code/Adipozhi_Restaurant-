@@ -98,18 +98,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                   <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Dining room' : 'Salle à manger'}</span>
                   <span className="font-semibold text-[#1a1a1a]">{currentDay.dining}</span>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Bar' : 'Bar'}</span>
-                  <span className="font-semibold text-[#1a1a1a]">{currentDay.bar}</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Breakfast' : 'Déjeuners'}</span>
-                  <span className="font-semibold text-[#1a1a1a]">{currentDay.breakfast}</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Happy Hour' : '5 à 7'}</span>
-                  <span className="font-semibold text-[#de2b2b]">{currentDay.happyHour}</span>
-                </div>
+
                 <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
                   <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Takeaway' : 'Pour emporter'}</span>
                   <span className="font-semibold text-[#1a1a1a]">{currentDay.takeaway}</span>
@@ -171,44 +160,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
               </div>
             </div>
 
-            {/* Nav Links with hover underline */}
-            <div className="pt-6 border-t border-[#1a1a1a]/10 flex flex-wrap gap-x-8 gap-y-2 text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">
-              <motion.button
-                whileHover={{ y: -1, color: '#de2b2b' }}
-                onClick={() => handleNav('/')}
-                className="cursor-pointer"
-              >
-                {lang === 'en' ? 'Home' : 'Accueil'}
-              </motion.button>
-              <motion.button
-                whileHover={{ y: -1, color: '#de2b2b' }}
-                onClick={() => handleNav('/menus/regular', onOpenMenus)}
-                className="cursor-pointer"
-              >
-                {lang === 'en' ? 'Menus' : 'Menus'}
-              </motion.button>
-              <motion.button
-                whileHover={{ y: -1, color: '#de2b2b' }}
-                onClick={() => handleNav('/restaurant', onOpenRestaurant)}
-                className="cursor-pointer"
-              >
-                {lang === 'en' ? 'The Restaurant' : 'Le Restaurant'}
-              </motion.button>
-              <motion.button
-                whileHover={{ y: -1, color: '#de2b2b' }}
-                onClick={() => handleNav('/events', onOpenEvents)}
-                className="cursor-pointer"
-              >
-                {lang === 'en' ? 'What’s On' : 'Événements'}
-              </motion.button>
-              <motion.button
-                whileHover={{ y: -1, color: '#de2b2b' }}
-                onClick={onOpenPrivateRooms}
-                className="cursor-pointer"
-              >
-                {lang === 'en' ? 'Private Rooms' : 'Salons Privés'}
-              </motion.button>
-            </div>
+
           </div>
         </div>
 

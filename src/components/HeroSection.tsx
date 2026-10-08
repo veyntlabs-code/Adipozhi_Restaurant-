@@ -109,23 +109,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     };
   }, []);
 
-  // Headline word cycling
-  const headlineWords = [
-    { line1: 'Every reason', line2: 'to come', line3: 'is a good one' },
-    { line1: 'Flavours', line2: 'that bring', line3: 'families together' },
-    { line1: 'The taste', line2: 'of home,', line3: 'perfected' },
-  ];
-  const [headlineIdx, setHeadlineIdx] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHeadlineIdx((prev) => (prev + 1) % headlineWords.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentHeadline = headlineWords[headlineIdx];
-
   return (
     <section
       ref={containerRef}
@@ -157,29 +140,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 z-20 space-y-8 pr-4"
             >
-              {/* Animated headline */}
-              <div className="relative overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.h1
-                    key={headlineIdx}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -50 }}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[#f8efdc]"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  >
-                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
-                      {currentHeadline.line1}
-                    </span>
-                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
-                      {currentHeadline.line2}
-                    </span>
-                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-black italic leading-[0.95] tracking-tight">
-                      {currentHeadline.line3}
-                    </span>
-                  </motion.h1>
-                </AnimatePresence>
+              {/* Static headline */}
+              <div className="relative pb-4">
+                <h1
+                  className="text-[#f8efdc] leading-none"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
+                    Every reason
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
+                    to come
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-black italic leading-[0.95] tracking-tight">
+                    is a good one
+                  </span>
+                </h1>
               </div>
 
               {/* Subheading */}

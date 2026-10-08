@@ -360,7 +360,7 @@ export const ExperienceGalleryModal: React.FC<ExperienceGalleryModalProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto select-none">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto select-none" data-lenis-prevent>
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 25 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

@@ -339,9 +339,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
             <p className="text-xs text-[#1a1a1a]/70">
               {RESTAURANT_INFO.address}
             </p>
-            <p className="text-xs font-semibold text-[#de2b2b]">
-              Get there: {RESTAURANT_INFO.getThere}
-            </p>
+
           </div>
 
           <div className="space-y-2">

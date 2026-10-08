@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu as MenuIcon, X, MapPin, Phone, Mail, Calendar, ShoppingBag } from 'lucide-react';
+import { Menu as MenuIcon, X, MapPin, Phone, Calendar, ShoppingBag } from 'lucide-react';
 
 interface HeaderProps {
   onOpenMenus: () => void;
@@ -71,6 +71,21 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
         {/* Left Nav */}
         <nav className={`hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide ${textColorClass}`}>
+          <motion.button
+            type="button"
+            whileHover={{ y: -1, opacity: 0.8 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => handleNav('/')}
+            className={`transition-colors uppercase tracking-wider text-xs font-bold relative group cursor-pointer ${
+              currentPath === '/' && !isHeroMode ? 'text-[#de2b2b]' : ''
+            }`}
+          >
+            <span>{lang === 'en' ? 'Home' : 'Accueil'}</span>
+            <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
+              currentPath === '/' ? 'w-full' : 'w-0 group-hover:w-full'
+            }`} />
+          </motion.button>
+
           <motion.button
             type="button"
             whileHover={{ y: -1, opacity: 0.8 }}
@@ -177,10 +192,10 @@ export const Header: React.FC<HeaderProps> = ({
         {burgerOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'calc(100vh - 120px)' }}
+            animate={{ opacity: 1, height: 'calc(100vh - 80px)' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden fixed inset-0 top-[120px] bg-[#f8efdc] z-50 p-6 flex flex-col justify-between overflow-y-auto"
+            className="lg:hidden fixed inset-0 top-20 sm:top-24 bg-[#f8efdc] z-50 p-6 flex flex-col justify-between overflow-y-auto"
           >
             <div className="space-y-6">
               <nav className="flex flex-col gap-4 text-2xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -231,7 +246,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <div>
                     <div className="font-bold text-[#1a1a1a] uppercase text-[10px]">Address</div>
                     <p>Bus stand Entrance Arch, Monday Market, Tamil Nadu 629802</p>
-                    <p className="text-[10px] text-[#de2b2b] font-bold">Get there: 7 mins · Open · Closes 11 pm</p>
+                    <p className="text-[10px] text-[#de2b2b] font-bold">Open · Closes 11 pm</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

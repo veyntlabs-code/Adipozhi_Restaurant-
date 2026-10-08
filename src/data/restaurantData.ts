@@ -203,7 +203,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Biryani from 12:00 PM',
     happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Tuesday',
@@ -213,7 +213,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Biryani from 12:00 PM',
     happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Wednesday',
@@ -223,7 +223,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Biryani from 12:00 PM',
     happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Thursday',
@@ -233,7 +233,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Biryani from 12:00 PM',
     happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Friday',
@@ -243,7 +243,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Special Friday Biryani from 11:30 AM',
     happyHour: 'Full Arabian Grills from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Saturday',
@@ -253,7 +253,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Weekend Feast from 11:30 AM',
     happyHour: 'Full Arabian Grills from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   },
   {
     day: 'Sunday',
@@ -263,7 +263,7 @@ export const SCHEDULE_DATA = [
     breakfast: 'Family Biryani & Grills All Day',
     happyHour: 'Vaazhai Ilai Parotta from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:30 AM to 10:30 PM'
+    delivery: '11:00 AM to 11:00 PM'
   }
 ];
 

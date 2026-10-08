@@ -62,11 +62,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
     gsap.registerPlugin(ScrollTrigger);
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    
+    const tick = (time: number) => { lenis.raf(time * 1000); };
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove((time) => { lenis.raf(time * 1000); });
+      gsap.ticker.remove(tick);
       lenis.destroy();
     };
   }, []);

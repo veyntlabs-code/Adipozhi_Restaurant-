@@ -110,8 +110,6 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
           </span>
           <span>•</span>
           <span>{RESTAURANT_INFO.hours}</span>
-          <span>•</span>
-          <span>Get there: {RESTAURANT_INFO.getThere}</span>
         </div>
 
         <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
@@ -138,8 +136,8 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
         <div className="pt-16 mt-8 w-full relative z-10 h-[400px] sm:h-[420px] -mx-4 sm:mx-0 w-[calc(100%+2rem)] sm:w-full overflow-visible">
           <ReviewSlider
             direction="left"
-            slideWidth={340}
-            slideHeight={380}
+            slideWidth={280}
+            slideHeight={320}
             spacing={1.5}
             dim={4}
             background="transparent"

@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${scriptFont.variable} ${graffitiFont.variable} antialiased`}
+      className={`${playfair.variable} ${outfit.variable} ${scriptFont.variable} ${graffitiFont.variable} antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
