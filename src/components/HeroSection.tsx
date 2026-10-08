@@ -113,7 +113,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       ref={containerRef}
       id="hero-section"
-      className="relative bg-[#de2b2b] overflow-hidden select-none"
+      className="relative overflow-hidden select-none bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/roses/logo-wall.jpg')" }}
     >
       {/* ─── Full-bleed hero container ─── */}
       <div className="relative min-h-[92vh] sm:min-h-screen flex flex-col">
@@ -226,7 +227,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#de2b2b]/40 via-transparent to-transparent pointer-events-none" />
                 </div>
-                
+
                 {/* Floating image with new asymmetrical/arch design (Lifted up) */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.7, y: 30 }}

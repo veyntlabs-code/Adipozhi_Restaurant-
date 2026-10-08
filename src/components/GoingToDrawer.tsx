@@ -28,13 +28,24 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm" data-lenis-prevent>
+        <motion.div 
+          className="fixed inset-0 z-50 overflow-hidden" 
+          data-lenis-prevent
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div 
+            onClick={onClose}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer" 
+          />
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="w-screen max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl p-6 sm:p-8 overflow-y-auto overscroll-contain min-h-0"
             >
               <div className="space-y-6">
@@ -138,7 +149,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
               </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

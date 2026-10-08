@@ -113,7 +113,7 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
       style={{ backgroundColor: currentPleasure.color }}
     >
       {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center overflow-hidden pt-4 sm:pt-6 pb-14 sm:pb-16 px-4">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center overflow-hidden pt-20 sm:pt-28 pb-14 sm:pb-24 px-4">
         {/* Animated Radial Backsplash */}
         <AnimatePresence>
           <motion.div
@@ -131,7 +131,7 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
         <div className="absolute inset-0 bg-radial from-transparent via-black/15 to-black/45 pointer-events-none z-[1]" />
 
         {/* TOP: Arched Curved Title "Daily Pleasures" & Experience Bar */}
-        <div className="relative z-10 w-full flex flex-col items-center shrink-0 pt-2 sm:pt-3 space-y-1">
+        <div className="relative z-10 w-full flex flex-col items-center shrink-0 pt-2 sm:pt-4 space-y-1">
           <div className="w-[320px] sm:w-[480px] md:w-[620px] h-[60px] sm:h-[75px] md:h-[90px] relative overflow-visible pointer-events-none">
             <svg
               className="w-full h-full overflow-visible"
@@ -280,11 +280,10 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
               key={p.id}
               type="button"
               onClick={() => scrollToItem(idx)}
-              className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
-                activeIdx === idx
+              className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${activeIdx === idx
                   ? 'w-12 bg-white shadow-xl'
                   : 'w-2.5 bg-white/35 hover:bg-white/70'
-              }`}
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}

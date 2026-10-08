@@ -5,13 +5,13 @@ import { ShoppingBag, Calendar, ArrowRight, Sparkles, Phone, PartyPopper } from 
 
 interface DualActionsSectionProps {
   onOpenOrder: () => void;
-  onOpenGiftCard: () => void; // Used for Party/Banquet booking or reservation
+  onOpenCatering: () => void;
   lang: 'en' | 'fr';
 }
 
 export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
   onOpenOrder,
-  onOpenGiftCard,
+  onOpenCatering,
   lang
 }) => {
   return (
@@ -64,7 +64,7 @@ export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -8, transition: { duration: 0.25 } }}
-            onClick={onOpenGiftCard}
+            onClick={onOpenCatering}
             className="h-full p-8 sm:p-12 rounded-3xl bg-white border border-[#1a1a1a]/15 text-[#1a1a1a] hover:border-[#de2b2b] transition-all duration-300 flex flex-col justify-between group cursor-pointer shadow-xl relative overflow-hidden"
           >
             {/* Subtle glow orb */}
@@ -79,19 +79,19 @@ export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
                 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1a1a1a] group-hover:text-[#de2b2b] transition-colors"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
               >
-                {lang === 'en' ? 'Book Rose Banquet Hall' : 'ரோஸ் பார்ட்டி ஹால் முன்பதிவு'}
+                {lang === 'en' ? 'Celebration and Catering' : 'பார்ட்டி மற்றும் கேட்டரிங்'}
               </h3>
               <p className="text-sm text-[#1a1a1a]/70 font-light leading-relaxed max-w-sm">
                 {lang === 'en'
-                  ? 'Reserve our air-conditioned family booths or the magnificent Rose Banquet Hall for birthdays, anniversaries, and family get-togethers.'
-                  : 'பிறந்தநாள், திருமண நாள் மற்றும் குடும்ப விழாக்களுக்கு எங்கள் பார்ட்டி அரங்கை முன்கூட்டியே முன்பதிவு செய்து கொள்ளுங்கள்.'}
+                  ? 'Plan your birthdays, anniversaries, and special family get-togethers with our premium catering and celebration services.'
+                  : 'பிறந்தநாள், திருமண நாள் மற்றும் குடும்ப விழாக்களுக்கு எங்கள் சிறப்பு கேட்டரிங் சேவைகளை முன்கூட்டியே முன்பதிவு செய்து கொள்ளுங்கள்.'}
               </p>
             </div>
 
             <div className="pt-8 relative z-10 flex items-center justify-between">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md group-hover:bg-[#de2b2b] transition-colors">
                 <Calendar className="w-3.5 h-3.5" />
-                <span>{lang === 'en' ? 'Book Banquet Hall' : 'ஹால் முன்பதிவு'}</span>
+                <span>{lang === 'en' ? 'Book Catering' : 'கேட்டரிங் முன்பதிவு'}</span>
               </span>
               <ArrowRight className="w-6 h-6 text-[#1a1a1a] group-hover:text-[#de2b2b] transform group-hover:translate-x-2 transition-transform duration-300" />
             </div>

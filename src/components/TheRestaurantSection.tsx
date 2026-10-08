@@ -78,7 +78,7 @@ export const TheRestaurantSection: React.FC<TheRestaurantSectionProps> = ({
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <span className="text-xs uppercase font-bold tracking-widest text-[#f8efdc]/80">
-              Three Spaces, One Destination:
+              Two Spaces, One Destination:
             </span>
           </div>
 

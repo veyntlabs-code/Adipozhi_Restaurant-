@@ -120,30 +120,6 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
     image: '/images/food/food7.jpg',
     color: '#a02e1c',
     accent: '#f8efdc'
-  },
-  {
-    id: 'kari-dosa',
-    title: 'Madurai Style Kari Dosa & Ghee Roast',
-    titleFr: 'Kari Dosa & Ghee Roast',
-    headline: 'Thick crispy dosa crowned with spicy mutton, chicken, or beef minced fry and seasoned egg.',
-    headlineFr: 'Dosa croustillante garnie d’agneau, poulet ou bœuf aux épices.',
-    schedule: 'Morning 7:30 AM & Evening 5:00 PM onwards',
-    scheduleFr: 'Matin et soir',
-    image: '/images/food/food12.jpg',
-    color: '#8b1e1e',
-    accent: '#f8efdc'
-  },
-  {
-    id: 'mojitos-fresh-juices',
-    title: 'Blue Curaçao & Fresh Fruit Mojitos',
-    titleFr: 'Mojitos & Jus Frais',
-    headline: 'Sparkling Blue Curaçao, Kiwi, Green Apple, Watermelon, and chilled Lemon Mint refreshers.',
-    headlineFr: 'Cocktails rafraîchissants à la menthe fraîche, citron et fruits.',
-    schedule: 'Chilled all day · Perfect companion for spicy feast',
-    scheduleFr: 'Servi toute la journée',
-    image: '/images/food/food9.jpg',
-    color: '#1a5b6e',
-    accent: '#f8efdc'
   }
 ];
 
@@ -170,23 +146,13 @@ export const AMBIANCE_SPACES: AmbianceSpace[] = [
     image: '/images/gallery/interior-original.png'
   },
   {
-    id: 'live-grill-counter',
-    name: 'Live Arabian Charcoal Grill',
-    nameFr: 'Grillades Arabes en Direct',
-    tagline: 'Sizzling skewers, smoky Al-Faham & tandoori straight off the charcoal.',
-    taglineFr: 'Grillades Al-Faham et tandoori fumantes préparées sous vos yeux.',
-    description: 'Watch our grill masters prepare fragrant Peri Peri Al-Faham, Chicken Tikkas, and spicy Seekh over glowing red-hot coals. The tempting aroma that defines evenings at Adipozhi.',
-    descriptionFr: 'Découvrez la cuisson au charbon de bois de nos poulets marinés et brochettes tikkas parfumées.',
-    image: '/images/food/food10.jpg'
-  },
-  {
-    id: 'express-parcel-counter',
-    name: 'Express Parcel & Family Pack Counter',
-    nameFr: 'Comptoir À Emporter & Packs Famille',
-    tagline: 'Dedicated hot-pack packaging for our famous Half & Full Bucket Biriyanis.',
-    taglineFr: 'Service rapide de commandes pour emporter et seaux de biryani.',
-    description: 'Rapid hot packing for your favorite dishes. Every Half Bucket Biryani comes with 1/4 KG Chicken 65 FREE, and Full Bucket gets 1/2 KG Chicken 65 FREE. Airtight and ready for your home feasts.',
-    descriptionFr: 'Emballages chauds pour nos grands seaux de biryani avec poulet 65 offert, prêts pour vos rassemblements à la maison.',
+    id: 'non-ac-family-dining',
+    name: 'NON-AC Family Dining Hall',
+    nameFr: 'Salle Familiale NON-AC',
+    tagline: 'Comfortable family dining with lively restaurant ambiance.',
+    taglineFr: 'Repas familial confortable avec ambiance vivante.',
+    description: 'Enjoy the vibrant and lively atmosphere of our main dining hall. Perfect for a casual and authentic dining experience with friends and family.',
+    descriptionFr: 'Profitez de l\'atmosphère vibrante et animée de notre salle à manger principale. Idéal pour un repas décontracté.',
     image: '/images/gallery/interior-booths.jpg'
   }
 ];

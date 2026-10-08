@@ -105,16 +105,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         )}
       </motion.button>
 
-      <motion.button
-        type="button"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={onOpenGiftCard}
-        className="p-2 text-[#1a1a1a]/80 hover:text-[#de2b2b] transition-colors rounded-full hover:bg-[#1a1a1a]/5 cursor-pointer"
-        aria-label="Gift Cards"
-      >
-        <Gift className="w-4 h-4" />
-      </motion.button>
+
     </motion.div>
   );
 };
