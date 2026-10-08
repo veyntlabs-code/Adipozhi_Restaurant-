@@ -18,7 +18,9 @@ import {
   Package,
   Sparkles,
   MapPin,
-  Clock
+  Clock,
+  X,
+  ArrowRight
 } from 'lucide-react';
 
 interface RegularMenuPageProps {
@@ -39,6 +41,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
   const [serviceType, setServiceType] = useState<'on_site' | 'takeout' | 'delivery'>('on_site');
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['all']);
   const [showMobileCategoryFilter, setShowMobileCategoryFilter] = useState(false);
+  const [showBiryaniSpecial, setShowBiryaniSpecial] = useState(true);
   const [selectedDiet, setSelectedDiet] = useState<'all' | 'veg' | 'non-veg'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [addedItemNotice, setAddedItemNotice] = useState<string | null>(null);
@@ -509,6 +512,100 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
               </button>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Biryani Special Popup Modal */}
+      <AnimatePresence>
+        {showBiryaniSpecial && (
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-lg bg-[#f8efdc] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col"
+            >
+              {/* Top Image Header */}
+              <div className="h-48 sm:h-56 relative w-full shrink-0">
+                <img 
+                  src="/images/food/food11.jpg" 
+                  alt="Biryani Special" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#f8efdc] via-[#f8efdc]/60 to-transparent" />
+                <button
+                  onClick={() => setShowBiryaniSpecial(false)}
+                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-[#1a1a1a] hover:bg-white/40 transition-colors cursor-pointer border border-white/30 shadow-sm"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="px-8 pb-8 pt-2 text-center relative z-10">
+                <span className="inline-block px-3 py-1 bg-[#de2b2b] text-[#f8efdc] text-[10px] uppercase font-black tracking-widest rounded-full mb-4 shadow-sm border border-[#de2b2b]/50">
+                  Daily Feature
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-black text-[#1a1a1a] mb-6 tracking-tight leading-none" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Biryani Special
+                </h2>
+
+                <div className="space-y-4 text-[#1a1a1a]/80 text-left">
+                  {/* Daily */}
+                  <div className="relative p-5 rounded-2xl bg-white border border-[#1a1a1a]/10 shadow-sm group hover:border-[#de2b2b]/30 transition-colors flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#de2b2b]/10 text-[#de2b2b] flex items-center justify-center shrink-0">
+                      <Flame className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-[#1a1a1a] mb-0.5">Chicken Biryani</h3>
+                      <p className="text-xs">Available daily from <span className="font-bold text-[#de2b2b]">11:00 AM</span></p>
+                      <p className="text-[11px] text-[#1a1a1a]/60 mt-1 italic">Usually available until around 3:00 PM</p>
+                    </div>
+                  </div>
+
+                  {/* Weekend */}
+                  <div className="relative p-5 rounded-2xl bg-gradient-to-br from-[#de2b2b]/5 to-[#de2b2b]/10 border border-[#de2b2b]/20 shadow-sm group hover:border-[#de2b2b]/40 transition-colors flex items-start gap-4 mt-4">
+                    <span className="absolute -top-2.5 right-4 px-2.5 py-0.5 bg-[#de2b2b] text-[#f8efdc] text-[9px] font-black uppercase tracking-wider rounded-full shadow-sm whitespace-nowrap">
+                      Weekend Specials
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-[#de2b2b] text-[#f8efdc] flex items-center justify-center shrink-0 shadow-sm">
+                      <Star className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-[#1a1a1a] mb-0.5">Beef & Mutton Biryani</h3>
+                      <p className="text-xs">Saturday & Sunday from <span className="font-bold text-[#de2b2b]">11:00 AM</span></p>
+                      <p className="text-[11px] text-[#1a1a1a]/60 mt-1 italic">Usually available until around 3:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="italic text-xs font-medium text-[#1a1a1a]/60 mt-6 mb-6">
+                  Come early to enjoy your favourite biryani!
+                </p>
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                  <button
+                    onClick={() => {
+                      setShowBiryaniSpecial(false);
+                      document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex-1 py-3.5 bg-[#1a1a1a] hover:bg-black text-[#f8efdc] font-bold uppercase rounded-xl tracking-widest text-xs shadow-lg hover:shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2 group border border-[#1a1a1a]"
+                  >
+                    <span>Know More</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    onClick={() => setShowBiryaniSpecial(false)}
+                    className="px-6 py-3.5 border-2 border-[#1a1a1a]/15 text-[#1a1a1a] font-bold uppercase rounded-xl tracking-widest text-xs hover:bg-[#1a1a1a]/5 hover:border-[#1a1a1a]/30 transition-all cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
 

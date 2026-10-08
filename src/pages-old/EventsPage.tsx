@@ -155,10 +155,6 @@ export const EventsPage: React.FC<EventsPageProps> = ({
               className="bg-white rounded-3xl p-7 border border-[#1a1a1a]/10 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between"
             >
               <div className="space-y-3">
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#de2b2b]/10 text-[#de2b2b] inline-block">
-                  {type.capacity}
-                </span>
-
                 <h3
                   className="text-xl font-bold text-[#1a1a1a]"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
@@ -181,12 +177,14 @@ export const EventsPage: React.FC<EventsPageProps> = ({
               </div>
 
               <div className="pt-4">
-                <button
-                  onClick={onOpenReservation}
-                  className="w-full py-2.5 bg-[#f8efdc] hover:bg-[#de2b2b] hover:text-[#f8efdc] text-[#de2b2b] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer border border-[#de2b2b]/30"
+                <a
+                  href={`https://wa.me/${RESTAURANT_INFO.phoneRaw}?text=Hi, I would like to inquire about the ${encodeURIComponent(type.title)} option.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center w-full py-2.5 bg-[#f8efdc] hover:bg-[#de2b2b] hover:text-[#f8efdc] text-[#de2b2b] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer border border-[#de2b2b]/30"
                 >
                   Inquire for This Option
-                </button>
+                </a>
               </div>
             </div>
           ))}

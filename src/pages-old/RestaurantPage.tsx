@@ -49,25 +49,13 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
       image: '/images/gallery/interior-original.png'
     },
     {
-      id: 'live-grill-counter',
-      title: 'Live Arabian Charcoal Grill',
-      tagline: 'Sizzling skewers, smoky Al-Faham & tandoori straight off the charcoal.',
-      description:
-        'Watch our grill masters prepare fragrant Peri Peri Al-Faham, Chicken Tikkas, and spicy Seekh over glowing red-hot coals. The tempting aroma that defines evenings at Adipozhi.',
-      hours: '5:00 PM – 11:00 PM',
-      seats: 'Live View Seating',
-      features: ['Live Charcoal Grills', 'Peri Peri & Pepper Marinades', 'Fresh Garlic Toum Dip', 'Sizzling Platters'],
-      image: '/hero_dining.jpg'
-    },
-    {
-      id: 'parcel-bucket-counter',
-      title: 'Express Parcel & Family Pack Counter',
-      tagline: 'Swift takeout service with dedicated hot packaging.',
-      description:
-        'Hot, airtight packaging for our famous Half & Full Bucket Biriyanis with free Chicken 65, flaky parottas, and rich gravies. Ready for quick pickup or local home delivery.',
+      id: 'non-ac-family-dining',
+      title: 'NON-AC Family Dining Hall',
+      tagline: 'Comfortable family dining with lively restaurant ambiance.',
+      description: 'Enjoy the vibrant and lively atmosphere of our main dining hall. Perfect for a casual and authentic dining experience with friends and family.',
       hours: '11:00 AM – 11:00 PM',
-      seats: 'Express Pickup',
-      features: ['Quick Order-Ahead', 'Hot Sealed Buckets', 'Free Chicken 65 Offer', 'Express Counter'],
+      seats: 'Open Dining Seats',
+      features: ['Lively Atmosphere', 'Authentic Dining Experience', 'Quick Service', 'Family Friendly'],
       image: '/images/gallery/interior-booths.jpg'
     }
   ];

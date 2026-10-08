@@ -53,16 +53,17 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div
-          className="fixed inset-0 z-50 overflow-hidden bg-black/65 backdrop-blur-sm flex justify-end"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="fixed inset-0 z-50 overflow-hidden flex justify-end"
           data-lenis-prevent
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             onClick={onClose}
-            className="fixed inset-0"
+            className="absolute inset-0 bg-black/65 backdrop-blur-sm cursor-pointer"
             aria-label="Close drawer backdrop"
           />
 
@@ -70,7 +71,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="relative w-full max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col shadow-2xl h-[100dvh] max-h-[100dvh] z-10 overflow-hidden"
           >
             {/* Header */}
@@ -299,7 +300,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
               </button>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

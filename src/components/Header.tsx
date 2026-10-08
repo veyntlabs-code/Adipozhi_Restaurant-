@@ -95,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
               currentPath.startsWith('/menus') && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
-            <span>{lang === 'en' ? 'Menus' : 'Menus'}</span>
+            <span>{lang === 'en' ? 'Menu' : 'Menu'}</span>
             <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
               currentPath.startsWith('/menus') ? 'w-full' : 'w-0 group-hover:w-full'
             }`} />
@@ -227,16 +227,7 @@ export const Header: React.FC<HeaderProps> = ({
                 >
                   {lang === 'en' ? 'What’s On & Events' : 'Événements & Spectacles'}
                 </motion.button>
-                <motion.button
-                  whileHover={{ x: 6, color: '#de2b2b' }}
-                  onClick={() => {
-                    setBurgerOpen(false);
-                    onOpenPrivateRooms();
-                  }}
-                  className="text-left text-[#1a1a1a] border-b border-[#1a1a1a]/10 pb-2 transition-all cursor-pointer"
-                >
-                  {lang === 'en' ? 'Private Rooms' : 'Salons Privés'}
-                </motion.button>
+
               </nav>
 
               {/* Coordinates in Mobile Drawer */}

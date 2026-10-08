@@ -6,7 +6,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { MenuCalloutSection } from '@/components/MenuCalloutSection';
 import { DailyPleasuresSection } from '@/components/DailyPleasuresSection';
 import { StatisticsSection } from '@/components/StatisticsSection';
-import { PrivateRoomsSection } from '@/components/PrivateRoomsSection';
+
 import { TheRestaurantSection } from '@/components/TheRestaurantSection';
 import { WaitingForSection } from '@/components/WaitingForSection';
 import { DualActionsSection } from '@/components/DualActionsSection';
@@ -43,10 +43,7 @@ export function HomePage() {
         lang={lang}
       />
       <StatisticsSection lang={lang} />
-      <PrivateRoomsSection
-        onOpenPrivateRooms={openPrivateRooms}
-        lang={lang}
-      />
+
       <TheRestaurantSection
         onOpenReservation={openReservation}
         lang={lang}
@@ -57,7 +54,11 @@ export function HomePage() {
       />
       <DualActionsSection
         onOpenOrder={openOrder}
-        onOpenGiftCard={openGiftCard}
+        onOpenCatering={() => {
+          navigateTo('/events');
+          // Also scroll to top since we are navigating
+          window.scrollTo(0, 0);
+        }}
         lang={lang}
       />
     </>
