@@ -251,12 +251,12 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
                     transition={{ duration: 0.5 }}
                     className="space-y-1.5 max-w-[340px] sm:max-w-[400px] px-2"
                   >
-                    <h3
+                    <h2
                       className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-md leading-tight"
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                     >
                       {item.title}
-                    </h3>
+                    </h2>
                     <p
                       className="text-sm sm:text-base md:text-lg italic text-white/95 font-serif leading-snug line-clamp-2"
                       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
@@ -280,10 +280,10 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
               key={p.id}
               type="button"
               onClick={() => scrollToItem(idx)}
-              className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+              className={`h-3 rounded-full transition-all duration-500 cursor-pointer ${
                 activeIdx === idx
-                  ? 'w-12 bg-white shadow-xl'
-                  : 'w-2.5 bg-white/35 hover:bg-white/70'
+                  ? 'w-14 bg-white shadow-xl'
+                  : 'w-3 sm:w-4 bg-white/35 hover:bg-white/70'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />

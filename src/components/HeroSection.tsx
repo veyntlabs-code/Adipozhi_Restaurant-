@@ -160,7 +160,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Subheading */}
               <div className="space-y-1.5">
-                <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-[#f8efdc]/90">
+                <p className="text-xs sm:text-sm font-semibold text-[#f8efdc]/90">
                   Adipozhi Family Restaurant Since 2020
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-[#f8efdc]/80 font-light leading-relaxed max-w-lg" style={{ fontFamily: "'Outfit', sans-serif" }}>
@@ -177,24 +177,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
                 >
                   <MapPin className="w-3.5 h-3.5" />
-                  <span>Going to Adipozhi</span>
+                  <span>Get Directions</span>
                 </motion.button>
 
                 <motion.button
-                  whileHover={{ scale: 1.04, backgroundColor: '#f8efdc', color: '#de2b2b' }}
+                  whileHover={{ scale: 1.04, backgroundColor: '#c72424', color: '#f8efdc' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenReservation}
-                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 sm:px-7 py-3 bg-[#de2b2b] border-2 border-[#de2b2b] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-black/20"
                 >
                   <Calendar className="w-3.5 h-3.5" />
                   <span>Reserve</span>
                 </motion.button>
 
                 <motion.button
-                  whileHover={{ scale: 1.04, backgroundColor: '#f8efdc', color: '#de2b2b' }}
+                  whileHover={{ scale: 1.04, backgroundColor: '#000000', color: '#f8efdc' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenOrder}
-                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 sm:px-7 py-3 bg-[#1a1a1a] border-2 border-[#1a1a1a] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-black/20"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>Order Online</span>

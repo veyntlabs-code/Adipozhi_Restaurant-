@@ -133,7 +133,7 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
         </div>
 
         {/* Google Reviews Slider */}
-        <div className="pt-16 mt-8 w-full relative z-10 h-[400px] sm:h-[420px] -mx-4 sm:mx-0 w-[calc(100%+2rem)] sm:w-full overflow-visible">
+        <div className="pt-16 mt-8 w-full relative z-10 h-[400px] sm:h-[420px] -mx-4 sm:mx-0 sm:w-full overflow-hidden max-w-full">
           <ReviewSlider
             direction="left"
             slideWidth={280}
@@ -198,7 +198,7 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
                       {review.name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm sm:text-base">{review.name}</h4>
+                      <h3 className="font-bold text-sm sm:text-base">{review.name}</h3>
                       <div className="flex items-center gap-1 mt-0.5">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className={`w-3.5 h-3.5 fill-current ${review.highlight ? 'text-[#f8efdc]' : 'text-[#de2b2b]'}`} />
