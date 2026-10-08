@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { Calendar, ShoppingBag, Gift, MapPin, Play } from 'lucide-react';
+import { Calendar, ShoppingBag, Gift, Compass, Play } from 'lucide-react';
 
 interface FloatingNavLinksProps {
   onOpenGoingTo: () => void;
@@ -55,9 +55,9 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onOpenGallery}
-          className="px-4 py-2 rounded-full text-xs font-bold bg-[#1a1a1a] text-[#f8efdc] hover:bg-black transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
+          className="px-3.5 py-2 rounded-full text-xs font-bold text-[#de2b2b] hover:bg-[#de2b2b]/10 transition-colors whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
         >
-          <Play className="w-3.5 h-3.5 fill-[#f8efdc]" />
+          <Play className="w-3.5 h-3.5 fill-[#de2b2b]" />
           <span>{lang === 'en' ? '0:29 Tour & 23 Photos' : '0:29 டூர்'}</span>
         </motion.button>
       )}
@@ -67,9 +67,9 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpenGoingTo}
-        className="px-4 py-2 rounded-full text-xs font-bold bg-[#1a1a1a] text-[#f8efdc] hover:bg-black transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
+        className="px-3.5 py-2 rounded-full text-xs font-bold text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
       >
-        <MapPin className="w-3.5 h-3.5 text-[#f8efdc]" />
+        <Compass className="w-3.5 h-3.5 text-[#de2b2b]" />
         <span className="hidden sm:inline">{lang === 'en' ? 'Directions' : 'வழித்தடம்'}</span>
       </motion.button>
 
@@ -78,9 +78,9 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         whileHover={{ scale: 1.05, y: -1 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpenReservation}
-        className="px-4 py-2 bg-[#1a1a1a] text-[#f8efdc] hover:bg-black rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
+        className="px-4 py-2 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
       >
-        <Calendar className="w-3.5 h-3.5 text-[#f8efdc]" />
+        <Calendar className="w-3.5 h-3.5" />
         <span>{lang === 'en' ? 'Reserve' : 'முன்பதிவு'}</span>
       </motion.button>
 

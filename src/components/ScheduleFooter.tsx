@@ -50,7 +50,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                 onClick={onOpenGoingTo}
                 className="text-xs font-bold text-[#de2b2b] flex items-center gap-1 cursor-pointer"
               >
-                <span>{lang === 'en' ? 'Get Directions' : 'Itinéraire'}</span>
+                <span>{lang === 'en' ? 'Going to Adipozhi' : 'Venir chez Adipozhi'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </motion.button>
             </div>
@@ -64,7 +64,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     key={d.day}
                     type="button"
                     onClick={() => setSelectedDayIndex(idx)}
-                    className={`relative px-3 py-3 rounded-lg text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${isActive
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${isActive
                       ? 'text-[#f8efdc]'
                       : 'text-[#1a1a1a]/60 hover:text-[#1a1a1a] hover:bg-[#f8efdc]/50'
                       }`}
@@ -118,7 +118,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                 <span className="text-3xl font-bold tracking-tight text-[#de2b2b]" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
                   adipozhi
                 </span>
-                <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#7c2627]">
+                <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#7c2627]">
                   Family Restaurant · Monday Market
                 </p>
                 <p className="text-xs text-[#1a1a1a]/70 max-w-sm leading-relaxed">

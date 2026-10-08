@@ -130,7 +130,7 @@ export const Header: React.FC<HeaderProps> = ({
             transition={{ duration: 0.2 }}
             className={`h-12 sm:h-16 w-auto transition-all duration-300 drop-shadow-sm ${isHeroMode ? '' : 'invert-[.8]'}`}
           />
-          <span className={`text-xs uppercase tracking-[0.2em] font-medium -mt-1 group-hover:tracking-[0.25em] transition-all duration-300 ${logoSubColorClass}`}>
+          <span className={`text-[10px] uppercase tracking-[0.25em] font-medium -mt-1 group-hover:tracking-[0.3em] transition-all duration-300 ${logoSubColorClass}`}>
             family restaurant · monday market
           </span>
         </button>
@@ -142,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({
             whileHover={{ y: -1, opacity: 0.8 }}
             whileTap={{ scale: 0.96 }}
             onClick={() => handleNav('/events', onOpenEvents)}
-            className={`transition-colors text-sm font-bold relative group cursor-pointer ${
+            className={`transition-colors uppercase tracking-wider text-xs font-bold relative group cursor-pointer ${
               currentPath === '/events' && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
@@ -152,16 +152,7 @@ export const Header: React.FC<HeaderProps> = ({
             }`} />
           </motion.button>
 
-          <motion.button
-            type="button"
-            whileHover={{ y: -1, opacity: 0.8 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={onOpenPrivateRooms}
-            className="transition-colors text-sm font-bold relative group cursor-pointer"
-          >
-            <span>{lang === 'en' ? 'Banquet Hall' : 'Salle Familiale'}</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${hoverLineColor}`} />
-          </motion.button>
+
 
           <a
             href="tel:09585154254"

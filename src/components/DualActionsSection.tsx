@@ -32,9 +32,8 @@ export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none transform translate-x-12 -translate-y-12" />
 
             <div className="space-y-3 relative z-10">
-              <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#f8efdc]/80 block flex items-center gap-1.5">
-                <ShoppingBag className="w-3.5 h-3.5 text-[#f8efdc]/80" />
-                <span>{lang === 'en' ? 'Counter Parcel & Home Delivery' : 'பார்சல் & டோர் டெலிவரி'}</span>
+              <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#f8efdc]/80 block">
+                {lang === 'en' ? 'Counter Parcel & Home Delivery' : 'பார்சல் & டோர் டெலிவரி'}
               </span>
               <h3
                 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f8efdc]"
@@ -49,11 +48,12 @@ export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
               </p>
             </div>
 
-            <div className="pt-8 relative z-10 flex items-center">
+            <div className="pt-8 relative z-10 flex items-center justify-between">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#f8efdc] text-[#de2b2b] font-bold text-xs uppercase tracking-wider rounded-full shadow-md group-hover:bg-white transition-all">
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>{lang === 'en' ? 'Order Parcel / Delivery' : 'ஆன்லைன் ஆர்டர் செய்ய'}</span>
               </span>
+              <ArrowRight className="w-6 h-6 text-[#f8efdc] transform group-hover:translate-x-2 transition-transform duration-300" />
             </div>
           </motion.div>
 
@@ -88,11 +88,12 @@ export const DualActionsSection: React.FC<DualActionsSectionProps> = ({
               </p>
             </div>
 
-            <div className="pt-8 relative z-10 flex items-center">
+            <div className="pt-8 relative z-10 flex items-center justify-between">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md group-hover:bg-[#de2b2b] transition-colors">
                 <Calendar className="w-3.5 h-3.5" />
                 <span>{lang === 'en' ? 'Book Catering' : 'கேட்டரிங் முன்பதிவு'}</span>
               </span>
+              <ArrowRight className="w-6 h-6 text-[#1a1a1a] group-hover:text-[#de2b2b] transform group-hover:translate-x-2 transition-transform duration-300" />
             </div>
           </motion.div>
         </div>

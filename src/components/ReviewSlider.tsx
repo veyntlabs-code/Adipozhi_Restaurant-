@@ -287,7 +287,7 @@ export default function ReviewSlider({
                         pointerEvents: "auto",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                     }}
                 >
                     {slide}
