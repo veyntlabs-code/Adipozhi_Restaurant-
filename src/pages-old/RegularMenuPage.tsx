@@ -111,7 +111,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/food/food12.jpg"
+            src="/adipoo rest/Biryani/Steaming Chicken Dum Biryani at Adipozhi.png"
             alt="Adipozhi Menu"
             className="w-full h-full object-cover"
           />
@@ -411,7 +411,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                     </div>
                   )}
 
-                  {/* Bottom Price */}
+                  {/* Bottom Price & Add */}
                   <div className="pt-3 mt-auto flex items-center justify-between border-t border-[#1a1a1a]/10">
                     <div>
                       <span className="text-[10px] uppercase font-bold text-[#1a1a1a]/40 block leading-none">
@@ -421,6 +421,16 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                         {displayPrice}
                       </div>
                     </div>
+
+                    {typeof dish.price === 'number' && dish.price > 0 && (!dish.priceVariants || dish.priceVariants.length === 0) && (
+                      <button
+                        onClick={() => handleAdd(dish)}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#de2b2b] text-[#f8efdc] hover:bg-[#1a1a1a] hover:text-white transition-all shadow-sm flex items-center gap-1 cursor-pointer active:scale-95"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add</span>
+                      </button>
+                    )}
                   </div>
                   </div>
                 </motion.div>

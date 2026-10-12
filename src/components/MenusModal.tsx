@@ -22,16 +22,21 @@ export const MenusModal: React.FC<MenusModalProps> = ({
   const [addedId, setAddedId] = useState<string | null>(null);
 
   const menuTabs = [
-    { id: 'all', label: lang === 'en' ? 'Main Menu' : 'Menu Principal' },
-    { id: 'pizzas', label: lang === 'en' ? 'Pizzas' : 'Pizzas' },
-    { id: 'breakfasts', label: lang === 'en' ? 'Breakfasts' : 'Déjeuners' },
-    { id: 'burgers', label: lang === 'en' ? 'Burgers & Steaks' : 'Burgers & Grillades' },
-    { id: 'drinks', label: lang === 'en' ? 'Drinks & Cocktails' : 'Boissons & Cocktails' }
+    { id: 'all', label: lang === 'en' ? 'All Dishes' : 'Tous les Plats' },
+    { id: 'biriyanis', label: lang === 'en' ? 'Biriyanis & Buckets' : 'Biriyanis' },
+    { id: 'starters', label: lang === 'en' ? 'Grills & Starters' : 'Grillades & Entrées' },
+    { id: 'parotta-dosa', label: lang === 'en' ? 'Parottas & Breads' : 'Parottas & Pains' },
+    { id: 'curries', label: lang === 'en' ? 'Curries & Masalas' : 'Currys & Masalas' },
+    { id: 'drinks-desserts', label: lang === 'en' ? 'Drinks & Ice Creams' : 'Boissons & Glaces' }
   ];
 
   const filteredItems = MENU_ITEMS.filter((item) => {
     if (activeMenuTab === 'all') return true;
-    if (activeMenuTab === 'burgers') return item.category === 'burgers' || item.category === 'steaks' || item.category === 'tartars';
+    if (activeMenuTab === 'biriyanis') return item.category === 'biriyanis' || item.category === 'family-pack' || item.category === 'pulaos';
+    if (activeMenuTab === 'starters') return item.category === 'chicken-starters' || item.category === 'arabian-starters' || item.category === 'arabian-spicy' || item.category === 'seafood-starters' || item.category === 'mutton-starters' || item.category === 'beef-starters' || item.category === 'veg-starters' || item.category === 'soups' || item.category === 'egg-special';
+    if (activeMenuTab === 'parotta-dosa') return item.category === 'parotta-varieties' || item.category === 'dosa-varieties' || item.category === 'indian-breads';
+    if (activeMenuTab === 'curries') return item.category === 'chettinadu' || item.category === 'indian-gravy';
+    if (activeMenuTab === 'drinks-desserts') return item.category === 'fresh-juice' || item.category === 'mojitos' || item.category === 'ice-creams';
     return item.category === activeMenuTab;
   });
 
