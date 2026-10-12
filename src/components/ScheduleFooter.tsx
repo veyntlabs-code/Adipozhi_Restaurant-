@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SCHEDULE_DATA, RESTAURANT_INFO } from '../data/restaurantData';
-import { Clock, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Clock, MapPin, Phone, Mail, ArrowRight, Utensils } from 'lucide-react';
 
 interface ScheduleFooterProps {
   onOpenMenus: () => void;
@@ -92,20 +92,101 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="space-y-3 text-xs sm:text-sm"
+                className="space-y-4 text-xs sm:text-sm"
               >
-                <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Dining room' : 'Salle à manger'}</span>
-                  <span className="font-semibold text-[#1a1a1a]">{currentDay.dining}</span>
+                {/* General Service Timings */}
+                <div className="space-y-1">
+                  <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
+                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Dining room' : 'Salle à manger'}</span>
+                    <span className="font-semibold text-[#1a1a1a]">{currentDay.dining}</span>
+                  </div>
+
+                  <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
+                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Takeaway' : 'Pour emporter'}</span>
+                    <span className="font-semibold text-[#1a1a1a]">{currentDay.takeaway}</span>
+                  </div>
+                  <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
+                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Delivery' : 'Livraison'}</span>
+                    <span className="font-semibold text-[#1a1a1a]">{currentDay.delivery}</span>
+                  </div>
                 </div>
 
-                <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Takeaway' : 'Pour emporter'}</span>
-                  <span className="font-semibold text-[#1a1a1a]">{currentDay.takeaway}</span>
-                </div>
-                <div className="flex justify-between py-1.5">
-                  <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Delivery' : 'Livraison'}</span>
-                  <span className="font-semibold text-[#1a1a1a]">{currentDay.delivery}</span>
+                {/* Specialty Dish Timings Section */}
+                <div className="pt-2">
+                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1a1a]/10">
+                    <div className="flex items-center gap-1.5 text-[11px] uppercase font-bold tracking-wider text-[#de2b2b]">
+                      <Utensils className="w-3.5 h-3.5" />
+                      <span>{lang === 'en' ? 'Specialty Timings' : 'Horaires des Spécialités'}</span>
+                    </div>
+                    {currentDay.muttonBiryani ? (
+                      <span className="text-[10px] font-bold text-amber-800 bg-amber-100/90 border border-amber-200/80 px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <span>🔥</span>
+                        <span>{lang === 'en' ? 'Weekend Special Active' : 'Spécial Week-end'}</span>
+                      </span>
+                    ) : (
+                      <span className="text-[10px] text-[#1a1a1a]/50 font-medium">
+                        {lang === 'en' ? 'Daily Fresh Service' : 'Service du Jour'}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    {/* Chicken Biryani & Beef Biryani */}
+                    <div className="flex items-center justify-between py-1.5 border-b border-[#1a1a1a]/5">
+                      <div className="pr-3">
+                        <span className="font-semibold text-[#1a1a1a] block">
+                          {lang === 'en' ? 'Chicken Biryani & Beef Biryani' : 'Biryani Poulet & Boeuf'}
+                        </span>
+                        <span className="text-[11px] text-[#1a1a1a]/50">
+                          {lang === 'en' ? 'Lunch Service · Fresh Dum Biryani' : 'Service du Midi'}
+                        </span>
+                      </div>
+                      <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
+                        {currentDay.chickenBeefBiryani}
+                      </span>
+                    </div>
+
+                    {/* Mutton Biryani - Only rendered for Saturday & Sunday */}
+                    {currentDay.muttonBiryani && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="flex items-center justify-between py-2 border-b border-[#1a1a1a]/5 bg-gradient-to-r from-amber-50 to-orange-50/50 -mx-2 px-2.5 rounded-xl border border-amber-200/60"
+                      >
+                        <div className="pr-3">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="font-bold text-[#1a1a1a]">
+                              {lang === 'en' ? 'Mutton Biryani' : 'Biryani au Mouton'}
+                            </span>
+                            <span className="text-[9px] uppercase font-extrabold text-amber-900 bg-amber-200/90 px-1.5 py-0.5 rounded shadow-2xs">
+                              {lang === 'en' ? 'Sat & Sun Only' : 'Sam & Dim Seul'}
+                            </span>
+                          </div>
+                          <span className="text-[11px] text-amber-900/70">
+                            {lang === 'en' ? 'Signature Weekend Dum Biryani' : 'Spécial Week-end'}
+                          </span>
+                        </div>
+                        <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
+                          {currentDay.muttonBiryani}
+                        </span>
+                      </motion.div>
+                    )}
+
+                    {/* Dosa & Parotta Varieties */}
+                    <div className="flex items-center justify-between py-1.5">
+                      <div className="pr-3">
+                        <span className="font-semibold text-[#1a1a1a] block">
+                          {lang === 'en' ? 'Dosa & Parotta Varieties' : 'Variétés de Dosa & Parotta'}
+                        </span>
+                        <span className="text-[11px] text-[#1a1a1a]/50">
+                          {lang === 'en' ? 'Evening & Dinner · Bun Parotta, Kothu & Dosas' : 'Soir & Dîner'}
+                        </span>
+                      </div>
+                      <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
+                        {currentDay.dosaParotta}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>

@@ -79,8 +79,8 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
     titleFr: 'Adipozhi Dum Biryani',
     headline: 'Steaming seeraga & basmati dum biryani layered with succulent tender meat and aromatic ghee.',
     headlineFr: 'Biryani cuit à l’étouffée avec viandes tendres et épices traditionnelles.',
-    schedule: 'Available from 12:00 PM · Dine-in & Parcel Buckets',
-    scheduleFr: 'Dès midi · Sur place et seaux à emporter',
+    schedule: 'Available 11:00 AM – 3:00 PM · Dine-in & Buckets (Mutton on Sat & Sun)',
+    scheduleFr: '11h00 – 15h00 · Sur place et seaux (Mouton sam & dim)',
     image: '/adipoo rest/Biryani/Steaming Chicken Dum Biryani at Adipozhi.png',
     color: '#8e1b1b',
     accent: '#f8efdc'
@@ -91,8 +91,8 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
     titleFr: 'Bun Parotta & Kothu',
     headline: 'Puffed golden bun parottas and fiery chicken/mutton/beef kothu parotta beaten on hot tawa.',
     headlineFr: 'Parottas dorés et croustillants battus sur tawa avec salna riche.',
-    schedule: 'Daily from 5:00 PM to 11:00 PM',
-    scheduleFr: 'Tous les jours de 17h à 23h',
+    schedule: 'Daily from 6:00 PM to 11:00 PM',
+    scheduleFr: 'Tous les jours de 18h à 23h',
     image: '/menu 16-21/PAROTTA VARIETIES/Flaky Parotta Buns with Curry.png',
     color: '#9e2a2b',
     accent: '#f8efdc'
@@ -160,76 +160,85 @@ export const AMBIANCE_SPACES: AmbianceSpace[] = [
 export const ATMOSPHERES = AMBIANCE_SPACES;
 export type Atmosphere = AmbianceSpace;
 
-export const SCHEDULE_DATA = [
+export interface ScheduleDay {
+  day: string;
+  dayFr: string;
+  dining: string;
+  takeaway: string;
+  delivery: string;
+  chickenBeefBiryani: string;
+  muttonBiryani?: string;
+  dosaParotta: string;
+  bar?: string;
+  breakfast?: string;
+  happyHour?: string;
+}
+
+export const SCHEDULE_DATA: ScheduleDay[] = [
   {
     day: 'Monday',
     dayFr: 'Lundi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Biryani from 12:00 PM',
-    breakfast: 'Biryani from 12:00 PM',
-    happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Tuesday',
     dayFr: 'Mardi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Biryani from 12:00 PM',
-    breakfast: 'Biryani from 12:00 PM',
-    happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Wednesday',
     dayFr: 'Mercredi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Biryani from 12:00 PM',
-    breakfast: 'Biryani from 12:00 PM',
-    happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Thursday',
     dayFr: 'Jeudi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Biryani from 12:00 PM',
-    breakfast: 'Biryani from 12:00 PM',
-    happyHour: 'Bun Parotta & Grill from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Friday',
     dayFr: 'Vendredi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Special Friday Biryani Feast',
-    breakfast: 'Special Friday Biryani from 11:30 AM',
-    happyHour: 'Full Arabian Grills from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Saturday',
     dayFr: 'Samedi',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Family Biryani Buckets All Day',
-    breakfast: 'Weekend Feast from 11:30 AM',
-    happyHour: 'Full Arabian Grills from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    muttonBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Sunday',
     dayFr: 'Dimanche',
     dining: '11:00 AM to 11:00 PM',
-    bar: 'Family Weekend Biryani & Grills',
-    breakfast: 'Family Biryani & Grills All Day',
-    happyHour: 'Vaazhai Ilai Parotta from 5:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
-    delivery: '11:00 AM to 11:00 PM'
+    delivery: '11:00 AM to 11:00 PM',
+    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    muttonBiryani: '11:00 AM – 3:00 PM',
+    dosaParotta: '6:00 PM – 11:00 PM'
   }
 ];
 

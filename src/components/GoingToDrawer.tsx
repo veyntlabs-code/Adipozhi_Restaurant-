@@ -117,7 +117,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                         {lang === 'en' ? 'Open Daily · 11:00 AM – 11:00 PM' : 'Ouvert tous les jours · 11h00 – 23h00'}
                       </p>
                       <p className="text-[11px] text-[#1a1a1a]/60 mt-0.5">
-                        {lang === 'en' ? 'Biryani from 12:00 PM · Grills & Parotta from 5:00 PM' : 'Biryani dès 12h · Grillades dès 17h'}
+                        {lang === 'en' ? 'Biryani: 11:00 AM – 3:00 PM (Mutton Biryani Sat & Sun) · Dosa & Parotta: 6:00 PM – 11:00 PM' : 'Biryani: 11h00 – 15h00 (Mouton sam & dim) · Dosa & Parotta: 18h00 – 23h00'}
                       </p>
                     </div>
                   </div>

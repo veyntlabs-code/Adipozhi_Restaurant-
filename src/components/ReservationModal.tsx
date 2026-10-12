@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, Clock, Users, CheckCircle2, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
+import { X, Calendar, Clock, Users, CheckCircle2, ChevronRight, ChevronLeft, MapPin, MessageSquare } from 'lucide-react';
 import { ATMOSPHERES, RESTAURANT_INFO } from '../data/restaurantData';
 
 interface ReservationModalProps {
@@ -45,8 +45,9 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
   const [phone, setPhone] = useState('');
   const [phoneError, setPhoneError] = useState('');
 
-  // Generated confirmation code
+  // Generated confirmation code & WhatsApp link
   const [confirmationCode, setConfirmationCode] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
 
   const now = new Date();
   const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -67,6 +68,44 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
     if (step === 2) {
       const code = `ADZ-${Math.floor(1000 + Math.random() * 9000)}`;
       setConfirmationCode(code);
+
+      const atmosphereLabel =
+        atmosphere === 'ac'
+          ? 'AC Family Dining Hall'
+          : atmosphere === 'non-ac'
+          ? 'NON-AC Family Dining Hall'
+          : (atmosphere || 'Standard Dining');
+
+      const guestFullName = `${firstName} ${lastName}`.trim();
+
+      const message = [
+        '🍽️ *NEW TABLE RESERVATION - ADIPOZHI*',
+        '━━━━━━━━━━━━━━━━━━━━━━',
+        `🔖 *Booking Reference:* ${code}`,
+        '',
+        `👤 *Guest Name:* ${guestFullName}`,
+        `📞 *Phone Number:* ${phone}`,
+        `📧 *Email Address:* ${email}`,
+        '',
+        `👥 *Party Size:* ${partySize} Guests`,
+        `📅 *Date:* ${date}`,
+        `⏰ *Time:* ${time}`,
+        `🛋️ *Seating / Ambiance:* ${atmosphereLabel}`,
+        '',
+        `📍 *Location:* Adipozhi Family Restaurant, Bus stand Entrance Arch, Monday Market`,
+        '━━━━━━━━━━━━━━━━━━━━━━',
+        '_Please confirm my table reservation. Thank you!_'
+      ].join('\n');
+
+      const cleanPhone = RESTAURANT_INFO.phoneRaw.replace(/\D/g, '') || '919585154254';
+      const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+      setWhatsappUrl(waLink);
+
+      // Automatically trigger WhatsApp in a new tab with all reservation details
+      if (typeof window !== 'undefined') {
+        window.open(waLink, '_blank');
+      }
+
       setStep(3);
     } else {
       setStep((prev) => (prev + 1) as 1 | 2 | 3);
@@ -517,6 +556,18 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       <span className="font-mono font-bold text-[#de2b2b]">{confirmationCode}</span>
                     </div>
                     <div className="flex justify-between">
+                      <span className="text-[#1a1a1a]/60">Guest Name:</span>
+                      <span className="font-semibold text-[#1a1a1a]">{firstName} {lastName}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#1a1a1a]/60">Phone Number:</span>
+                      <span className="font-semibold text-[#1a1a1a]">{phone}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#1a1a1a]/60">Email:</span>
+                      <span className="font-semibold text-[#1a1a1a]">{email}</span>
+                    </div>
+                    <div className="flex justify-between">
                       <span className="text-[#1a1a1a]/60">Date & Time:</span>
                       <span className="font-semibold text-[#1a1a1a]">{date} @ {time}</span>
                     </div>
@@ -526,7 +577,9 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#1a1a1a]/60">Ambiance:</span>
-                      <span className="font-semibold text-[#de2b2b] capitalize">{atmosphere}</span>
+                      <span className="font-semibold text-[#de2b2b] capitalize">
+                        {atmosphere === 'ac' ? 'AC Family Dining' : atmosphere === 'non-ac' ? 'NON-AC Family Dining' : atmosphere}
+                      </span>
                     </div>
                     <div className="pt-2 border-t border-[#1a1a1a]/10 text-[11px] text-[#1a1a1a]/60 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-[#de2b2b]" />
@@ -534,15 +587,31 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     </div>
                   </div>
 
-                  <motion.button
-                    type="button"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleReset}
-                    className="px-6 py-2.5 bg-[#de2b2b] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md cursor-pointer"
-                  >
-                    {lang === 'en' ? 'Done' : 'Fermer'}
-                  </motion.button>
+                  {/* Actions: Open WhatsApp & Done */}
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    {whatsappUrl && (
+                      <motion.a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="w-full sm:w-auto px-6 py-2.5 bg-[#25D366] hover:bg-[#1fb355] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <MessageSquare className="w-4 h-4" />
+                        <span>Send / Open in WhatsApp</span>
+                      </motion.a>
+                    )}
+                    <motion.button
+                      type="button"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={handleReset}
+                      className="w-full sm:w-auto px-6 py-2.5 bg-[#de2b2b] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md cursor-pointer"
+                    >
+                      {lang === 'en' ? 'Done' : 'Fermer'}
+                    </motion.button>
+                  </div>
                 </motion.div>
               )}
             </div>

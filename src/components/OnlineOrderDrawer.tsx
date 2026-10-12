@@ -29,6 +29,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
 
   const swiggyUrl = 'https://www.swiggy.com/city/nagercoil/adipozhi-family-restaurant-colachel-monday-market-rest1346460';
   const zomatoUrl = 'https://www.zomato.com/kanyakumari/adipozhi-family-restaurant';
+  const kumariFoodieUrl = 'https://play.google.com/store/apps/details?id=com.kumarifoodie.onlinedelivery';
   const whatsappUrl = `https://wa.me/919585154254?text=${encodeURIComponent(
     'Hello Adipozhi Family Restaurant! I would like to place a food order for takeaway parcel / delivery.'
   )}`;
@@ -88,7 +89,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     Order Online
                   </h2>
                   <p className="text-[11px] text-[#1a1a1a]/60 mt-0.5 font-medium">
-                    Delivery via Swiggy &amp; Zomato · Direct Parcel
+                    Delivery via Swiggy, Zomato &amp; Kumari Foodie · Direct Parcel
                   </p>
                 </div>
               </div>
@@ -204,7 +205,68 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                 </div>
               </div>
 
-              {/* 3. DIRECT TAKEAWAY & PARCEL COUNTER (SAVE MORE + FREE 65) */}
+              {/* 3. ORDER ON KUMARI FOODIE */}
+              <div className="bg-gradient-to-br from-[#0c38ea] to-[#0425a8] text-white p-5 rounded-3xl shadow-lg relative overflow-hidden group">
+                <div className="absolute right-[-15px] top-[-15px] opacity-10 font-black text-8xl pointer-events-none select-none tracking-tighter">
+                  KF
+                </div>
+
+                <div className="relative z-10 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      {/* Kumari Foodie App Icon matching user branding */}
+                      <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-sm relative overflow-hidden p-0.5 shrink-0">
+                        <svg viewBox="0 0 48 48" className="w-full h-full fill-none" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="48" height="48" rx="10" fill="#0c38ea" />
+                          <rect x="5" y="5" width="38" height="38" rx="7" stroke="#ffffff" strokeWidth="1.5" />
+                          <path
+                            d="M24 10C20.134 10 17 13.134 17 17C17 21.8 24 28 24 28C24 28 31 21.8 31 17C31 13.134 27.866 10 24 10Z"
+                            fill="#0c38ea"
+                            stroke="#ffffff"
+                            strokeWidth="1.5"
+                          />
+                          <text x="24" y="19" fill="#ffffff" fontSize="7" fontWeight="900" textAnchor="middle" fontFamily="system-ui, sans-serif">
+                            KF
+                          </text>
+                          <text x="24" y="34" fill="#ffffff" fontSize="4.2" fontWeight="800" textAnchor="middle" fontFamily="system-ui, sans-serif" letterSpacing="0.2">
+                            KUMARI FOODIE
+                          </text>
+                          <text x="24" y="39" fill="#ffffff" fontSize="2.5" fontWeight="600" textAnchor="middle" fontFamily="system-ui, sans-serif" letterSpacing="0.4" opacity="0.9">
+                            DELIVERY IN MINUTES
+                          </text>
+                        </svg>
+                      </div>
+                      <div>
+                        <span className="text-xs font-black tracking-widest uppercase opacity-90 block">
+                          LOCAL APP · KANYAKUMARI
+                        </span>
+                        <h3 className="text-xl font-black tracking-tight leading-none">
+                          Kumari Foodie
+                        </h3>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-black/25 text-[10px] font-bold tracking-wider uppercase border border-white/20">
+                      Delivery in Minutes
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-white/90 font-light leading-relaxed">
+                    Order our Chicken Dum Biryani, hot Bun Parotta, and Arabian Grills on Kanyakumari&apos;s favorite local delivery app with express doorstep delivery.
+                  </p>
+
+                  <a
+                    href={kumariFoodieUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#0c38ea] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
+                  >
+                    <span>Order on Kumari Foodie</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* 4. DIRECT TAKEAWAY & PARCEL COUNTER (SAVE MORE + FREE 65) */}
               <div className="bg-white p-5 rounded-3xl border-2 border-dashed border-[#de2b2b]/40 shadow-sm space-y-3 relative">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
