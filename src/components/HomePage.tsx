@@ -6,7 +6,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { MenuCalloutSection } from '@/components/MenuCalloutSection';
 import { DailyPleasuresSection } from '@/components/DailyPleasuresSection';
 import { StatisticsSection } from '@/components/StatisticsSection';
-
+import { CelebrationSection } from '@/components/CelebrationSection';
 import { TheRestaurantSection } from '@/components/TheRestaurantSection';
 import { WaitingForSection } from '@/components/WaitingForSection';
 import { DualActionsSection } from '@/components/DualActionsSection';
@@ -43,6 +43,11 @@ export function HomePage() {
         lang={lang}
       />
       <StatisticsSection lang={lang} />
+      <CelebrationSection
+        onOpenPrivateRooms={openPrivateRooms}
+        onOpenReservation={openReservation}
+        lang={lang}
+      />
 
       <TheRestaurantSection
         onOpenReservation={openReservation}

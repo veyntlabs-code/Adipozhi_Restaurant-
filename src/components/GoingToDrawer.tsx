@@ -28,17 +28,17 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div 
-          className="fixed inset-0 z-50 overflow-hidden" 
+        <motion.div
+          className="fixed inset-0 z-50 overflow-hidden"
           data-lenis-prevent
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div 
+          <div
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer" 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
           />
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <motion.div
@@ -101,7 +101,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                     <div>
                       <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">{lang === 'en' ? 'Phone / Orders' : 'Téléphone'}</span>
                       <p className="font-medium text-[#1a1a1a] mt-0.5">
-                        <a href="tel:09585154254" className="hover:text-[#de2b2b] font-bold"><Phone className="w-4 h-4" /></a>
+                        <a href="tel:09585154254" className="hover:text-[#de2b2b] font-bold">095851 54254</a>
                       </p>
                       <p className="text-[11px] text-[#1a1a1a]/60">
                         {lang === 'en' ? 'Call for parcel pickup & table reservations' : 'Appelez pour emporter ou réserver'}
@@ -123,13 +123,15 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                   </div>
                 </div>
 
-                {/* Interactive Directions Map Mockup */}
+                {/* Interactive Directions Map */}
                 <div className="rounded-2xl overflow-hidden border border-[#1a1a1a]/10 aspect-video relative bg-slate-200 shadow-sm">
                   <iframe
-                    title="Adipozhi Monday Market Map"
-                    src="https://maps.google.com/maps?q=Bus%20stand%20Entrance%20Arch%2C%20Monday Market%2C%20Tamil%20Nadu%20629802&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    title="ADIPOZHI FAMILY RESTAURANT Exact Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.023365294815!2d77.30137647532935!3d8.200400091831495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f9f8178ae3dd%3A0xf4d52f55155a3a3b!2sADIPOZHI%20FAMILY%20RESTAURANT!5e0!3m2!1sen!2sus!4v1791812955113!5m2!1sen!2sus"
                     className="w-full h-full border-0"
                     loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
                 </div>
               </div>

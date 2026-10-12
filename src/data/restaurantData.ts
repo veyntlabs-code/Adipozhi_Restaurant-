@@ -33,7 +33,8 @@ export const RESTAURANT_INFO = {
   hours: 'Open · Closes 11 pm',
   getThere: '7 mins',
   currency: '₹',
-  googleMapsUrl: 'https://maps.google.com/?q=Adipozhi+Family+Restaurant+Bus+stand+Entrance+Arch+Monday Market+Tamil+Nadu+629802'
+  googleMapsUrl: 'https://www.google.com/maps/place/ADIPOZHI+FAMILY+RESTAURANT/@8.2004001,77.3013765,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f9f8178ae3dd:0xf4d52f55155a3a3b!8m2!3d8.2004001!4d77.3039514!16s%2Fg%2F11w2_3m_78',
+  googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.023365294815!2d77.30137647532935!3d8.200400091831495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f9f8178ae3dd%3A0xf4d52f55155a3a3b!2sADIPOZHI%20FAMILY%20RESTAURANT!5e0!3m2!1sen!2sus!4v1791812955113!5m2!1sen!2sus'
 };
 
 export const BANNER_MESSAGES = [
@@ -41,6 +42,11 @@ export const BANNER_MESSAGES = [
     icon: 'star',
     text: '⭐ 4.7 Rated on Google · 284+ Verified Reviews',
     sub: 'Bus stand Entrance Arch, Monday Market (7 mins away)'
+  },
+  {
+    icon: 'sparkles',
+    text: '👑 NEW LAUNCH: Royal Chicken Maharaja Special!',
+    sub: 'Crispy glazed chicken encrusted with roasted nuts & fresh herbs'
   },
   {
     icon: 'biryani',
@@ -119,6 +125,18 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
     scheduleFr: 'Midi et soir avec riz ou parotta',
     image: '/adipoo rest/CHETTINADU MASALAS/Spicy Chicken Chettinadu Masala Feast.png',
     color: '#a02e1c',
+    accent: '#f8efdc'
+  },
+  {
+    id: 'chicken-maharaja',
+    title: 'Chicken Maharaja',
+    titleFr: 'Chicken Maharaja',
+    headline: 'Royal crispy chicken tossed in rich aromatic spiced glaze, crowned with roasted nuts and garden herbs.',
+    headlineFr: 'Poulet royal croustillant glacé aux épices aromatiques et éclats de noix.',
+    schedule: 'Chef’s Royal Special · Lunch & Dinner Daily',
+    scheduleFr: 'Spécialité Royale du Chef · Disponible midi et soir',
+    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Adipozhi Chicken Maharaja Feast.jpg',
+    color: '#7a191b',
     accent: '#f8efdc'
   }
 ];
@@ -366,7 +384,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'egg-special',
     price: 20,
     description: 'Famous Madurai-style soft, runny, gravy-infused egg pocket prepared on a sizzling hot tawa.',
-    image: '/adipoo rest/Egg/Spiced Runny Eggs at Adipozhi.png',
+    image: '/adipoo rest/Egg/Adipozhi Kalakki Feast.jpg',
     tags: ['Specialty', 'Popular'],
     isVeg: false
   },
@@ -474,6 +492,16 @@ export const MENU_ITEMS: MenuItem[] = [
   },
 
   // 4. NON-VEG STARTERS — CHICKEN
+  {
+    id: 'chk-maharaja',
+    name: 'Chicken Maharaja',
+    category: 'chicken-starters',
+    price: 270,
+    description: 'Royal signature delicacy of succulent crispy fried chicken tossed in chef’s secret spiced glaze, encrusted with crushed roasted nuts, cilantro, and served on crisp garden greens.',
+    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Adipozhi Chicken Maharaja Feast.jpg',
+    tags: ['New', 'Chef Special', 'Bestseller'],
+    isVeg: false
+  },
   {
     id: 'chk-65-bone-boneless',
     name: 'Chicken 65 B / B.L',
@@ -585,7 +613,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chicken-starters',
     price: 250,
     description: 'Crispy chicken strips tossed in fiery dragon sauce with cashew nuts, red chillies, and bell peppers.',
-    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Glossy Dragon Chicken Feast.png',
+    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Adipozhi Dragon Chicken Feast.jpg',
     tags: ['Spicy', 'Popular'],
     isVeg: false
   },
@@ -1963,7 +1991,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'fresh-juice',
     price: 60,
     description: 'Freshly squeezed zesty lemon juice with chilled water and touch of sweetness.',
-    image: '/menu 16-21/FRESH JUICE/Vibrant Lemon Mint Cooler on Wood.png',
+    image: '/menu 16-21/FRESH JUICE/AdipoZhi Lemon Mint Cooler.png',
     tags: ['Fresh', 'Vegetarian'],
     isVeg: true
   },
@@ -1973,7 +2001,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'fresh-juice',
     price: 70,
     description: 'Sparkling club soda with fresh lime juice, sweet or salted as you prefer.',
-    image: '/menu 16-21/FRESH JUICE/Sparkling Lemon Mint Soda on a Rose-Backed Table.png',
+    image: '/menu 16-21/FRESH JUICE/Sparkling Lemon Soda with Club Soda Bottle.jpg',
     tags: ['Refreshing', 'Vegetarian'],
     isVeg: true
   },
@@ -1983,7 +2011,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'fresh-juice',
     price: 70,
     description: 'Crushed garden mint muddled with fresh lemon juice and chilled soda/water.',
-    image: '/menu 16-21/FRESH JUICE/AdipoZhi Lemon Mint Cooler.png',
+    image: '/menu 16-21/FRESH JUICE/Vibrant Lemon Mint Cooler on Wood.png',
     tags: ['Popular', 'Vegetarian'],
     isVeg: true
   },
@@ -2065,7 +2093,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'mojitos',
     price: 120,
     description: 'Signature virgin botanical mocktail with spicy ginger, citrus notes, and crushed ice.',
-    image: '/menu 16-21/MOJITO/Blue Mojito Amid Roses and Citrus.png',
+    image: '/menu 16-21/FRESH JUICE/AdipoZhi Lemon Mint Cooler.png',
     tags: ['Specialty', 'Vegetarian'],
     isVeg: true
   },

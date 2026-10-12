@@ -12,7 +12,7 @@ const MENU_ITEMS = [
   { title: 'Soups', category: 'Warm & Comforting', categoryId: 'soups', image: '/adipoo rest/Soup/non-veg/Steaming Chicken Manchow Soup at Adipozhi.png' },
   { title: 'Egg Special', category: 'Farm Fresh', categoryId: 'egg-special', image: '/adipoo rest/Egg/Steaming Adipozhi Podi Mass Feast.png' },
   { title: 'Veg Starters', category: 'Crispy & Green', categoryId: 'veg-starters', image: '/adipoo rest/veg started/Spicy Paneer 65 at Adipozhi.png' },
-  { title: 'Chicken Starters', category: 'Spicy Delights', categoryId: 'chicken-starters', image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Spicy Chicken Chukka at Adipozhi.png' },
+  { title: 'Chicken Starters', category: 'Spicy Delights', categoryId: 'chicken-starters', image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Adipozhi Chicken Maharaja Feast.jpg' },
   { title: 'Mutton Starters', category: 'Rich & Tender', categoryId: 'mutton-starters', image: '/adipoo rest/NON-VEG STARTERS - MUTTON/Spiced Mutton Chukka at Adipoozhi.png' },
   { title: 'Beef Starters', category: 'Juicy Bites', categoryId: 'beef-starters', image: '/adipoo rest/NON-VEG STARTERS - BEEF/Spicy Beef Fry with Adipozhi Branding.png' },
   { title: 'Seafood Starters', category: 'Ocean Fresh', categoryId: 'seafood-starters', image: '/adipoo rest/NON-VEG STARTERS - SEAFOODS/Adipozhi Spiced Fish Tawa Fry.png' },
@@ -37,7 +37,13 @@ export const MenuCalloutSection: React.FC<MenuCalloutSectionProps> = ({
   lang
 }) => {
   return (
-    <section className="relative w-full pt-16 pb-12 lg:pt-20 lg:pb-16 bg-[#de2b2b] text-[#f8efdc] overflow-hidden">
+    <section 
+      className="relative w-full pt-16 pb-12 lg:pt-20 lg:pb-16 text-[#f8efdc] overflow-hidden bg-cover bg-center select-none"
+      style={{ backgroundImage: "url('/images/roses/logo-wall.jpg')" }}
+    >
+      {/* Ambient gradient overlays for rich depth & readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/20 to-black/55 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[#de2b2b]/20 pointer-events-none z-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-2 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
         <div className="space-y-4 max-w-2xl">
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight uppercase" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
