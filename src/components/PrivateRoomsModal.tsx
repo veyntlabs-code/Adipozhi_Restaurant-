@@ -1,6 +1,6 @@
-'use client';
 import React, { useState } from 'react';
-import { X, Users, CheckCircle2, Send, Building } from 'lucide-react';
+import { X, Users, CheckCircle2, Send, Building, MessageSquare } from 'lucide-react';
+import { RESTAURANT_INFO } from '../data/restaurantData';
 
 interface PrivateRoomsModalProps {
   isOpen: boolean;
@@ -14,6 +14,8 @@ export const PrivateRoomsModal: React.FC<PrivateRoomsModalProps> = ({
   lang
 }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [confirmationCode, setConfirmationCode] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
   const [room, setRoom] = useState('Room 1 (16 to 40 seats)');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,6 +26,34 @@ export const PrivateRoomsModal: React.FC<PrivateRoomsModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const code = `PRV-${Math.floor(1000 + Math.random() * 9000)}`;
+    setConfirmationCode(code);
+
+    const message = [
+      '🏛️ *PRIVATE ROOM & BANQUET ENQUIRY - ADIPOZHI*',
+      '━━━━━━━━━━━━━━━━━━━━━━',
+      `🔖 *Reference:* ${code}`,
+      '',
+      `👤 *Guest Name:* ${name}`,
+      `📞 *Phone Number:* ${phone}`,
+      email ? `📧 *Email Address:* ${email}` : '',
+      `🛋️ *Selected Space:* ${room}`,
+      details ? `📝 *Event Requirements:* ${details}` : '',
+      '',
+      `📍 *Location:* Adipozhi Family Restaurant, Monday Market`,
+      '━━━━━━━━━━━━━━━━━━━━━━',
+      '_Please let me know room availability and banquet packages. Thank you!_'
+    ].filter(Boolean).join('\n');
+
+    const cleanPhone = RESTAURANT_INFO.phoneRaw.replace(/\D/g, '') || '919585154254';
+    const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+    setWhatsappUrl(waLink);
+
+    if (typeof window !== 'undefined') {
+      window.open(waLink, '_blank');
+    }
+
     setSubmitted(true);
   };
 
@@ -60,25 +90,44 @@ export const PrivateRoomsModal: React.FC<PrivateRoomsModalProps> = ({
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8">
           {submitted ? (
-            <div className="py-12 text-center space-y-4">
+            <div className="py-10 text-center space-y-4 max-w-lg mx-auto">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {lang === 'en' ? 'Inquiry Sent Successfully' : 'Demande Envoyée avec Succès'}
-              </h3>
+              <div className="space-y-1">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-700 block">
+                  Reference: <span className="font-mono text-emerald-900 bg-emerald-200/60 px-2 py-0.5 rounded">{confirmationCode}</span>
+                </span>
+                <h3 className="text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {lang === 'en' ? 'Inquiry Sent on WhatsApp!' : 'Demande Envoyée sur WhatsApp!'}
+                </h3>
+              </div>
               <p className="text-sm text-[#1a1a1a]/70 max-w-md mx-auto">
                 {lang === 'en'
-                  ? `Thank you, ${name}. Our events director will contact you within 24 hours regarding ${room}.`
-                  : `Merci, ${name}. Notre équipe des événements vous contactera sous 24h au sujet de ${room}.`}
+                  ? `Thank you, ${name}. Your requirements for ${room} have been prepared for WhatsApp.`
+                  : `Merci, ${name}. Votre demande pour ${room} est prête pour WhatsApp.`}
               </p>
-              <button
-                type="button"
-                onClick={handleReset}
-                className="px-6 py-2.5 bg-[#273e2a] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md"
-              >
-                {lang === 'en' ? 'Done' : 'Fermer'}
-              </button>
+
+              <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+                {whatsappUrl && (
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full sm:w-auto px-6 py-2.5 bg-[#25D366] hover:bg-[#1fb355] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Send / Open in WhatsApp</span>
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="w-full sm:w-auto px-6 py-2.5 bg-[#273e2a] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md hover:bg-[#1f3222] transition-colors cursor-pointer"
+                >
+                  {lang === 'en' ? 'Done' : 'Fermer'}
+                </button>
+              </div>
             </div>
           ) : (
             <>
@@ -169,10 +218,10 @@ export const PrivateRoomsModal: React.FC<PrivateRoomsModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#273e2a] hover:bg-[#1f3222] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-[#273e2a] hover:bg-[#1f3222] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{lang === 'en' ? 'Send Inquiry' : 'Envoyer la Demande'}</span>
+                  <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                  <span>{lang === 'en' ? 'Send Inquiry on WhatsApp' : 'Envoyer la Demande sur WhatsApp'}</span>
                 </button>
               </form>
             </>

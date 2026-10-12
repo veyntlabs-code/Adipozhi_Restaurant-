@@ -13,7 +13,8 @@ import {
   Sparkles,
   Utensils,
   PartyPopper,
-  Package
+  Package,
+  MessageSquare
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
@@ -32,6 +33,8 @@ export const EventsPage: React.FC<EventsPageProps> = ({
 }) => {
   const [selectedType, setSelectedType] = useState<'all' | 'family' | 'bulk'>('all');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [confirmationCode, setConfirmationCode] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -63,11 +66,36 @@ export const EventsPage: React.FC<EventsPageProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const code = `EVT-${Math.floor(1000 + Math.random() * 9000)}`;
+    setConfirmationCode(code);
+
+    const message = [
+      '🎉 *EVENT & GATHERING ENQUIRY - ADIPOZHI*',
+      '━━━━━━━━━━━━━━━━━━━━━━',
+      `🔖 *Enquiry Ref:* ${code}`,
+      '',
+      `👤 *Name:* ${formData.name}`,
+      `📞 *Phone Number:* ${formData.phone}`,
+      `👥 *Approx Guests:* ${formData.guests} Guests`,
+      formData.date ? `📅 *Preferred Date:* ${formData.date}` : '📅 *Preferred Date:* To be decided',
+      formData.eventDetails ? `📝 *Occasion & Notes:* ${formData.eventDetails}` : '',
+      '',
+      `📍 *Location:* Adipozhi Family Restaurant, Bus stand Entrance Arch, Monday Market`,
+      '━━━━━━━━━━━━━━━━━━━━━━',
+      '_Please let me know hall availability and custom menu options for our event. Thank you!_'
+    ].filter(Boolean).join('\n');
+
+    const cleanPhone = RESTAURANT_INFO.phoneRaw.replace(/\D/g, '') || '919585154254';
+    const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+    setWhatsappUrl(waLink);
+
+    // Automatically trigger WhatsApp in a new tab
+    if (typeof window !== 'undefined') {
+      window.open(waLink, '_blank');
+    }
+
     setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', phone: '', guests: '', date: '', eventDetails: '' });
-    }, 4000);
   };
 
   return (
@@ -207,12 +235,69 @@ export const EventsPage: React.FC<EventsPageProps> = ({
           </div>
 
           {formSubmitted ? (
-            <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
-              <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-              <h4 className="text-xl font-bold text-emerald-900">Enquiry Received!</h4>
-              <p className="text-xs text-emerald-700 max-w-md mx-auto">
-                Thank you! Our manager at Adipozhi Family Restaurant will call you shortly to confirm your booking and menu preferences.
+            <div className="p-8 sm:p-10 rounded-2xl bg-emerald-50/80 border border-emerald-200 text-center space-y-4">
+              <CheckCircle2 className="w-14 h-14 text-emerald-600 mx-auto" />
+              <div className="space-y-1">
+                <span className="text-[11px] uppercase tracking-widest font-bold text-emerald-700">
+                  Enquiry Reference: <span className="font-mono text-emerald-900 bg-emerald-200/60 px-2 py-0.5 rounded">{confirmationCode}</span>
+                </span>
+                <h4 className="text-2xl font-bold text-emerald-950" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                  Enquiry Prepared for WhatsApp!
+                </h4>
+              </div>
+
+              <div className="bg-white p-5 rounded-2xl border border-emerald-200/80 max-w-md mx-auto text-left text-xs space-y-2 shadow-sm text-[#1a1a1a]">
+                <div className="flex justify-between border-b border-black/5 pb-1.5">
+                  <span className="text-black/60">Guest Name:</span>
+                  <span className="font-semibold text-black">{formData.name}</span>
+                </div>
+                <div className="flex justify-between border-b border-black/5 pb-1.5">
+                  <span className="text-black/60">Phone Number:</span>
+                  <span className="font-semibold text-black">{formData.phone}</span>
+                </div>
+                <div className="flex justify-between border-b border-black/5 pb-1.5">
+                  <span className="text-black/60">Party Size:</span>
+                  <span className="font-semibold text-[#de2b2b]">{formData.guests} Guests</span>
+                </div>
+                <div className="flex justify-between border-b border-black/5 pb-1.5">
+                  <span className="text-black/60">Preferred Date:</span>
+                  <span className="font-semibold text-black">{formData.date || 'Flexible / To be confirmed'}</span>
+                </div>
+                {formData.eventDetails && (
+                  <div className="pt-1">
+                    <span className="text-black/60 block mb-0.5">Notes:</span>
+                    <span className="font-medium text-black/80">{formData.eventDetails}</span>
+                  </div>
+                )}
+              </div>
+
+              <p className="text-xs text-emerald-800 max-w-md mx-auto">
+                WhatsApp has been opened in a new tab with your enquiry. If it didn&apos;t open automatically, click below:
               </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                {whatsappUrl && (
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full sm:w-auto px-7 py-3 bg-[#25D366] hover:bg-[#1fb355] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Send / Open in WhatsApp</span>
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormSubmitted(false);
+                    setFormData({ name: '', phone: '', guests: '', date: '', eventDetails: '' });
+                  }}
+                  className="w-full sm:w-auto px-6 py-3 bg-neutral-200 hover:bg-neutral-300 text-neutral-800 font-bold text-xs uppercase tracking-wider rounded-full transition-colors cursor-pointer"
+                >
+                  New Enquiry
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -291,10 +376,10 @@ export const EventsPage: React.FC<EventsPageProps> = ({
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
-                  className="px-8 py-3.5 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] font-bold text-xs uppercase tracking-wider rounded-full shadow-lg transition-all cursor-pointer flex items-center gap-2"
+                  className="px-8 py-3.5 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] font-bold text-xs uppercase tracking-wider rounded-full shadow-lg transition-all cursor-pointer flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Booking Request</span>
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Send Booking Request on WhatsApp</span>
                 </button>
               </div>
             </form>
