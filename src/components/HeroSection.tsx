@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, Calendar, ShoppingBag, Gift } from 'lucide-react';
+import { MapPin, Calendar, ShoppingBag, Gift, Compass, Volume2, VolumeX } from 'lucide-react';
 
 interface HeroSectionProps {
   onOpenMenus: () => void;
@@ -68,6 +68,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   lang
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -131,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* ─── Main content grid ─── */}
         <div className="relative z-10 flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-12 pt-10 sm:pt-16 lg:pt-20 pb-40 sm:pb-48 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-0 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
             {/* ═══════ LEFT: Giant italic headline ═══════ */}
             <motion.div
@@ -139,21 +140,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 z-20 space-y-8 pr-4"
+              className="lg:col-span-7 z-20 space-y-8 pr-2 lg:pr-6"
             >
               {/* Static headline */}
-              <div className="relative pb-4">
+              <div className="relative pb-2">
                 <h1
                   className="text-[#f8efdc] leading-none"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                 >
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.75rem] font-normal italic leading-[0.95] tracking-tight">
                     Every reason
                   </span>
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-normal italic leading-[0.95] tracking-tight">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.75rem] font-normal italic leading-[0.95] tracking-tight">
                     to come
                   </span>
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.5rem] font-black italic leading-[0.95] tracking-tight">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.75rem] font-black italic leading-[0.95] tracking-tight">
                     is a good one
                   </span>
                 </h1>
@@ -164,18 +165,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-[#f8efdc]/90">
                   Adipozhi Family Restaurant Since 2020
                 </p>
-                <p className="text-sm sm:text-base md:text-lg text-[#f8efdc]/80 font-light leading-relaxed max-w-lg" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                <p className="text-sm sm:text-base md:text-lg text-[#f8efdc]/80 font-light leading-relaxed max-w-xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
                   In the heart of Monday Market, blending warmth, grandeur and togetherness in a vibrant and welcoming ambiance.
                 </p>
               </div>
 
-              {/* ─── CTA Row (Délice style — bordered pill buttons) ─── */}
+              {/* ─── CTA Row (Bordered pill buttons) ─── */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <motion.button
                   whileHover={{ scale: 1.04, backgroundColor: '#f8efdc', color: '#de2b2b' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenGoingTo}
-                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2 shadow-md"
                 >
                   <MapPin className="w-3.5 h-3.5" />
                   <span>Going to Adipozhi</span>
@@ -185,7 +186,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   whileHover={{ scale: 1.04, backgroundColor: '#f8efdc', color: '#de2b2b' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenReservation}
-                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2 shadow-md"
                 >
                   <Calendar className="w-3.5 h-3.5" />
                   <span>Reserve</span>
@@ -195,7 +196,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   whileHover={{ scale: 1.04, backgroundColor: '#f8efdc', color: '#de2b2b' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={onOpenOrder}
-                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 sm:px-7 py-3 border-2 border-[#f8efdc] text-[#f8efdc] font-bold text-[11px] sm:text-xs uppercase tracking-[0.15em] rounded-sm transition-all cursor-pointer flex items-center gap-2 shadow-md"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>Order Online</span>
@@ -203,63 +204,119 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* ═══════ RIGHT: Cinematic Arched Video ═══════ */}
+            {/* ═══════ RIGHT: 9:16 Vertical Arched Video Showcase ═══════ */}
             <motion.div
               data-parallax-layer="2"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 relative flex items-center justify-end lg:-mr-16 xl:-mr-24 -mt-4 sm:-mt-8 lg:-mt-12 xl:-mt-16"
+              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-6"
             >
-              <div className="relative w-full h-[550px] sm:h-[650px] xl:h-[750px]">
-                {/* Glow behind video */}
-                <div className="absolute inset-0 scale-105 bg-[#7c2627]/30 blur-2xl pointer-events-none translate-x-10" />
+              {/* 9:16 Ratio Container */}
+              <div className="relative w-full max-w-[340px] sm:max-w-[390px] xl:max-w-[420px] aspect-[9/16] group">
+                
+                {/* Ambient Backlight / Glow */}
+                <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#de2b2b]/40 via-[#f8efdc]/20 to-[#7c2627]/40 rounded-[200px] blur-3xl opacity-80 pointer-events-none -z-10" />
 
-                {/* Main hero video with premium arched window design */}
-                <div className="relative w-full h-full overflow-hidden rounded-t-[200px] sm:rounded-t-[300px] rounded-b-[2rem] sm:rounded-b-[3rem] shadow-2xl border-4 sm:border-8 border-[#f8efdc]/10">
+                {/* Arched Video Frame */}
+                <div className="relative w-full h-full overflow-hidden rounded-t-[170px] sm:rounded-t-[210px] rounded-b-[2rem] sm:rounded-b-[2.5rem] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/30 ring-1 ring-white/30 bg-black">
                   <video
                     src="/images/hero/hero_video.mp4"
                     autoPlay
                     loop
-                    muted
+                    muted={isMuted}
                     playsInline
-                    className="w-full h-full object-cover pointer-events-none"
+                    className="w-full h-full object-cover pointer-events-none select-none"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#de2b2b]/40 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Gradient vignettes */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+
+                  {/* Top Live Badge & Audio Toggle */}
+                  <div className="absolute top-4 sm:top-5 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+                    <div className="pointer-events-auto inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold text-white border border-white/20 shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Live Kitchen · Bun Parotta</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsMuted(!isMuted)}
+                      aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
+                      className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-[#de2b2b] text-white/90 hover:text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+                    >
+                      {isMuted ? (
+                        <VolumeX className="w-3.5 h-3.5" />
+                      ) : (
+                        <Volume2 className="w-3.5 h-3.5 text-emerald-300 animate-pulse" />
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Bottom Right Floating Action Pill Bar (Directions, RESERVE, ORDER ONLINE) */}
+                  <div className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-3.5 z-20 flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-white/60">
+                    <button
+                      type="button"
+                      onClick={onOpenGoingTo}
+                      className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-[#1a1a1a] hover:text-[#de2b2b] transition-colors cursor-pointer"
+                    >
+                      <Compass className="w-3 h-3 text-[#de2b2b]" />
+                      <span>Directions</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={onOpenReservation}
+                      className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-white bg-[#de2b2b] hover:bg-[#b81d1d] shadow-sm transition-all cursor-pointer"
+                    >
+                      <Calendar className="w-3 h-3" />
+                      <span>RESERVE</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={onOpenOrder}
+                      className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-white bg-[#1a1a1a] hover:bg-black shadow-sm transition-all cursor-pointer"
+                    >
+                      <ShoppingBag className="w-3 h-3" />
+                      <span className="whitespace-nowrap">ORDER ONLINE</span>
+                    </button>
+                  </div>
                 </div>
 
-                {/* Floating image with new asymmetrical/arch design (Lifted up) */}
+                {/* Floating Biryani Handi Dish Badge (Bottom-Left Overlap as in screenshot) */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.7, y: 30 }}
+                  initial={{ opacity: 0, scale: 0.7, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                  className="absolute bottom-12 left-4 sm:-left-8 w-36 h-48 sm:w-48 sm:h-64 overflow-hidden shadow-2xl z-20 border-4 border-[#de2b2b]"
-                  style={{
-                    borderRadius: '100px 100px 20px 20px', // Arch shape
-                  }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-7 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden shadow-2xl z-30 border-4 border-[#de2b2b] bg-black ring-4 ring-[#f8efdc]/30 group/dish cursor-pointer"
+                  onClick={onOpenMenus}
+                  title="View Authentic Dum Biryani Menu"
                 >
                   <img
                     src="/hero_biryani.jpg"
                     alt="Authentic dum biryani in copper handi"
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover/dish:scale-110 transition-transform duration-700"
                     loading="eager"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 </motion.div>
 
-                {/* Small decorative blob accent */}
+                {/* Decorative Blob */}
                 <motion.div
                   initial={{ opacity: 0, rotate: -30 }}
                   animate={{ opacity: 1, rotate: 0 }}
                   transition={{ duration: 1.2, delay: 0.6 }}
-                  className="absolute top-16 -right-8 sm:-right-12 z-10"
+                  className="absolute top-12 -right-6 sm:-right-8 z-0 pointer-events-none"
                 >
-                  <BlobShape2 className="w-24 h-24 sm:w-32 sm:h-32 text-[#7c2627]/80 drop-shadow-xl" />
+                  <BlobShape2 className="w-20 h-20 sm:w-28 sm:h-28 text-[#7c2627]/60 drop-shadow-xl" />
                 </motion.div>
               </div>
             </motion.div>
 
           </div>
         </div>
+
 
         {/* ─── Bottom organic wave transition to next section ─── */}
         <div className="absolute bottom-0 left-0 w-full z-30">
