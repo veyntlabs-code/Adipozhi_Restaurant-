@@ -1236,7 +1236,7 @@ export const MENU_ITEMS: MenuItem[] = [
   // 14. INDIAN GRAVY & MASALA — Veg
   {
     id: 'ind-gobi-manjurian-gravy',
-    name: 'Gobi Manjurian Gravy',
+    name: 'Gobi Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 170,
@@ -1247,7 +1247,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-mushroom-manjurian-gravy',
-    name: 'Mushroom Manjurian Gravy',
+    name: 'Mushroom Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 180,
@@ -1258,7 +1258,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-paneer-manjurian-gravy',
-    name: 'Paneer Manjurian Gravy',
+    name: 'Paneer Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 210,
@@ -1318,7 +1318,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 220,
     description: 'Velvety sweet and savory makhani gravy with butter, cream, kasuri methi, and soft paneer cubes.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Paneer Kadai Masala at Adipozhi.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Paneer Butter Masala at Adipozhi.png',
     tags: ['Bestseller', 'Vegetarian'],
     isVeg: true
   },
@@ -1326,7 +1326,7 @@ export const MENU_ITEMS: MenuItem[] = [
   // 14. INDIAN GRAVY & MASALA — Non-Veg
   {
     id: 'ind-chilly-chicken-gravy',
-    name: 'Chilly Chicken Gravy',
+    name: 'Chilly Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 240,
@@ -1337,7 +1337,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-chicken-manjurian-gravy',
-    name: 'Chicken Manjurian Gravy',
+    name: 'Chicken Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 240,
@@ -1348,7 +1348,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-garlic-chicken-gravy',
-    name: 'Garlic Chicken Gravy',
+    name: 'Garlic Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 250,
@@ -1359,7 +1359,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-ginger-chicken-gravy',
-    name: 'Ginger Chicken Gravy',
+    name: 'Ginger Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 250,
@@ -1370,7 +1370,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-prawn-manjurian-gravy',
-    name: 'Prawn Manjurian Gravy',
+    name: 'Prawn Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 260,
