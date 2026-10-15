@@ -30,7 +30,7 @@ export const RESTAURANT_INFO = {
   address: 'Bus stand Entrance Arch, Monday Market, Tamil Nadu 629802',
   phone: '095851 54254',
   phoneRaw: '+919585154254',
-  hours: 'Open · Closes 11 pm',
+  hours: 'Open 11 am · Closes 11 pm',
   getThere: '2 mins',
   currency: '₹',
   googleMapsUrl: 'https://www.google.com/maps/place/ADIPOZHI+FAMILY+RESTAURANT/@8.2004001,77.3013765,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f9f8178ae3dd:0xf4d52f55155a3a3b!8m2!3d8.2004001!4d77.3039514!16s%2Fg%2F11w2_3m_78',

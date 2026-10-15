@@ -223,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <div>
                     <div className="font-bold text-[#1a1a1a] uppercase text-[10px]">Address</div>
                     <p>Bus stand Entrance Arch, Monday Market, Tamil Nadu 629802</p>
-                    <p className="text-[10px] text-[#de2b2b] font-bold">Open · Closes 11 pm</p>
+                    <p className="text-[10px] text-[#de2b2b] font-bold">Open 11 am · Closes 11 pm</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
