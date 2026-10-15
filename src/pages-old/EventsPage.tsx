@@ -22,14 +22,12 @@ interface EventsPageProps {
   onOpenReservation: () => void;
   onOpenPrivateRooms: () => void;
   onNavigate: (path: string) => void;
-  lang: 'en' | 'fr';
 }
 
 export const EventsPage: React.FC<EventsPageProps> = ({
   onOpenReservation,
   onOpenPrivateRooms,
   onNavigate,
-  lang
 }) => {
   const [selectedType, setSelectedType] = useState<'all' | 'family' | 'bulk'>('all');
   const [formSubmitted, setFormSubmitted] = useState(false);

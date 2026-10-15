@@ -5,7 +5,6 @@ import { motion } from 'motion/react';
 
 interface MenuCalloutSectionProps {
   onOpenMenus: (categoryId?: string) => void;
-  lang: 'en' | 'fr';
 }
 
 const MENU_ITEMS = [
@@ -34,7 +33,6 @@ const MENU_ITEMS = [
 
 export const MenuCalloutSection: React.FC<MenuCalloutSectionProps> = ({
   onOpenMenus,
-  lang
 }) => {
   return (
     <section 
@@ -82,7 +80,7 @@ export const MenuCalloutSection: React.FC<MenuCalloutSectionProps> = ({
         </div>
       </div>
 
-      <div className="w-full relative z-10 h-[650px] lg:h-[750px]">
+      <div className="w-full relative z-10 h-[520px] sm:h-[650px] lg:h-[750px]">
         <PolaroidLineCarousel
           slides={MENU_ITEMS.map((item) => ({
             image: item.image,

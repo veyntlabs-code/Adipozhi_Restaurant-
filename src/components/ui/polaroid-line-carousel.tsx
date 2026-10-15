@@ -303,7 +303,12 @@ export default function PolaroidLineCarousel({
     if (!root) return
     const ro = new ResizeObserver(() => {
       const r = root.getBoundingClientRect()
-      const cw = Math.round(Math.max(150, Math.min(cardWidth, r.width * 0.42, r.height * 0.42)))
+      // On mobile (r.width < 640), allocate up to 78% of the screen width so polaroids are big, prominent, and readable
+      const isMobile = r.width < 640
+      const widthRatio = isMobile ? 0.78 : 0.42
+      const heightRatio = isMobile ? 0.58 : 0.42
+      const minW = isMobile ? 260 : 180
+      const cw = Math.round(Math.max(minW, Math.min(cardWidth, r.width * widthRatio, r.height * heightRatio)))
       setSize({ w: r.width, h: r.height, cw })
     })
     ro.observe(root)

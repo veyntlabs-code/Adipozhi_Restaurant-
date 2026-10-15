@@ -31,7 +31,7 @@ export const RESTAURANT_INFO = {
   phone: '095851 54254',
   phoneRaw: '+919585154254',
   hours: 'Open · Closes 11 pm',
-  getThere: '7 mins',
+  getThere: '2 mins',
   currency: '₹',
   googleMapsUrl: 'https://www.google.com/maps/place/ADIPOZHI+FAMILY+RESTAURANT/@8.2004001,77.3013765,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f9f8178ae3dd:0xf4d52f55155a3a3b!8m2!3d8.2004001!4d77.3039514!16s%2Fg%2F11w2_3m_78',
   googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.023365294815!2d77.30137647532935!3d8.200400091831495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f9f8178ae3dd%3A0xf4d52f55155a3a3b!2sADIPOZHI%20FAMILY%20RESTAURANT!5e0!3m2!1sen!2sus!4v1791812955113!5m2!1sen!2sus'
@@ -41,7 +41,7 @@ export const BANNER_MESSAGES = [
   {
     icon: 'star',
     text: '⭐ 4.7 Rated on Google · 284+ Verified Reviews',
-    sub: 'Bus stand Entrance Arch, Monday Market (7 mins away)'
+    sub: 'Bus stand Entrance Arch, Monday Market (2 mins away)'
   },
   {
     icon: 'sparkles',
@@ -68,11 +68,8 @@ export const BANNER_MESSAGES = [
 export interface DailyPleasure {
   id: string;
   title: string;
-  titleFr: string;
   headline: string;
-  headlineFr: string;
   schedule: string;
-  scheduleFr: string;
   image: string;
   color: string;
   accent: string;
@@ -82,60 +79,45 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
   {
     id: 'dum-biryani',
     title: 'Adipozhi Dum Biryani',
-    titleFr: 'Adipozhi Dum Biryani',
     headline: 'Steaming seeraga & basmati dum biryani layered with succulent tender meat and aromatic ghee.',
-    headlineFr: 'Biryani cuit à l’étouffée avec viandes tendres et épices traditionnelles.',
-    schedule: 'Available 11:00 AM – 3:00 PM · Dine-in & Buckets (Mutton on Sat & Sun)',
-    scheduleFr: '11h00 – 15h00 · Sur place et seaux (Mouton sam & dim)',
-    image: '/adipoo rest/Biryani/Steaming Chicken Dum Biryani at Adipozhi.png',
+    schedule: 'Available From 11:00 AM  · Dine-in & Buckets (Mutton on Sat & Sun)',
+    image: '/adipoo rest/Biryani/Dum Biryani Top Down.jpg',
     color: '#8e1b1b',
     accent: '#f8efdc'
   },
   {
     id: 'bun-parotta',
     title: 'Bun Parotta & Kothu',
-    titleFr: 'Bun Parotta & Kothu',
     headline: 'Puffed golden bun parottas and fiery chicken/mutton/beef kothu parotta beaten on hot tawa.',
-    headlineFr: 'Parottas dorés et croustillants battus sur tawa avec salna riche.',
     schedule: 'Daily from 6:00 PM to 11:00 PM',
-    scheduleFr: 'Tous les jours de 18h à 23h',
-    image: '/menu 16-21/PAROTTA VARIETIES/Flaky Parotta Buns with Curry.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Bun Parotta Top Down.jpg',
     color: '#9e2a2b',
     accent: '#f8efdc'
   },
   {
     id: 'arabian-alfaham',
     title: 'Arabian Al-Faham & Charcoal Grill',
-    titleFr: 'Al-Faham & Grillades Arabes',
     headline: 'Authentic Peri Peri, Pepper & Garlic Al-Faham grilled over red-hot coals with garlic dip.',
-    headlineFr: 'Poulet mariné grillé sur charbon de bois avec sauce à l’ail.',
-    schedule: 'Evenings 5:30 PM to 11:00 PM',
-    scheduleFr: 'Tous les soirs dès 17h30',
-    image: '/adipoo rest/ARABIAN STARTERS/Adipozhi Al-Faham Feast.png',
+    schedule: 'Available From 11:00 AM ',
+    image: '/images/food/alfaham-top-down.jpg',
     color: '#7b1818',
     accent: '#f8efdc'
   },
   {
     id: 'chettinadu-masala',
     title: 'Chettinadu Spicy Masalas',
-    titleFr: 'Masalas Épicés du Chettinadu',
     headline: 'Stone-ground kalpaasi, Tellicherry black pepper, shallots, and tender country chicken (Naatukozhi).',
-    headlineFr: 'Currys authentiques aux épices fraîches pilées et poulet fermier.',
     schedule: 'Lunch & Dinner · Rich Spicy Gravies',
-    scheduleFr: 'Midi et soir avec riz ou parotta',
-    image: '/adipoo rest/CHETTINADU MASALAS/Spicy Chicken Chettinadu Masala Feast.png',
+    image: '/adipoo rest/CHETTINADU MASALAS/Chettinadu Masala Top Down.jpg',
     color: '#a02e1c',
     accent: '#f8efdc'
   },
   {
     id: 'chicken-maharaja',
     title: 'Chicken Maharaja',
-    titleFr: 'Chicken Maharaja',
     headline: 'Royal crispy chicken tossed in rich aromatic spiced glaze, crowned with roasted nuts and garden herbs.',
-    headlineFr: 'Poulet royal croustillant glacé aux épices aromatiques et éclats de noix.',
     schedule: 'Chef’s Royal Special · Lunch & Dinner Daily',
-    scheduleFr: 'Spécialité Royale du Chef · Disponible midi et soir',
-    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Adipozhi Chicken Maharaja Feast.jpg',
+    image: '/adipoo rest/NON-VEG STARTERS - CHICKEN/Chicken Maharaja Top Down.jpg',
     color: '#7a191b',
     accent: '#f8efdc'
   }
@@ -144,11 +126,8 @@ export const DAILY_PLEASURES: DailyPleasure[] = [
 export interface AmbianceSpace {
   id: string;
   name: string;
-  nameFr: string;
   tagline: string;
-  taglineFr: string;
   description: string;
-  descriptionFr: string;
   image: string;
 }
 
@@ -156,21 +135,15 @@ export const AMBIANCE_SPACES: AmbianceSpace[] = [
   {
     id: 'ac-family-dining',
     name: 'AC Family Dining Hall',
-    nameFr: 'Salle Familiale Climatisée',
     tagline: 'Cool, spacious, and comfortable dining tailored for families and groups.',
-    taglineFr: 'Espace climatisé confortable pour réunions familiales.',
     description: 'Designed with comfortable plush seating, ambient warm lighting, and prompt table service. Ideal for family get-togethers, weekend celebrations, and enjoying biryanis in air-conditioned ease.',
-    descriptionFr: 'Banquettes spacieuses et confortables avec service attentionné pour savourer vos biryanis en toute tranquillité.',
     image: '/images/gallery/interior-original.png'
   },
   {
     id: 'non-ac-family-dining',
     name: 'NON-AC Family Dining Hall',
-    nameFr: 'Salle Familiale NON-AC',
     tagline: 'Comfortable family dining with lively restaurant ambiance.',
-    taglineFr: 'Repas familial confortable avec ambiance vivante.',
     description: 'Enjoy the vibrant and lively atmosphere of our main dining hall. Perfect for a casual and authentic dining experience with friends and family.',
-    descriptionFr: 'Profitez de l\'atmosphère vibrante et animée de notre salle à manger principale. Idéal pour un repas décontracté.',
     image: '/images/gallery/interior-booths.jpg'
   }
 ];
@@ -180,7 +153,6 @@ export type Atmosphere = AmbianceSpace;
 
 export interface ScheduleDay {
   day: string;
-  dayFr: string;
   dining: string;
   takeaway: string;
   delivery: string;
@@ -195,67 +167,60 @@ export interface ScheduleDay {
 export const SCHEDULE_DATA: ScheduleDay[] = [
   {
     day: 'Monday',
-    dayFr: 'Lundi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Tuesday',
-    dayFr: 'Mardi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Wednesday',
-    dayFr: 'Mercredi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Thursday',
-    dayFr: 'Jeudi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Friday',
-    dayFr: 'Vendredi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Saturday',
-    dayFr: 'Samedi',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
-    muttonBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
+    muttonBiryani: 'Available From 11:00 AM',
     dosaParotta: '6:00 PM – 11:00 PM'
   },
   {
     day: 'Sunday',
-    dayFr: 'Dimanche',
     dining: '11:00 AM to 11:00 PM',
     takeaway: '11:00 AM to 11:00 PM',
     delivery: '11:00 AM to 11:00 PM',
-    chickenBeefBiryani: '11:00 AM – 3:00 PM',
-    muttonBiryani: '11:00 AM – 3:00 PM',
+    chickenBeefBiryani: 'Available From 11:00 AM ',
+    muttonBiryani: 'Available From 11:00 AM ',
     dosaParotta: '6:00 PM – 11:00 PM'
   }
 ];
@@ -383,7 +348,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'egg-special',
     price: 50,
     description: 'Authentic Tamil Nadu style spicy egg scramble roasted on tawa with onions, curry leaves, and crushed pepper.',
-    image: '/adipoo rest/Egg/Steaming Adipozhi Podi Mass Feast.png',
+    image: '/images/food/podi-mass.jpg',
     tags: ['Chef Pick', 'Popular'],
     isVeg: false
   },
@@ -403,7 +368,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'egg-special',
     price: 50,
     description: 'Juicy, aromatic egg scramble tossed in secret Adipozhi salna gravy and roasted spices.',
-    image: '/adipoo rest/Egg/Steaming Adipozhi Podi Mass Feast.png',
+    image: '/images/food/egg-mass.jpg',
     tags: ['Chef Pick'],
     isVeg: false
   },
@@ -709,7 +674,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'seafood-starters',
     price: 250,
     description: 'Fresh coastal prawns coated in crunchy seasoned batter and fried golden with tartar and spicy dips.',
-    image: '/adipoo rest/NON-VEG STARTERS - SEAFOODS/Crispy Chili Garlic Prawns on Rattan Table.png',
+    image: '/images/food/crispy-prawn.jpg',
     tags: ['Seafood Special'],
     isVeg: false
   },
@@ -818,7 +783,7 @@ export const MENU_ITEMS: MenuItem[] = [
       { label: 'Full (F)', price: 540 }
     ],
     description: 'Charcoal-grilled chicken coated with aromatic black pepper rub and spicy garlic glaze.',
-    image: '/adipoo rest/ARABIAN STARTERS/Pepper-Grilled Chicken at Adipozhi.png',
+    image: '/images/food/pepper-grill.jpg',
     tags: ['Spicy', 'Charcoal Grill'],
     isVeg: false
   },
@@ -833,7 +798,7 @@ export const MENU_ITEMS: MenuItem[] = [
       { label: 'Full (F)', price: 500 }
     ],
     description: 'Middle Eastern coal-smoked Al-Faham chicken marinated in Arabic spice blend, lemon, and olive oil.',
-    image: '/adipoo rest/ARABIAN STARTERS/Adipozhi Al-Faham Feast.png',
+    image: '/images/food/al-fam-chicken.jpg',
     tags: ['Authentic Arabian', 'Chef Pick'],
     isVeg: false
   },
@@ -848,7 +813,7 @@ export const MENU_ITEMS: MenuItem[] = [
       { label: 'Full (F)', price: 540 }
     ],
     description: 'Juicy Al-Faham chicken drenched in fiery African bird’s eye peri peri sauce and smoked over coals.',
-    image: '/adipoo rest/ARABIAN STARTERS/Adipozhi Peri-Peri Grilled Chicken Feast.png',
+    image: '/images/food/al-fam-chicken.jpg',
     tags: ['Spicy', 'Crowd Favorite'],
     isVeg: false
   },
@@ -864,7 +829,7 @@ export const MENU_ITEMS: MenuItem[] = [
       { label: 'Full (F)', price: 480 }
     ],
     description: 'Classic clay tandoor roasted chicken in hung curd, Kashmiri chilli, and tandoori garam masala.',
-    image: '/adipoo rest/ARABIAN STARTERS/Smoky Tandoori Chicken Feast.png',
+    image: '/images/food/tandoori-chicken.jpg',
     tags: ['Clay Oven', 'Popular'],
     isVeg: false
   },
@@ -960,7 +925,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'arabian-spicy',
     price: 270,
     description: 'Silky smooth chicken kababs marinated with clotted cream, cashew paste, and light mace.',
-    image: '/adipoo rest/ARABIAN SPICY\'S/Steaming Reshmi Kebab Platter by Adipozhi.png',
+    image: '/images/food/reshmi-kabab.jpg',
     tags: ['Melt in Mouth'],
     isVeg: false
   },
@@ -970,7 +935,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'arabian-spicy',
     price: 270,
     description: 'Succulent chicken drumsticks stuffed with spiced mince and chargrilled in the clay oven.',
-    image: '/adipoo rest/ARABIAN SPICY\'S/Steaming Tangri Kebab Feast.png',
+    image: '/adipoo rest/ARABIAN SPICY\'S/Tangri Kababs.jpg',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1022,7 +987,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'pulaos',
     price: 220,
     description: 'Tender chicken pieces cooked gently with long-grain basmati and mild whole spices.',
-    image: '/adipoo rest/PULAOS/Steaming Chicken Pulao at Adipozhi.png',
+    image: '/images/food/chicken-pulao.jpg',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1032,7 +997,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'pulaos',
     price: 260,
     description: 'Rich basmati rice infused with tender goat meat stock, saffron, and fried onions.',
-    image: '/adipoo rest/PULAOS/Steaming Mutton Pulao at Adipozhi.png',
+    image: '/images/food/mutton-pulao.jpg',
     tags: ['Chef Pick'],
     isVeg: false
   },
@@ -1196,7 +1161,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 220,
     description: 'Signature curry prepared with 18 roasted whole spices, kalpaasi, shallots, and tender chicken.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Spicy Chicken Chettinadu Masala Feast.png',
+    image: '/Chettinadu Masalas/Chicken Chettinadu Masala.png',
     tags: ['Chettinadu Classic', 'Popular'],
     isVeg: false
   },
@@ -1206,7 +1171,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 290,
     description: 'Slow-simmered tender mutton in authentic spicy Chettinadu gravy with coconut and Tellicherry pepper.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Mutton Chettinadu Masala Feast.png',
+    image: '/Chettinadu Masalas/Mutton Chettinadu Masala.png',
     tags: ['Chef Pick', 'Bestseller'],
     isVeg: false
   },
@@ -1216,7 +1181,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 240,
     description: 'Fiery chicken curry infused with crushed black pepper, caramelized onions, and curry leaves.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Sizzling Chicken Pepper Masala Adipozhi.png',
+    image: '/Chettinadu Masalas/Chicken Pepper Masala.png',
     tags: ['Spicy', 'Popular'],
     isVeg: false
   },
@@ -1226,7 +1191,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 270,
     description: 'Country chicken simmered in claypot with village-style freshly pounded spices and gingelly oil.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Naatukozhi Masala Feast at Adipozhi.png',
+    image: '/Chettinadu Masalas/Naatukozhi Masala.png',
     tags: ['Authentic Country'],
     isVeg: false
   },
@@ -1236,7 +1201,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 230,
     description: 'Quail meat simmered in thick, spicy, aromatic Chettinadu gravy.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Spicy Quail Curry at Adipozhi.png',
+    image: '/Chettinadu Masalas/Kaadai Masala.png',
     tags: ['Specialty'],
     isVeg: false
   },
@@ -1246,7 +1211,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 270,
     description: 'Juicy coastal prawns in rich onion, tomato, ginger, and hand-ground spice masala.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Spicy Prawn Curry at Adipozhi.png',
+    image: '/Chettinadu Masalas/Prawn Masala.png',
     tags: ['Seafood Special'],
     isVeg: false
   },
@@ -1256,7 +1221,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chettinadu',
     price: 250,
     description: 'Tender beef cubes slow-cooked in thick peppery Chettinadu gravy with roasted coconut paste.',
-    image: '/adipoo rest/CHETTINADU MASALAS/Steaming South Indian Beef Curry.png',
+    image: '/Chettinadu Masalas/Beef Chettinadu Masala.png',
     tags: ['Bestseller'],
     isVeg: false
   },
@@ -1264,7 +1229,7 @@ export const MENU_ITEMS: MenuItem[] = [
   // 14. INDIAN GRAVY & MASALA — Veg
   {
     id: 'ind-gobi-manjurian-gravy',
-    name: 'Gobi Manjurian Gravy',
+    name: 'Gobi Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 170,
@@ -1275,7 +1240,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-mushroom-manjurian-gravy',
-    name: 'Mushroom Manjurian Gravy',
+    name: 'Mushroom Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 180,
@@ -1286,7 +1251,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-paneer-manjurian-gravy',
-    name: 'Paneer Manjurian Gravy',
+    name: 'Paneer Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 210,
@@ -1346,7 +1311,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 220,
     description: 'Velvety sweet and savory makhani gravy with butter, cream, kasuri methi, and soft paneer cubes.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Paneer Kadai Masala at Adipozhi.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Paneer Butter Masala.jpg',
     tags: ['Bestseller', 'Vegetarian'],
     isVeg: true
   },
@@ -1354,7 +1319,7 @@ export const MENU_ITEMS: MenuItem[] = [
   // 14. INDIAN GRAVY & MASALA — Non-Veg
   {
     id: 'ind-chilly-chicken-gravy',
-    name: 'Chilly Chicken Gravy',
+    name: 'Chilly Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 240,
@@ -1365,7 +1330,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-chicken-manjurian-gravy',
-    name: 'Chicken Manjurian Gravy',
+    name: 'Chicken Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 240,
@@ -1376,7 +1341,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-garlic-chicken-gravy',
-    name: 'Garlic Chicken Gravy',
+    name: 'Garlic Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 250,
@@ -1387,18 +1352,18 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'ind-ginger-chicken-gravy',
-    name: 'Ginger Chicken Gravy',
+    name: 'Ginger Chicken Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 250,
     description: 'Aromatic chicken cooked with fresh shredded ginger and savory spices.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Spicy Chicken Curry at AdipoZhi.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Ginger Chicken Gravy.jpg',
     tags: [],
     isVeg: false
   },
   {
     id: 'ind-prawn-manjurian-gravy',
-    name: 'Prawn Manjurian Gravy',
+    name: 'Prawn Manjurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 260,
@@ -1414,7 +1379,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 270,
     description: 'Tandoori chicken pieces simmered in silky tomato, butter, cream, and kasuri methi gravy.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Adipozhi Butter Chicken Feast.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Butter Chicken Masala.jpg',
     tags: ['Bestseller', 'Crowd Favorite'],
     isVeg: false
   },
@@ -1425,7 +1390,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 260,
     description: 'Smoky chargrilled chicken tikkas simmered in spiced onion and tomato gravy.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/AdipoZhi Chicken Tikka Masala Feast.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Chicken Tikka Masala.jpg',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1436,7 +1401,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 230,
     description: 'Chicken cooked with bell peppers, onions, and freshly ground kadai spices.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Sizzling Kadai Chicken Curry.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Kadai Chicken Masala.jpg',
     tags: [],
     isVeg: false
   },
@@ -1447,7 +1412,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 270,
     description: 'Special chicken masala cooked with drumstick leaves (murungai keerai) and southern spices.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Glossy Chili Chicken at Adipozhi.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Spicy Chicken Curry at AdipoZhi.png',
     tags: ['House Special', 'Chef Pick'],
     isVeg: false
   },
@@ -1499,7 +1464,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chinese-rice-noodles',
     price: 180,
     description: 'Tender chicken shreds wok-tossed with rice or noodles, spring onions, and garlic.',
-    image: '/adipoo rest/CHINESE RICE  NOODLES/Steaming Chicken Fried Rice and Noodles.png',
+    image: '/images/food/chicken-fried-rice.jpg',
     tags: ['Bestseller'],
     isVeg: false
   },
@@ -1509,7 +1474,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chinese-rice-noodles',
     price: 200,
     description: 'Savory spiced beef strips tossed with rice or noodles on high flame.',
-    image: '/adipoo rest/CHINESE RICE  NOODLES/AdipoZhi Beef Rice and Noodles.png',
+    image: '/images/food/beef-fried-rice.jpg',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1519,7 +1484,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chinese-rice-noodles',
     price: 230,
     description: 'Loaded wok feast containing chicken, egg, beef, and prawns tossed with rice or noodles.',
-    image: '/adipoo rest/CHINESE RICE  NOODLES/Steaming AdipoZhi Rice and Noodles.png',
+    image: '/images/food/mixed-rice-noodles.jpg',
     tags: ['Chef Pick', 'Signature Feast'],
     isVeg: false
   },
@@ -1529,7 +1494,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chinese-rice-noodles',
     price: 195,
     description: 'Fiery chicken fried rice or noodles tossed in spicy house-made Schezwan red sauce.',
-    image: '/adipoo rest/CHINESE RICE  NOODLES/Schezwan Rice and Noodles Feast.png',
+    image: '/images/food/schezwan-rice-noodles.jpg',
     tags: ['Spicy', 'Popular'],
     isVeg: false
   },
@@ -1539,7 +1504,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'chinese-rice-noodles',
     price: 235,
     description: 'Spicy Schezwan wok-tossed combination of chicken, prawns, egg, and beef.',
-    image: '/adipoo rest/CHINESE RICE  NOODLES/Sizzling Schezwan Feast at AdipoZhi.png',
+    image: '/images/food/schezwan-rice-noodles.jpg',
     tags: ['Spicy', 'Chef Pick'],
     isVeg: false
   },
@@ -1561,7 +1526,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'indian-breads',
     price: 50,
     description: 'Traditional leavened flatbread baked against the searing walls of the tandoor.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Naan Feast at AdipoZhi.png',
+    image: '/images/food/naan.jpg',
     tags: ['Clay Oven'],
     isVeg: true
   },
@@ -1571,7 +1536,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'indian-breads',
     price: 60,
     description: 'Tandoori naan brushed generously with pure churned butter.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Butter Naan and Curry Feast.png',
+    image: '/images/food/butter-naan.jpg',
     tags: ['Bestseller'],
     isVeg: true
   },
@@ -1580,8 +1545,8 @@ export const MENU_ITEMS: MenuItem[] = [
     name: 'Garlic Naan',
     category: 'indian-breads',
     price: 70,
-    description: 'Soft tandoori naan topped with roasted minced garlic and fresh coriander.',
-    image: '/menu 16-21/INDIAN BREADS/Garlic Naan Feast at AdipoZhi.png',
+    description: 'Soft tandoori naan loaded with roasted minced garlic and pure butter glaze.',
+    image: '/images/food/garlic-naan.jpg',
     tags: ['Popular'],
     isVeg: true
   },
@@ -1601,7 +1566,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'indian-breads',
     price: 60,
     description: 'Whole wheat flatbread baked fresh in the clay oven.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Indian Breads with Curry and Roses.png',
+    image: '/menu 16-21/INDIAN BREADS/Steaming Flatbreads with Adipozhi Curry.png',
     tags: ['Healthy'],
     isVeg: true
   },
@@ -1632,7 +1597,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 50,
     portion: '2 Pcs',
     description: 'Puffed soft phulkas cooked on direct flame without oil.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Flatbreads with Adipozhi Curry.png',
+    image: '/menu 16-21/INDIAN BREADS/Steaming Indian Breads with Curry and Roses.png',
     tags: ['Healthy', 'Light'],
     isVeg: true
   },
@@ -1642,7 +1607,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'indian-breads',
     price: 70,
     description: 'Soft mild leavened bread baked in the tandoor with sesame seeds.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Kulcha Feast at AdipoZhi.png',
+    image: '/images/food/kulcha.jpg',
     tags: [],
     isVeg: true
   },
@@ -1652,7 +1617,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'indian-breads',
     price: 80,
     description: 'Fluffy tandoori kulcha glazed with melted butter.',
-    image: '/menu 16-21/INDIAN BREADS/Steaming Butter Kulcha at Adipozhi.png',
+    image: '/images/food/kulcha.jpg',
     tags: ['Popular'],
     isVeg: true
   },
@@ -1774,7 +1739,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'dosa-varieties',
     price: 140,
     description: 'Madurai-style thick dosa crowned with spiced minced chicken chukka and egg layer.',
-    image: '/menu 16-21/DOSA VARIETIES/Crispy Chicken Curry Dosa Feast.png',
+    image: '/images/food/chicken-kari-dosa.jpg',
     tags: ['Chef Pick', 'Bestseller'],
     isVeg: false
   },
@@ -1784,7 +1749,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'dosa-varieties',
     price: 180,
     description: 'Legendary thick dosa topped with rich mutton minced fry, beaten egg, and spicy salna.',
-    image: '/menu 16-21/DOSA VARIETIES/Crispy Mutton Dosa Feast.png',
+    image: '/images/food/mutton-kari-dosa.jpg',
     tags: ['Madurai Legend', 'Chef Pick'],
     isVeg: false
   },
@@ -1794,7 +1759,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'dosa-varieties',
     price: 160,
     description: 'Flavor-packed dosa layered with spicy beef chukka, beaten egg, and roasted pepper.',
-    image: '/menu 16-21/DOSA VARIETIES/Spiced Beef Dosa Feast at Adipozhi.png',
+    image: '/images/food/beef-kari-dosa.jpg',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1898,7 +1863,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 30,
     description: 'Large paper-thin folded parotta flipped and roasted with ghee on tawa.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Flaky Veechu Parotta at Adipozhi.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Veechu Parotta.jpg',
     tags: ['Crispy'],
     isVeg: false
   },
@@ -1928,7 +1893,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 120,
     description: 'Stuffed rectangular envelope parotta filled with seasoned beaten egg and minced shallots.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Egg Lappa at Adipozhi.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Egg Lappa.jpg',
     tags: [],
     isVeg: false
   },
@@ -1948,7 +1913,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 190,
     description: 'Flaky parotta square stuffed with tender minced mutton, eggs, and aromatic spices.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Steaming Mutton Kothu Parotta Feast.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Mutton Lappa.jpg',
     tags: ['Chef Pick'],
     isVeg: false
   },
@@ -1958,7 +1923,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 160,
     description: 'Parotta drenched in rich chicken salna and wrapped in fresh banana leaf, then tawa-steamed to infuse heavenly aroma.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Adipozhi Stuffed Chicken Parotta Feast.png',
+    image: '/images/food/vaazhai-ilai-parotta.jpg',
     tags: ['Banana Leaf Kizhi', 'Must Try'],
     isVeg: false
   },
@@ -1968,7 +1933,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 180,
     description: 'Banana leaf wrapped beef kizhi parotta simmered in spicy salna and roasted on slow flame.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Golden Veechu Parotta Feast at Adipozhi.png',
+    image: '/images/food/vaazhai-ilai-parotta.jpg',
     tags: ['Banana Leaf Kizhi', 'Bestseller'],
     isVeg: false
   },
@@ -1978,7 +1943,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 200,
     description: 'Tender mutton curry and flaky parotta steamed in fresh banana leaf pouch.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Mutton Parotta Rolls with Spiced Gravy.png',
+    image: '/images/food/vaazhai-ilai-parotta.jpg',
     tags: ['Banana Leaf Kizhi', 'Signature'],
     isVeg: false
   },
@@ -1988,7 +1953,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 160,
     description: 'Intricately shaped crispy nest parotta holding spicy chicken fry and sunny egg.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Nest Parotta with Curry and Raita.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Nest Parotta.jpg',
     tags: ['Specialty'],
     isVeg: false
   },
@@ -2062,7 +2027,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'mojitos',
     price: 90,
     description: 'Classic Cuban-style virgin mojito muddled with lime wedges, mint leaves, and brown sugar.',
-    image: '/menu 16-21/MOJITO/Effervescent Mint Mojito Among Roses.png',
+    image: '/menu 16-21/FRESH JUICE/Vibrant Lemon Mint Cooler on Wood.png',
     tags: ['Classic', 'Vegetarian'],
     isVeg: true
   },
@@ -2171,8 +2136,8 @@ export const MENU_ITEMS: MenuItem[] = [
 ];
 
 export const STATISTICS = [
-  { value: '4.7', label: 'Google Rating ★', labelFr: 'Note Google ★' },
-  { value: '284', label: 'Google Reviews', labelFr: 'Avis Google' },
-  { value: '21', label: 'Menu Categories', labelFr: 'Catégories Menu' },
-  { value: '7', label: 'Mins from Bus Stand', labelFr: 'Mins de la Gare' }
+  { value: '4.7', label: 'Google Rating ★' },
+  { value: '284', label: 'Google Reviews' },
+  { value: '21', label: 'Menu Categories' },
+  { value: '2', label: 'Mins from Bus Stand' }
 ];

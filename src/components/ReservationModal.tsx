@@ -11,8 +11,7 @@ interface ReservationModalProps {
   defaultDate?: string;
   defaultTime?: string;
   defaultAmbiance?: string;
-  lang: 'en' | 'fr';
-}
+  }
 
 export const ReservationModal: React.FC<ReservationModalProps> = ({
   isOpen,
@@ -20,8 +19,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
   defaultParty = 2,
   defaultDate,
   defaultTime = '19:00',
-  defaultAmbiance = 'resto',
-  lang
+  defaultAmbiance = 'resto'
 }) => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
 
@@ -59,7 +57,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
     e.preventDefault();
     if (step === 1) {
       if (date === todayStr && time < currentTimeStr) {
-        setTimeError(lang === 'en' ? `Please select a time of ${currentTimeStr} or later.` : `Veuillez choisir au moins ${currentTimeStr}.`);
+        setTimeError(`Please select a time of ${currentTimeStr} or later.`);
         return;
       }
       setTimeError('');
@@ -139,12 +137,12 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
             <div className="flex items-center justify-between p-6 border-b border-[#1a1a1a]/15 bg-white">
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-widest text-[#de2b2b] block mb-0.5">
-                  {lang === 'en' ? 'Adipozhi Table Reservation' : 'Réservation de Table Adipozhi'}
+                  {'Adipozhi Table Reservation'}
                 </span>
                 <h2 className="text-xl sm:text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {step === 3
-                    ? (lang === 'en' ? 'Reservation Confirmed' : 'Réservation Confirmée')
-                    : (lang === 'en' ? 'Book a Table at Adipozhi' : 'Réserver une table chez Adipozhi')}
+                    ? ('Reservation Confirmed')
+                    : ('Book a Table at Adipozhi')}
                 </h2>
               </div>
               <motion.button
@@ -179,7 +177,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   {/* Party Size */}
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-2">
-                      1. {lang === 'en' ? 'Number of Guests' : 'Nombre de personnes'}
+                      1. {'Number of Guests'}
                     </label>
                     <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
                       {[1, 2, 3, 4, 5].map((num) => (
@@ -209,7 +207,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                         value={partySize === '' ? '' : partySize}
                         onInvalid={(e) => {
                           e.preventDefault();
-                          setPartyError(lang === 'en' ? 'Please specify a party size.' : 'Veuillez indiquer le nombre de personnes.');
+                          setPartyError('Please specify a party size.');
                         }}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -237,7 +235,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-2">
-                        2. {lang === 'en' ? 'Date' : 'Date'}
+                        2. {'Date'}
                       </label>
                       <input
                         type="date"
@@ -246,7 +244,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                         min={todayStr}
                         onInvalid={(e) => {
                           e.preventDefault();
-                          setDateError(lang === 'en' ? 'Please select a date.' : 'Veuillez sélectionner une date.');
+                          setDateError('Please select a date.');
                         }}
                         onChange={(e) => {
                           setDate(e.target.value);
@@ -270,7 +268,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-2">
-                        3. {lang === 'en' ? 'Time Slot' : 'Heure'}
+                        3. {'Time Slot'}
                       </label>
                       <input
                         type="time"
@@ -280,9 +278,9 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                         onInvalid={(e) => {
                           e.preventDefault();
                           if (!time) {
-                            setTimeError(lang === 'en' ? 'Please select a time.' : 'Veuillez sélectionner une heure.');
+                            setTimeError('Please select a time.');
                           } else {
-                            setTimeError(lang === 'en' ? `Please select a time of ${currentTimeStr} or later.` : `Veuillez choisir au moins ${currentTimeStr}.`);
+                            setTimeError(`Please select a time of ${currentTimeStr} or later.`);
                           }
                         }}
                         onChange={(e) => {
@@ -309,25 +307,21 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   {/* Atmosphere Choice */}
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-2">
-                      4. {lang === 'en' ? 'Choose Atmosphere' : 'Choisissez votre ambiance'}
+                      4. {'Choose Atmosphere'}
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
                         {
                           id: 'ac',
                           name: 'AC',
-                          nameFr: 'Climatisé',
-                          tagline: 'Cool, spacious, and comfortable dining tailored for families and groups.',
-                          taglineFr: 'Espace climatisé confortable pour réunions familiales.',
-                          image: '/images/gallery/interior-original.png'
+                                                    tagline: 'Cool, spacious, and comfortable dining tailored for families and groups.',
+                                                    image: '/images/gallery/interior-original.png'
                         },
                         {
                           id: 'non-ac',
                           name: 'NON-AC Family Dining Hall',
-                          nameFr: 'Salle Familiale NON-AC',
-                          tagline: 'Comfortable family dining with lively restaurant ambiance.',
-                          taglineFr: 'Repas familial confortable avec ambiance vivante.',
-                          image: '/images/gallery/interior-booths.jpg'
+                                                    tagline: 'Comfortable family dining with lively restaurant ambiance.',
+                                                    image: '/images/gallery/interior-booths.jpg'
                         }
                       ].map((atm) => (
                         <div
@@ -347,8 +341,8 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                           <div className="h-32 rounded-xl overflow-hidden mb-3">
                             <img src={atm.image} alt={atm.name} className="w-full h-full object-cover" />
                           </div>
-                          <div className="font-bold text-sm text-[#de2b2b] text-center">{lang === 'en' ? atm.name : atm.nameFr}</div>
-                          <div className="text-xs text-[#1a1a1a]/70 line-clamp-2 mt-1 text-center">{lang === 'en' ? atm.tagline : atm.taglineFr}</div>
+                          <div className="font-bold text-sm text-[#de2b2b] text-center">{atm.name}</div>
+                          <div className="text-xs text-[#1a1a1a]/70 line-clamp-2 mt-1 text-center">{atm.tagline}</div>
                         </div>
                       ))}
                     </div>
@@ -358,7 +352,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       value={atmosphere} 
                       onInvalid={(e) => {
                         e.preventDefault();
-                        setAtmosphereError(lang === 'en' ? 'Please select an atmosphere.' : 'Veuillez sélectionner une ambiance.');
+                        setAtmosphereError('Please select an atmosphere.');
                       }} 
                       onChange={() => {}}
                       className="sr-only" 
@@ -384,7 +378,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     whileTap={{ scale: 0.98 }}
                     className="w-full py-3.5 bg-[#de2b2b] hover:bg-[#7c2627] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>{lang === 'en' ? 'Next: Guest Details' : 'Suivant : Vos coordonnées'}</span>
+                    <span>{'Next: Guest Details'}</span>
                     <ChevronRight className="w-4 h-4" />
                   </motion.button>
                 </form>
@@ -395,7 +389,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-1">
-                        {lang === 'en' ? 'First Name' : 'Prénom'} *
+                        {'First Name'} *
                       </label>
                       <input
                         type="text"
@@ -403,7 +397,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                         value={firstName}
                         onInvalid={(e) => {
                           e.preventDefault();
-                          setFirstNameError(lang === 'en' ? 'Please enter your first name.' : 'Veuillez entrer votre prénom.');
+                          setFirstNameError('Please enter your first name.');
                         }}
                         onChange={(e) => {
                           setFirstName(e.target.value);
@@ -422,7 +416,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-1">
-                        {lang === 'en' ? 'Last Name' : 'Nom'} *
+                        {'Last Name'} *
                       </label>
                       <input
                         type="text"
@@ -430,7 +424,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                         value={lastName}
                         onInvalid={(e) => {
                           e.preventDefault();
-                          setLastNameError(lang === 'en' ? 'Please enter your last name.' : 'Veuillez entrer votre nom.');
+                          setLastNameError('Please enter your last name.');
                         }}
                         onChange={(e) => {
                           setLastName(e.target.value);
@@ -451,7 +445,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-1">
-                      {lang === 'en' ? 'Email Address' : 'Courriel'} *
+                      {'Email Address'} *
                     </label>
                     <input
                       type="email"
@@ -459,7 +453,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       value={email}
                       onInvalid={(e) => {
                         e.preventDefault();
-                        setEmailError(lang === 'en' ? (!email ? 'Please enter your email.' : 'Please enter a valid email.') : (!email ? 'Veuillez entrer votre courriel.' : 'Veuillez entrer un courriel valide.'));
+                        setEmailError(!email ? 'Please enter your email.' : 'Please enter a valid email.');
                       }}
                       onChange={(e) => {
                         setEmail(e.target.value);
@@ -479,7 +473,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-1">
-                      {lang === 'en' ? 'Phone Number' : 'Numéro de Téléphone'} *
+                      {'Phone Number'} *
                     </label>
                     <input
                       type="tel"
@@ -487,7 +481,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       value={phone}
                       onInvalid={(e) => {
                         e.preventDefault();
-                        setPhoneError(lang === 'en' ? 'Please enter your phone number.' : 'Veuillez entrer votre numéro de téléphone.');
+                        setPhoneError('Please enter your phone number.');
                       }}
                       onChange={(e) => {
                         setPhone(e.target.value);
@@ -506,7 +500,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-[#1a1a1a]/10 text-xs text-[#1a1a1a]/80 flex justify-between">
-                    <span>{partySize} {lang === 'en' ? 'Guests' : 'Personnes'} · {date} @ {time}</span>
+                    <span>{partySize} {'Guests'} · {date} @ {time}</span>
                     <span className="font-bold text-[#de2b2b] capitalize">{atmosphere}</span>
                   </div>
 
@@ -517,7 +511,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       className="py-3 px-5 rounded-xl text-xs font-bold text-[#1a1a1a] bg-white border border-[#1a1a1a]/20 flex items-center gap-1 cursor-pointer"
                     >
                       <ChevronLeft className="w-4 h-4" />
-                      <span>{lang === 'en' ? 'Back' : 'Retour'}</span>
+                      <span>{'Back'}</span>
                     </button>
                     <motion.button
                       type="submit"
@@ -526,7 +520,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       className="flex-1 py-3 bg-[#de2b2b] hover:bg-[#7c2627] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <CheckCircle2 className="w-4 h-4" />
-                      <span>{lang === 'en' ? 'Confirm Booking' : 'Confirmer la Réservation'}</span>
+                      <span>{'Confirm Booking'}</span>
                     </motion.button>
                   </div>
                 </form>
@@ -542,12 +536,10 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {lang === 'en' ? 'Your Table is Reserved!' : 'Votre Table est Réservée!'}
+                    {'Your Table is Reserved!'}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#1a1a1a]/70">
-                    {lang === 'en'
-                      ? `Thank you, ${firstName || 'Guest'}! A confirmation SMS and email have been dispatched.`
-                      : `Merci, ${firstName || 'Cher client'}! Une confirmation vous a été transmise.`}
+                    `Thank you, ${firstName || 'Guest'}! A confirmation SMS and email have been dispatched.`
                   </p>
 
                   <div className="max-w-md mx-auto p-5 rounded-2xl bg-white border border-[#1a1a1a]/15 text-left space-y-2 text-xs shadow-sm">
@@ -573,7 +565,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#1a1a1a]/60">Party Size:</span>
-                      <span className="font-semibold text-[#1a1a1a]">{partySize} {lang === 'en' ? 'Guests' : 'Personnes'}</span>
+                      <span className="font-semibold text-[#1a1a1a]">{partySize} {'Guests'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#1a1a1a]/60">Ambiance:</span>
@@ -609,7 +601,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                       onClick={handleReset}
                       className="w-full sm:w-auto px-6 py-2.5 bg-[#de2b2b] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md cursor-pointer"
                     >
-                      {lang === 'en' ? 'Done' : 'Fermer'}
+                      {'Done'}
                     </motion.button>
                   </div>
                 </motion.div>

@@ -13,8 +13,6 @@ interface HeaderProps {
   onOpenGiftCard: () => void;
   onNavigate?: (path: string) => void;
   currentPath?: string;
-  lang?: 'en' | 'fr';
-  setLang: (lang: 'en' | 'fr') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -27,8 +25,6 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenGiftCard,
   onNavigate,
   currentPath = '/',
-  lang = 'en',
-  setLang
 }) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,7 +60,6 @@ export const Header: React.FC<HeaderProps> = ({
     ? 'bg-[#f8efdc]/20 text-[#f8efdc] hover:bg-[#f8efdc] hover:text-[#de2b2b] border border-[#f8efdc]/40' 
     : 'bg-[#de2b2b]/10 text-[#de2b2b] hover:bg-[#de2b2b] hover:text-[#f8efdc] border border-transparent';
   const burgerColorClass = isHeroMode ? 'text-[#f8efdc] hover:text-[#f8efdc]/70' : 'text-[#1a1a1a] hover:text-[#de2b2b]';
-  const langBtnClass = isHeroMode ? 'text-[#f8efdc] border-[#f8efdc]/50' : 'text-[#de2b2b] border-[#de2b2b]/30';
 
   return (
     <header className={`sticky top-0 z-40 border-b transition-all duration-300 select-none ${headerBgClass}`}>
@@ -80,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
               currentPath === '/' && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
-            <span>{lang === 'en' ? 'Home' : 'Accueil'}</span>
+            <span>Home</span>
             <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
               currentPath === '/' ? 'w-full' : 'w-0 group-hover:w-full'
             }`} />
@@ -95,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
               currentPath.startsWith('/menus') && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
-            <span>{lang === 'en' ? 'Menu' : 'Menu'}</span>
+            <span>Menu</span>
             <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
               currentPath.startsWith('/menus') ? 'w-full' : 'w-0 group-hover:w-full'
             }`} />
@@ -110,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
               currentPath === '/restaurant' && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
-            <span>{lang === 'en' ? 'The Restaurant' : 'Le Restaurant'}</span>
+            <span>The Restaurant</span>
             <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
               currentPath === '/restaurant' ? 'w-full' : 'w-0 group-hover:w-full'
             }`} />
@@ -146,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({
               currentPath === '/events' && !isHeroMode ? 'text-[#de2b2b]' : ''
             }`}
           >
-            <span>{lang === 'en' ? 'Celebrations & Catering' : 'Célébrations'}</span>
+            <span>Celebrations & Catering</span>
             <span className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ${hoverLineColor} ${
               currentPath === '/events' ? 'w-full' : 'w-0 group-hover:w-full'
             }`} />
@@ -195,28 +190,28 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNav('/')}
                   className="text-left text-[#1a1a1a] border-b border-[#1a1a1a]/10 pb-2 transition-all cursor-pointer"
                 >
-                  {lang === 'en' ? 'Home' : 'Accueil'}
+                  Home
                 </motion.button>
                 <motion.button
                   whileHover={{ x: 6, color: '#de2b2b' }}
                   onClick={() => handleNav('/menus/regular', onOpenMenus)}
                   className="text-left text-[#1a1a1a] border-b border-[#1a1a1a]/10 pb-2 transition-all cursor-pointer"
                 >
-                  {lang === 'en' ? 'Regular Menu' : 'Menu Régulier'}
+                  Regular Menu
                 </motion.button>
                 <motion.button
                   whileHover={{ x: 6, color: '#de2b2b' }}
                   onClick={() => handleNav('/restaurant', onOpenRestaurant)}
                   className="text-left text-[#1a1a1a] border-b border-[#1a1a1a]/10 pb-2 transition-all cursor-pointer"
                 >
-                  {lang === 'en' ? 'The Restaurant' : 'Le Restaurant'}
+                  The Restaurant
                 </motion.button>
                 <motion.button
                   whileHover={{ x: 6, color: '#de2b2b' }}
                   onClick={() => handleNav('/events', onOpenEvents)}
                   className="text-left text-[#1a1a1a] border-b border-[#1a1a1a]/10 pb-2 transition-all cursor-pointer"
                 >
-                  {lang === 'en' ? 'What’s On & Events' : 'Événements & Spectacles'}
+                  What’s On & Events
                 </motion.button>
 
               </nav>
@@ -251,7 +246,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="py-3 px-4 bg-[#de2b2b] text-[#f8efdc] font-bold text-xs rounded-xl uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5"
               >
                 <Calendar className="w-3.5 h-3.5" />
-                <span>{lang === 'en' ? 'Reserve' : 'Réserver'}</span>
+                <span>Reserve</span>
               </motion.button>
               <motion.button
                 whileTap={{ scale: 0.95 }}
@@ -262,7 +257,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="py-3 px-4 bg-[#1a1a1a] text-[#f8efdc] font-bold text-xs rounded-xl uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
-                <span>{lang === 'en' ? 'Order' : 'Commander'}</span>
+                <span>Order</span>
               </motion.button>
             </div>
           </motion.div>

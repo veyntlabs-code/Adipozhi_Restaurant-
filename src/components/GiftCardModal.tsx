@@ -6,13 +6,11 @@ import { X, Gift, CheckCircle2, Send } from 'lucide-react';
 interface GiftCardModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const GiftCardModal: React.FC<GiftCardModalProps> = ({
   isOpen,
   onClose,
-  lang
 }) => {
   const [amount, setAmount] = useState<number>(100);
   const [customAmount, setCustomAmount] = useState<string>('');
@@ -54,7 +52,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
               <div className="flex items-center gap-2">
                 <Gift className="w-5 h-5 text-[#de2b2b]" />
                 <h2 className="text-xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  {lang === 'en' ? 'Adipozhi Gift Card' : 'Carte-Cadeau Adipozhi'}
+                  Adipozhi Gift Card
                 </h2>
               </div>
               <motion.button
@@ -79,12 +77,10 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {lang === 'en' ? 'Gift Card Issued!' : 'Carte-Cadeau Émise!'}
+                    Gift Card Issued!
                   </h3>
                   <p className="text-xs sm:text-sm text-[#1a1a1a]/70">
-                    {lang === 'en'
-                      ? `Your digital gift voucher for $${currentAmount} CAD has been dispatched to ${recipientEmail}.`
-                      : `Votre bon-cadeau numérique de ${currentAmount}$ CAD a été envoyé à ${recipientEmail}.`}
+                    {`Your digital gift voucher for $${currentAmount} CAD has been dispatched to ${recipientEmail}.`}
                   </p>
 
                   <div className="p-4 bg-white rounded-2xl border-2 border-dashed border-[#de2b2b] text-center space-y-1 shadow-xs">
@@ -100,14 +96,14 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                     onClick={handleReset}
                     className="px-6 py-2.5 bg-[#de2b2b] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-full shadow-md cursor-pointer"
                   >
-                    {lang === 'en' ? 'Done' : 'Fermer'}
+                    Done
                   </motion.button>
                 </motion.div>
               ) : (
                 <form onSubmit={handlePurchase} className="space-y-5">
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#1a1a1a]/70 mb-2">
-                      1. {lang === 'en' ? 'Select Amount' : 'Sélectionnez le montant'}
+                      1. Select Amount
                     </label>
                     <div className="grid grid-cols-4 gap-2 mb-2">
                       {[25, 50, 75, 100].map((val) => (
@@ -152,7 +148,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                             : 'bg-white text-[#1a1a1a] border border-[#1a1a1a]/15'
                         }`}
                       >
-                        {lang === 'en' ? 'Other Amount' : 'Autre montant'}
+                        Other Amount
                       </button>
                     </div>
 
@@ -164,7 +160,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                           max="1000"
                           value={customAmount}
                           onChange={(e) => setCustomAmount(e.target.value)}
-                          placeholder={lang === 'en' ? 'Amount in CAD (min $20)' : 'Montant en CAD (min 20$)'}
+                          placeholder="Amount in CAD (min $20)"
                           className="w-full px-3.5 py-2 rounded-xl border border-[#1a1a1a]/20 bg-white text-xs focus:outline-none"
                         />
                       </div>
@@ -173,7 +169,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
 
                   <div className="space-y-3">
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#1a1a1a]/70">
-                      2. {lang === 'en' ? 'Recipient Coordinates' : 'Coordonnées du destinataire'}
+                      2. Recipient Coordinates
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
@@ -181,7 +177,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                         required
                         value={recipientName}
                         onChange={(e) => setRecipientName(e.target.value)}
-                        placeholder={lang === 'en' ? 'Recipient Name' : 'Nom du bénéficiaire'}
+                        placeholder="Recipient Name"
                         className="w-full px-3.5 py-2 rounded-xl border border-[#1a1a1a]/20 bg-white text-xs focus:outline-none"
                       />
                       <input
@@ -189,7 +185,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                         required
                         value={recipientEmail}
                         onChange={(e) => setRecipientEmail(e.target.value)}
-                        placeholder={lang === 'en' ? 'Recipient Email' : 'Courriel du bénéficiaire'}
+                        placeholder="Recipient Email"
                         className="w-full px-3.5 py-2 rounded-xl border border-[#1a1a1a]/20 bg-white text-xs focus:outline-none"
                       />
                     </div>
@@ -199,14 +195,14 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                         required
                         value={senderName}
                         onChange={(e) => setSenderName(e.target.value)}
-                        placeholder={lang === 'en' ? 'Your Name' : 'Votre nom'}
+                        placeholder="Your Name"
                         className="w-full px-3.5 py-2 rounded-xl border border-[#1a1a1a]/20 bg-white text-xs focus:outline-none"
                       />
                       <input
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder={lang === 'en' ? 'Personal Message' : 'Message personnalisé'}
+                        placeholder="Personal Message"
                         className="w-full px-3.5 py-2 rounded-xl border border-[#1a1a1a]/20 bg-white text-xs focus:outline-none"
                       />
                     </div>
@@ -219,7 +215,7 @@ export const GiftCardModal: React.FC<GiftCardModalProps> = ({
                     className="w-full py-3.5 bg-[#de2b2b] hover:bg-[#7c2627] text-[#f8efdc] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>{lang === 'en' ? `Purchase Card · $${currentAmount} CAD` : `Acheter la Carte · ${currentAmount}$ CAD`}</span>
+                    <span>{`Purchase Card · $${currentAmount} CAD`}</span>
                   </motion.button>
                 </form>
               )}

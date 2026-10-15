@@ -7,13 +7,11 @@ import { RESTAURANT_INFO } from '../data/restaurantData';
 interface GoingToDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
   isOpen,
   onClose,
-  lang
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -55,7 +53,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                     className="text-2xl font-bold text-[#de2b2b]"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
-                    {lang === 'en' ? 'Going to Adipozhi' : 'Venir chez Adipozhi'}
+                    Going to Adipozhi
                   </h2>
                   <motion.button
                     type="button"
@@ -74,9 +72,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                     <span>⭐ 4.7 Rated on Google (284 reviews)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-[#1a1a1a]/80 leading-relaxed font-light">
-                    {lang === 'en'
-                      ? 'Located conveniently right by the Bus stand Entrance Arch in Monday Market, Tamil Nadu. Adipozhi Family Restaurant is easily accessible from Thuckalay, Eraniel, Colachel, and Nagercoil with ample parking space and air-conditioned dining.'
-                      : 'Situé idéalement près de l’arche de la gare de Monday Market au Tamil Nadu. Adipozhi Family Restaurant est facilement accessible avec parking et salle climatisée.'}
+                    Located conveniently right by the Bus stand Entrance Arch in Monday Market, Tamil Nadu. Adipozhi Family Restaurant is easily accessible from Thuckalay, Eraniel, Colachel, and Nagercoil with ample parking space and air-conditioned dining.
                   </p>
                 </div>
 
@@ -85,7 +81,7 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#de2b2b] shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">{lang === 'en' ? 'Address' : 'Adresse'}</span>
+                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">Address</span>
                       <p className="font-medium text-[#1a1a1a] mt-0.5">
                         Bus stand Entrance Arch<br />
                         Monday Market, Tamil Nadu 629802
@@ -99,12 +95,12 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                   <div className="flex items-start gap-3">
                     <Phone className="w-4 h-4 text-[#de2b2b] shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">{lang === 'en' ? 'Phone / Orders' : 'Téléphone'}</span>
+                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">Phone / Orders</span>
                       <p className="font-medium text-[#1a1a1a] mt-0.5">
                         <a href="tel:09585154254" className="hover:text-[#de2b2b] font-bold">095851 54254</a>
                       </p>
                       <p className="text-[11px] text-[#1a1a1a]/60">
-                        {lang === 'en' ? 'Call for parcel pickup & table reservations' : 'Appelez pour emporter ou réserver'}
+                        Call for parcel pickup & table reservations
                       </p>
                     </div>
                   </div>
@@ -112,12 +108,12 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
                   <div className="flex items-start gap-3">
                     <Clock className="w-4 h-4 text-[#de2b2b] shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">{lang === 'en' ? 'Operating Hours' : 'Horaires'}</span>
+                      <span className="font-bold uppercase text-[10px] text-[#de2b2b] block">Operating Hours</span>
                       <p className="font-bold text-emerald-700 mt-0.5">
-                        {lang === 'en' ? 'Open Daily · 11:00 AM – 11:00 PM' : 'Ouvert tous les jours · 11h00 – 23h00'}
+                        Open Daily · 11:00 AM – 11:00 PM
                       </p>
                       <p className="text-[11px] text-[#1a1a1a]/60 mt-0.5">
-                        {lang === 'en' ? 'Biryani: 11:00 AM – 3:00 PM (Mutton Biryani Sat & Sun) · Dosa & Parotta: 6:00 PM – 11:00 PM' : 'Biryani: 11h00 – 15h00 (Mouton sam & dim) · Dosa & Parotta: 18h00 – 23h00'}
+                        Biryani: 11:00 AM – 3:00 PM (Mutton Biryani Sat & Sun) · Dosa & Parotta: 6:00 PM – 11:00 PM
                       </p>
                     </div>
                   </div>

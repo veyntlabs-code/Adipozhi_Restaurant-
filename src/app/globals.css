@@ -66,6 +66,28 @@ html {
   animation: spinSlow 24s linear infinite;
 }
 
+@keyframes floatBubble {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(0, -120vh, 0);
+    opacity: 0;
+  }
+}
+
+.animate-float-bubble {
+  animation-name: floatBubble;
+  will-change: transform;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }

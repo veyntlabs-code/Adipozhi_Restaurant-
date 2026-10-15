@@ -8,26 +8,24 @@ interface MenusModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddToCart: (item: MenuItem) => void;
-  lang: 'en' | 'fr';
 }
 
 export const MenusModal: React.FC<MenusModalProps> = ({
   isOpen,
   onClose,
   onAddToCart,
-  lang
 }) => {
   const [serviceMode, setServiceMode] = useState<'onsite' | 'takeaway' | 'delivery'>('onsite');
   const [activeMenuTab, setActiveMenuTab] = useState('all');
   const [addedId, setAddedId] = useState<string | null>(null);
 
   const menuTabs = [
-    { id: 'all', label: lang === 'en' ? 'All Dishes' : 'Tous les Plats' },
-    { id: 'biriyanis', label: lang === 'en' ? 'Biriyanis & Buckets' : 'Biriyanis' },
-    { id: 'starters', label: lang === 'en' ? 'Grills & Starters' : 'Grillades & Entrées' },
-    { id: 'parotta-dosa', label: lang === 'en' ? 'Parottas & Breads' : 'Parottas & Pains' },
-    { id: 'curries', label: lang === 'en' ? 'Curries & Masalas' : 'Currys & Masalas' },
-    { id: 'drinks-desserts', label: lang === 'en' ? 'Drinks & Ice Creams' : 'Boissons & Glaces' }
+    { id: 'all', label: 'All Dishes' },
+    { id: 'biriyanis', label: 'Biriyanis & Buckets' },
+    { id: 'starters', label: 'Grills & Starters' },
+    { id: 'parotta-dosa', label: 'Parottas & Breads' },
+    { id: 'curries', label: 'Curries & Masalas' },
+    { id: 'drinks-desserts', label: 'Drinks & Ice Creams' }
   ];
 
   const filteredItems = MENU_ITEMS.filter((item) => {
@@ -63,13 +61,13 @@ export const MenusModal: React.FC<MenusModalProps> = ({
             <div className="p-5 sm:p-6 border-b border-[#1a1a1a]/15 flex items-center justify-between bg-white shrink-0">
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-widest text-[#de2b2b] block mb-0.5">
-                  {lang === 'en' ? 'Explore Menus' : 'Nos Cartes'}
+                  Explore Menus
                 </span>
                 <h2
                   className="text-2xl sm:text-3xl font-bold text-[#1a1a1a]"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
-                  {lang === 'en' ? 'Adipozhi Culinary Collection' : 'La Carte Gastronomique Adipozhi'}
+                  Adipozhi Culinary Collection
                 </h2>
               </div>
 
@@ -98,9 +96,9 @@ export const MenusModal: React.FC<MenusModalProps> = ({
                         : 'text-[#1a1a1a]/70 hover:text-[#1a1a1a]'
                     }`}
                   >
-                    {mode === 'onsite' && (lang === 'en' ? 'On site' : 'Sur place')}
-                    {mode === 'takeaway' && (lang === 'en' ? 'Takeaway' : 'Pour emporter')}
-                    {mode === 'delivery' && (lang === 'en' ? 'Delivery' : 'Livraison')}
+                    {mode === 'onsite' && 'On site'}
+                    {mode === 'takeaway' && 'Takeaway'}
+                    {mode === 'delivery' && 'Delivery'}
                   </button>
                 ))}
               </div>
@@ -186,12 +184,12 @@ export const MenusModal: React.FC<MenusModalProps> = ({
                         {isAdded ? (
                           <>
                             <Check className="w-3.5 h-3.5" />
-                            <span>{lang === 'en' ? 'Added!' : 'Ajouté!'}</span>
+                            <span>Added!</span>
                           </>
                         ) : (
                           <>
                             <Plus className="w-3.5 h-3.5" />
-                            <span>{lang === 'en' ? 'Add to Order' : 'Ajouter'}</span>
+                            <span>Add to Order</span>
                           </>
                         )}
                       </motion.button>

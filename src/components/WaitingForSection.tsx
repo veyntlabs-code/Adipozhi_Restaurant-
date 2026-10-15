@@ -7,12 +7,10 @@ import ReviewSlider from './ReviewSlider';
 
 interface WaitingForSectionProps {
   onOpenReservation: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
   onOpenReservation,
-  lang
 }) => {
   return (
     <section className="bg-[#f8efdc] text-[#1a1a1a] py-20 lg:py-28 border-b border-[#1a1a1a]/10 text-center overflow-hidden relative select-none">

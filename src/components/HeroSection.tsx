@@ -11,7 +11,6 @@ interface HeroSectionProps {
   onOpenGoingTo: () => void;
   onOpenOrder: () => void;
   onOpenGiftCard: () => void;
-  lang: 'en' | 'fr';
 }
 
 /* ───────────────────────── Organic Blob SVGs ───────────────────────── */
@@ -46,7 +45,6 @@ const WavyLine = ({ className }: { className?: string }) => (
 );
 
 /* ─────────────────────── Organic Decorative Swoosh ──────────────────── */
-
 const DecorativeSwoosh = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 400 200" className={className} xmlns="http://www.w3.org/2000/svg">
     <path
@@ -59,13 +57,202 @@ const DecorativeSwoosh = ({ className }: { className?: string }) => (
   </svg>
 );
 
+/* ──────────────── Aesthetic Floating Flower Petal SVGs ──────────────── */
+const FlowerPetalSVG = ({
+  className,
+  variant = 'classic',
+  color = '#de2b2b',
+}: {
+  className?: string;
+  variant?: 'classic' | 'curved' | 'flutter';
+  color?: string;
+}) => {
+  const gradId = `petalGrad-hero-${variant}-${color.replace(/[^a-zA-Z0-9]/g, '')}`;
+
+  return (
+    <svg
+      viewBox="0 0 54 70"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      style={{ filter: 'drop-shadow(0 4px 12px rgba(80, 10, 20, 0.5))' }}
+    >
+      <defs>
+        <radialGradient
+          id={gradId}
+          cx="35%"
+          cy="28%"
+          r="75%"
+          fx="30%"
+          fy="22%"
+        >
+          <stop offset="0%" stopColor="#ff7a90" />
+          <stop offset="25%" stopColor="#f43f5e" />
+          <stop offset="55%" stopColor={color} />
+          <stop offset="85%" stopColor="#700d1e" />
+          <stop offset="100%" stopColor="#3d030c" />
+        </radialGradient>
+      </defs>
+
+      {variant === 'classic' && (
+        <>
+          <path
+            d="M27 3C40 9 51 24 50 42C49 57 38 67 27 67C16 67 5 57 4 42C3 24 14 9 27 3Z"
+            fill={`url(#${gradId})`}
+            fillOpacity="0.94"
+          />
+          <path
+            d="M27 12C32 22 36 34 33 48"
+            stroke="#ffccd5"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeOpacity="0.45"
+          />
+          <path
+            d="M27 25C22 32 17 40 18 50"
+            stroke="#ffccd5"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            strokeOpacity="0.3"
+          />
+        </>
+      )}
+
+      {variant === 'curved' && (
+        <>
+          <path
+            d="M24 4C38 6 52 20 48 44C45 59 34 66 22 66C12 66 4 54 6 38C8 20 14 6 24 4Z"
+            fill={`url(#${gradId})`}
+            fillOpacity="0.92"
+          />
+          <path
+            d="M25 10C33 22 36 38 30 52"
+            stroke="#ffdde5"
+            strokeWidth="1.1"
+            strokeLinecap="round"
+            strokeOpacity="0.4"
+          />
+        </>
+      )}
+
+      {variant === 'flutter' && (
+        <>
+          <path
+            d="M27 2C36 10 46 25 43 45C40 59 31 68 25 68C17 68 8 57 9 40C10 22 19 8 27 2Z"
+            fill={`url(#${gradId})`}
+            fillOpacity="0.95"
+          />
+          <path
+            d="M27 12C30 24 31 38 27 52"
+            stroke="#fff"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeOpacity="0.4"
+          />
+        </>
+      )}
+    </svg>
+  );
+};
+
+/* ──────────────── Floating Flower Petal Particle ──────────────── */
+interface PetalProps {
+  left: string;
+  delay: number;
+  duration: number;
+  size: number;
+  drift: number;
+  initialRotation: number;
+  rotateZTarget: number;
+  variant?: 'classic' | 'curved' | 'flutter';
+  color?: string;
+  blur?: number;
+}
+
+const FloatingPetal = ({
+  left,
+  delay,
+  duration,
+  size,
+  drift,
+  initialRotation,
+  rotateZTarget,
+  variant = 'classic',
+  color = '#de2b2b',
+  blur = 0,
+}: PetalProps) => (
+  <motion.div
+    className="absolute pointer-events-none will-change-transform z-[5]"
+    style={{
+      left,
+      top: '-8%',
+      width: size,
+      height: size * 1.3,
+      filter: blur > 0 ? `blur(${blur}px)` : undefined,
+    }}
+    animate={{
+      y: ['-5vh', '115vh'],
+      x: [0, drift, -drift * 0.8, drift * 0.6, -drift * 0.3, 0],
+      rotateZ: [initialRotation, initialRotation + rotateZTarget],
+      rotateY: [0, 180, 360],
+      rotateX: [0, 60, -30, 45, 0],
+      scale: [0.9, 1.1, 0.95, 1],
+      opacity: [0, 0.95, 0.95, 0.85, 0],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: [0.35, 0.1, 0.65, 0.95],
+    }}
+  >
+    <FlowerPetalSVG className="w-full h-full" variant={variant} color={color} />
+  </motion.div>
+);
+
+/* ──────────────── Golden Sparkles / Rose Dew Particle ──────────────── */
+const GoldenDewParticle = ({
+  delay,
+  size,
+  left,
+  duration,
+}: {
+  delay: number;
+  size: number;
+  left: string;
+  duration: number;
+}) => (
+  <motion.div
+    className="absolute pointer-events-none rounded-full z-[4]"
+    style={{
+      left,
+      top: '-5%',
+      width: size,
+      height: size,
+      background: 'radial-gradient(circle, #fff 0%, #ffd166 60%, transparent 100%)',
+      boxShadow: '0 0 8px #f5a623',
+    }}
+    animate={{
+      y: ['-5vh', '110vh'],
+      x: [0, 20, -15, 10, 0],
+      opacity: [0, 0.9, 1, 0.5, 0],
+      scale: [0.8, 1.3, 0.9, 1.1],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: 'linear',
+    }}
+  />
+);
+
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenMenus,
   onOpenReservation,
   onOpenGoingTo,
   onOpenOrder,
   onOpenGiftCard,
-  lang
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -130,8 +317,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <DecorativeSwoosh className="absolute bottom-[20%] right-[8%] w-[350px] text-[#f8efdc]/[0.06] pointer-events-none -rotate-6 scale-x-[-1]" />
         <WavyLine className="absolute bottom-[35%] left-0 w-full h-16 text-[#f8efdc]/[0.05] pointer-events-none" />
 
+        {/* ─── Floating Flower Petals Animation ─── */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[6]">
+          {/* Layer 1: Foreground vibrant flower petals */}
+          <FloatingPetal left="4%" delay={0} duration={10} size={30} drift={60} initialRotation={15} rotateZTarget={260} variant="classic" color="#de2b2b" />
+          <FloatingPetal left="15%" delay={3.5} duration={12} size={34} drift={-70} initialRotation={45} rotateZTarget={-290} variant="curved" color="#e63946" />
+          <FloatingPetal left="25%" delay={1} duration={9.5} size={28} drift={50} initialRotation={-20} rotateZTarget={220} variant="flutter" color="#ff4d6d" />
+          <FloatingPetal left="35%" delay={5} duration={11.5} size={32} drift={-55} initialRotation={75} rotateZTarget={310} variant="classic" color="#c1121f" />
+          <FloatingPetal left="45%" delay={2} duration={10.5} size={26} drift={45} initialRotation={-35} rotateZTarget={-240} variant="curved" color="#e63946" />
+          <FloatingPetal left="55%" delay={6.5} duration={13} size={35} drift={-65} initialRotation={110} rotateZTarget={300} variant="classic" color="#de2b2b" />
+          <FloatingPetal left="65%" delay={0.8} duration={11} size={30} drift={55} initialRotation={-15} rotateZTarget={270} variant="flutter" color="#ff4d6d" />
+          <FloatingPetal left="76%" delay={4.2} duration={12.5} size={36} drift={-50} initialRotation={85} rotateZTarget={-320} variant="curved" color="#9b111e" />
+          <FloatingPetal left="85%" delay={2.8} duration={10} size={28} drift={40} initialRotation={30} rotateZTarget={210} variant="classic" color="#e63946" />
+          <FloatingPetal left="94%" delay={5.8} duration={11.8} size={32} drift={-45} initialRotation={-40} rotateZTarget={-250} variant="flutter" color="#de2b2b" />
+
+          {/* Layer 2: Delicate smaller fluttering flower petals */}
+          <FloatingPetal left="10%" delay={7.2} duration={8.5} size={20} drift={35} initialRotation={50} rotateZTarget={180} variant="flutter" color="#ff758f" />
+          <FloatingPetal left="29%" delay={8.5} duration={9} size={22} drift={-40} initialRotation={-60} rotateZTarget={-200} variant="curved" color="#ff4d6d" />
+          <FloatingPetal left="60%" delay={3.8} duration={8.8} size={21} drift={45} initialRotation={35} rotateZTarget={220} variant="classic" color="#ff758f" />
+          <FloatingPetal left="80%" delay={9.2} duration={9.2} size={23} drift={-35} initialRotation={-25} rotateZTarget={-190} variant="flutter" color="#e63946" />
+
+          {/* Layer 3: Atmospheric soft-blurred background petals (cinematic depth of field) */}
+          <FloatingPetal left="12%" delay={4.5} duration={15} size={46} drift={-80} initialRotation={-40} rotateZTarget={190} variant="classic" color="#a01a28" blur={2.5} />
+          <FloatingPetal left="38%" delay={7.8} duration={16} size={52} drift={90} initialRotation={60} rotateZTarget={-230} variant="curved" color="#7c121e" blur={3.5} />
+          <FloatingPetal left="68%" delay={1.2} duration={17} size={48} drift={-75} initialRotation={-15} rotateZTarget={280} variant="classic" color="#9b111e" blur={2.5} />
+          <FloatingPetal left="88%" delay={9.5} duration={15.5} size={44} drift={70} initialRotation={50} rotateZTarget={-210} variant="flutter" color="#800f1c" blur={3} />
+
+          {/* Golden rose dew sparkles */}
+          <GoldenDewParticle delay={0} size={5} left="8%" duration={10} />
+          <GoldenDewParticle delay={2} size={3} left="26%" duration={12} />
+          <GoldenDewParticle delay={1} size={6} left="50%" duration={9.5} />
+          <GoldenDewParticle delay={3.5} size={4} left="70%" duration={13} />
+          <GoldenDewParticle delay={1.8} size={5} left="84%" duration={11} />
+          <GoldenDewParticle delay={4.5} size={4} left="93%" duration={12.5} />
+        </div>
+
         {/* ─── Main content grid ─── */}
-        <div className="relative z-10 flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-12 pt-10 sm:pt-16 lg:pt-20 pb-40 sm:pb-48 flex flex-col justify-center">
+        <div className="relative z-10 flex-1 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12 pt-4 sm:pt-8 lg:pt-10 pb-20 sm:pb-24 flex flex-col justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
             {/* ═══════ LEFT: Giant italic headline ═══════ */}
@@ -210,16 +432,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-6"
+              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-1 -mt-8 sm:-mt-12 lg:-mt-16 xl:-mt-20 z-20"
             >
-              {/* 9:16 Ratio Container */}
-              <div className="relative w-full max-w-[340px] sm:max-w-[390px] xl:max-w-[420px] aspect-[9/16] group">
+              {/* 9:16 Ratio Container - Width increased & scalable */}
+              <div className="relative w-full max-w-[390px] sm:max-w-[460px] xl:max-w-[500px] max-h-[76vh] sm:max-h-[82vh] aspect-[9/16] group">
                 
                 {/* Ambient Backlight / Glow */}
                 <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#de2b2b]/40 via-[#f8efdc]/20 to-[#7c2627]/40 rounded-[200px] blur-3xl opacity-80 pointer-events-none -z-10" />
 
                 {/* Arched Video Frame */}
-                <div className="relative w-full h-full overflow-hidden rounded-t-[170px] sm:rounded-t-[210px] rounded-b-[2rem] sm:rounded-b-[2.5rem] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/30 ring-1 ring-white/30 bg-black">
+                <div className="relative w-full h-full overflow-hidden rounded-t-[195px] sm:rounded-t-[250px] rounded-b-[2rem] sm:rounded-b-[2.5rem] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/30 ring-1 ring-white/30 bg-black">
                   <video
                     src="/images/hero/hero_video.mp4"
                     autoPlay
@@ -231,86 +453,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                   {/* Gradient vignettes */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
-
-                  {/* Top Live Badge & Audio Toggle */}
-                  <div className="absolute top-4 sm:top-5 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-                    <div className="pointer-events-auto inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold text-white border border-white/20 shadow-lg">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Live Kitchen · Bun Parotta</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setIsMuted(!isMuted)}
-                      aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
-                      className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-[#de2b2b] text-white/90 hover:text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
-                    >
-                      {isMuted ? (
-                        <VolumeX className="w-3.5 h-3.5" />
-                      ) : (
-                        <Volume2 className="w-3.5 h-3.5 text-emerald-300 animate-pulse" />
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Bottom Right Floating Action Pill Bar (Directions, RESERVE, ORDER ONLINE) */}
-                  <div className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-3.5 z-20 flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-white/60">
-                    <button
-                      type="button"
-                      onClick={onOpenGoingTo}
-                      className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-[#1a1a1a] hover:text-[#de2b2b] transition-colors cursor-pointer"
-                    >
-                      <Compass className="w-3 h-3 text-[#de2b2b]" />
-                      <span>Directions</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={onOpenReservation}
-                      className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-white bg-[#de2b2b] hover:bg-[#b81d1d] shadow-sm transition-all cursor-pointer"
-                    >
-                      <Calendar className="w-3 h-3" />
-                      <span>RESERVE</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={onOpenOrder}
-                      className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-bold text-white bg-[#1a1a1a] hover:bg-black shadow-sm transition-all cursor-pointer"
-                    >
-                      <ShoppingBag className="w-3 h-3" />
-                      <span className="whitespace-nowrap">ORDER ONLINE</span>
-                    </button>
-                  </div>
                 </div>
-
-                {/* Floating Biryani Handi Dish Badge (Bottom-Left Overlap as in screenshot) */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.7, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-7 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden shadow-2xl z-30 border-4 border-[#de2b2b] bg-black ring-4 ring-[#f8efdc]/30 group/dish cursor-pointer"
-                  onClick={onOpenMenus}
-                  title="View Authentic Dum Biryani Menu"
-                >
-                  <img
-                    src="/hero_biryani.jpg"
-                    alt="Authentic dum biryani in copper handi"
-                    className="w-full h-full object-cover group-hover/dish:scale-110 transition-transform duration-700"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                </motion.div>
-
-                {/* Decorative Blob */}
-                <motion.div
-                  initial={{ opacity: 0, rotate: -30 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  transition={{ duration: 1.2, delay: 0.6 }}
-                  className="absolute top-12 -right-6 sm:-right-8 z-0 pointer-events-none"
-                >
-                  <BlobShape2 className="w-20 h-20 sm:w-28 sm:h-28 text-[#7c2627]/60 drop-shadow-xl" />
-                </motion.div>
               </div>
             </motion.div>
 

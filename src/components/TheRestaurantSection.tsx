@@ -6,12 +6,10 @@ import { ArrowRight, MapPin, Phone, Star } from 'lucide-react';
 
 interface TheRestaurantSectionProps {
   onOpenReservation: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const TheRestaurantSection: React.FC<TheRestaurantSectionProps> = ({
   onOpenReservation,
-  lang
 }) => {
   const [activeTab, setActiveTab] = useState(ATMOSPHERES[0].id);
   const currentAtmosphere = ATMOSPHERES.find((a) => a.id === activeTab) || ATMOSPHERES[0];

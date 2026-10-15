@@ -24,7 +24,6 @@ interface RestaurantPageProps {
   onOpenMenus: () => void;
   onOpenPrivateRooms: () => void;
   onNavigate: (path: string) => void;
-  lang: 'en' | 'fr';
 }
 
 export const RestaurantPage: React.FC<RestaurantPageProps> = ({
@@ -32,7 +31,6 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
   onOpenMenus,
   onOpenPrivateRooms,
   onNavigate,
-  lang
 }) => {
   const [activeAmbiance, setActiveAmbiance] = useState<number>(0);
 

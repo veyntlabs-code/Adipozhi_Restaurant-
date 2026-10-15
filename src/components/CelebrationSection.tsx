@@ -32,13 +32,11 @@ const CELEBRATION_VIDEOS = [
 interface CelebrationSectionProps {
   onOpenPrivateRooms: () => void;
   onOpenReservation?: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
   onOpenPrivateRooms,
   onOpenReservation,
-  lang
 }) => {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
@@ -172,22 +170,12 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
             className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#f8efdc] leading-tight"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            {lang === 'en' ? (
-              <>
-                Celebrate Big in Our <span className="italic font-normal text-[#e5c98d]">Intimate</span> Spaces
-              </>
-            ) : (
-              <>
-                Célébrez grand dans nos <span className="italic font-normal text-[#e5c98d]">espaces</span> intimes
-              </>
-            )}
+            Celebrate Big in Our <span className="italic font-normal text-[#e5c98d]">Intimate</span> Spaces
           </h2>
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base lg:text-lg text-[#f8efdc]/85 font-light leading-relaxed max-w-2xl mx-auto">
-            {lang === 'en'
-              ? 'From joyful birthdays and milestone family reunions to lively group feasts, Adipozhi brings everyone together over steaming biryanis, hot charcoal grills, and heartfelt hospitality.'
-              : 'Des anniversaires inoubliables aux réunions de famille chaleureuses, Adipozhi réunit petits et grands dans un confort climatisé et une ambiance festive.'}
+            From joyful birthdays and milestone family reunions to lively group feasts, Adipozhi brings everyone together over steaming biryanis, hot charcoal grills, and heartfelt hospitality.
           </p>
 
           {/* Action Buttons */}
@@ -200,7 +188,7 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
               className="group inline-flex items-center gap-2 px-7 py-3.5 bg-[#f8efdc] text-[#112013] hover:bg-white font-bold text-xs uppercase tracking-widest rounded-full shadow-xl transition-all cursor-pointer"
             >
               <Calendar className="w-4 h-4 text-[#112013]" />
-              <span>{lang === 'en' ? 'Book a Celebration' : 'Planifier une Fête'}</span>
+              <span>Book a Celebration</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
           </div>
@@ -220,8 +208,8 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
           {/* Modern Glassmorphic Chassis */}
           <div className="relative p-2.5 sm:p-4 rounded-[2rem] sm:rounded-[2.8rem] bg-white/[0.08] backdrop-blur-2xl border-2 border-white/20 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.85)] ring-1 ring-white/10 group">
             
-            {/* Video Viewport */}
-            <div className="relative aspect-[16/9] rounded-[1.6rem] sm:rounded-[2.2rem] overflow-hidden bg-black shadow-2xl">
+            {/* Video Viewport: Large & bold aspect ratio on mobile */}
+            <div className="relative aspect-[4/3] sm:aspect-[16/9] rounded-[1.6rem] sm:rounded-[2.2rem] overflow-hidden bg-black shadow-2xl">
               {/* Celebration Video 1 */}
               <video
                 ref={video1Ref}
@@ -275,75 +263,6 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
                 >
                   <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-              </div>
-
-              {/* TOP BAR: Floating Live Status & Audio Controls */}
-              <div className="absolute top-3.5 sm:top-5 inset-x-3.5 sm:inset-x-5 z-30 flex items-center justify-between pointer-events-none">
-                {/* Live Pill with Reel Counter */}
-                <div className="pointer-events-auto inline-flex items-center gap-2 bg-black/60 backdrop-blur-xl border border-white/25 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold text-white shadow-xl">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-                  </span>
-                  <span className="tracking-wide">Adipozhi Live Celebrations</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-[#f8efdc] font-semibold">
-                    {activeVideoIndex + 1} / {CELEBRATION_VIDEOS.length}
-                  </span>
-                </div>
-
-                {/* Sound Button */}
-                <button
-                  type="button"
-                  onClick={toggleMute}
-                  aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
-                  className="pointer-events-auto group/sound flex items-center gap-2 bg-black/60 hover:bg-[#de2b2b] backdrop-blur-xl border border-white/25 px-3.5 py-1.5 rounded-full text-[#f8efdc] transition-all cursor-pointer shadow-xl hover:scale-105 active:scale-95"
-                >
-                  {isMuted ? (
-                    <>
-                      <VolumeX className="w-3.5 h-3.5 text-white/80" />
-                      <span className="text-[11px] font-bold hidden sm:inline text-white/90">Sound Muted</span>
-                    </>
-                  ) : (
-                    <>
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-300 animate-pulse" />
-                      <span className="text-[11px] font-bold hidden sm:inline text-white">Sound Playing</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* BOTTOM BAR: Status Bar & Slide Navigation */}
-              <div className="absolute bottom-3.5 sm:bottom-5 inset-x-3.5 sm:inset-x-5 z-30 flex items-center justify-between pointer-events-none gap-2">
-                <div className="pointer-events-auto flex items-center gap-2.5 bg-black/60 backdrop-blur-xl border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-medium text-white shadow-xl max-w-[70%] sm:max-w-none">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <span className="font-light text-[11px] sm:text-xs truncate">
-                    {currentVideo.title} · <span className="text-[#f8efdc]/80 font-normal">{currentVideo.subtitle}</span>
-                  </span>
-                </div>
-
-                {/* Slideshow Loop Indicators */}
-                <div className="pointer-events-auto flex items-center gap-2 bg-black/60 backdrop-blur-xl border border-white/20 px-3 py-1.5 rounded-full shadow-xl shrink-0">
-                  {CELEBRATION_VIDEOS.map((vid, idx) => {
-                    const isActive = idx === activeVideoIndex;
-                    return (
-                      <button
-                        key={vid.id}
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          playVideo(idx);
-                        }}
-                        className={`transition-all duration-300 rounded-full cursor-pointer ${
-                          isActive 
-                            ? 'w-6 sm:w-7 h-2 bg-[#f8efdc] shadow-sm' 
-                            : 'w-2 h-2 bg-white/40 hover:bg-white/70'
-                        }`}
-                        title={`Switch to ${vid.title}`}
-                        aria-label={`Switch to ${vid.title}`}
-                      />
-                    );
-                  })}
-                </div>
               </div>
 
             </div>

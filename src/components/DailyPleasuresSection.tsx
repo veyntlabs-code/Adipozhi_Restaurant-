@@ -6,12 +6,10 @@ import { ChevronLeft, ChevronRight, Play, Pause, Sparkles } from 'lucide-react';
 
 interface DailyPleasuresSectionProps {
   onSelectPleasure: (title: string) => void;
-  lang: 'en' | 'fr';
 }
 
 export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
   onSelectPleasure,
-  lang
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const totalItems = DAILY_PLEASURES.length;

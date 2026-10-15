@@ -7,14 +7,12 @@ interface TheRestaurantModalProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenReservation: () => void;
-  lang: 'en' | 'fr';
 }
 
 export const TheRestaurantModal: React.FC<TheRestaurantModalProps> = ({
   isOpen,
   onClose,
   onOpenReservation,
-  lang
 }) => {
   if (!isOpen) return null;
 
@@ -57,21 +55,21 @@ export const TheRestaurantModal: React.FC<TheRestaurantModalProps> = ({
           {/* Three Atmospheres Detail Grid */}
           <div className="space-y-4 pt-4 border-t border-[#1a1a1a]/10">
             <h3 className="text-xl font-bold text-[#1a1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-              {lang === 'en' ? 'Three Atmospheres, One Destination' : 'Trois Ambiances, Une Destination'}
+              Three Atmospheres, One Destination
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {ATMOSPHERES.map((atm) => (
                 <div key={atm.id} className="bg-white rounded-2xl border border-[#1a1a1a]/15 overflow-hidden shadow-sm flex flex-col">
                   <div className="h-44 overflow-hidden">
-                    <img src={atm.image} alt={atm.name} className="w-full h-full object-cover" />
+                     <img src={atm.image} alt={atm.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
                     <div>
                       <h4 className="text-lg font-bold text-[#de2b2b]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        {lang === 'en' ? atm.name : atm.nameFr}
+                        {atm.name}
                       </h4>
                       <p className="text-xs text-[#1a1a1a]/80 font-light mt-1">
-                        {lang === 'en' ? atm.description : atm.descriptionFr}
+                        {atm.description}
                       </p>
                     </div>
                   </div>
@@ -93,7 +91,7 @@ export const TheRestaurantModal: React.FC<TheRestaurantModalProps> = ({
             className="px-6 py-2.5 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] font-bold text-xs uppercase tracking-wider rounded-full shadow-md flex items-center gap-2"
           >
             <Calendar className="w-4 h-4" />
-            <span>{lang === 'en' ? 'Book a Table' : 'Réserver une table'}</span>
+            <span>Book a Table</span>
           </button>
         </div>
       </div>

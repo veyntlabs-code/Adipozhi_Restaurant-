@@ -14,7 +14,6 @@ import { useAppContext } from '@/components/AppShell';
 
 export function HomePage() {
   const { 
-    lang, 
     openMenus, 
     openReservation, 
     openGoingTo, 
@@ -32,30 +31,27 @@ export function HomePage() {
         onOpenGoingTo={openGoingTo}
         onOpenOrder={openOrder}
         onOpenGiftCard={openGiftCard}
-        lang={lang}
       />
       <MenuCalloutSection
         onOpenMenus={(categoryId?: string) => navigateTo(categoryId ? `/menus/regular?category=${categoryId}` : '/menus/regular')}
-        lang={lang}
       />
       <DailyPleasuresSection
         onSelectPleasure={openOrder}
-        lang={lang}
       />
-      <StatisticsSection lang={lang} />
+      <StatisticsSection
+        onOpenMenus={() => navigateTo('/menus/regular')}
+        onOpenGoingTo={openGoingTo}
+      />
       <CelebrationSection
         onOpenPrivateRooms={openPrivateRooms}
         onOpenReservation={openReservation}
-        lang={lang}
       />
 
       <TheRestaurantSection
         onOpenReservation={openReservation}
-        lang={lang}
       />
       <WaitingForSection
         onOpenReservation={openReservation}
-        lang={lang}
       />
       <DualActionsSection
         onOpenOrder={openOrder}
@@ -64,7 +60,6 @@ export function HomePage() {
           // Also scroll to top since we are navigating
           window.scrollTo(0, 0);
         }}
-        lang={lang}
       />
     </>
   );

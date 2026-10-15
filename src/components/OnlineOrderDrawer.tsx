@@ -18,7 +18,6 @@ import { RESTAURANT_INFO } from '../data/restaurantData';
 interface OnlineOrderDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  lang?: 'en' | 'fr';
 }
 
 export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
@@ -28,7 +27,6 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
   const [copiedNumber, setCopiedNumber] = useState(false);
 
   const swiggyUrl = 'https://www.swiggy.com/city/nagercoil/adipozhi-family-restaurant-colachel-monday-market-rest1346460';
-  const zomatoUrl = 'https://www.zomato.com/kanyakumari/adipozhi-family-restaurant';
   const kumariFoodieUrl = 'https://play.google.com/store/apps/details?id=com.kumarifoodie.onlinedelivery';
   const whatsappUrl = `https://wa.me/919585154254?text=${encodeURIComponent(
     'Hello Adipozhi Family Restaurant! I would like to place a food order for takeaway parcel / delivery.'
@@ -89,7 +87,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                     Order Online
                   </h2>
                   <p className="text-[11px] text-[#1a1a1a]/60 mt-0.5 font-medium">
-                    Delivery via Swiggy, Zomato &amp; Kumari Foodie · Direct Parcel
+                    Delivery via Swiggy &amp; Kumari Foodie · Direct Parcel
                   </p>
                 </div>
               </div>
@@ -162,50 +160,7 @@ export const OnlineOrderDrawer: React.FC<OnlineOrderDrawerProps> = ({
                 </div>
               </div>
 
-              {/* 2. ORDER ON ZOMATO */}
-              <div className="bg-gradient-to-br from-[#e23744] to-[#cb202d] text-white p-5 rounded-3xl shadow-lg relative overflow-hidden group">
-                <div className="absolute right-[-15px] top-[-15px] opacity-10 font-black text-8xl pointer-events-none select-none">
-                  Z
-                </div>
-
-                <div className="relative z-10 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {/* Zomato Logo Icon */}
-                      <div className="w-8 h-8 rounded-xl bg-white text-[#e23744] flex items-center justify-center font-black text-lg italic shadow-sm">
-                        Z
-                      </div>
-                      <div>
-                        <span className="text-xs font-black tracking-widest uppercase opacity-90 block">
-                          TOP RATED 4.7★
-                        </span>
-                        <h3 className="text-xl font-black tracking-tight leading-none italic">
-                          zomato
-                        </h3>
-                      </div>
-                    </div>
-                    <span className="px-2.5 py-1 rounded-full bg-black/25 text-[10px] font-bold tracking-wider uppercase border border-white/20">
-                      Offers &amp; Gold
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-white/90 font-light leading-relaxed">
-                    Browse customer reviews, enjoy Zomato app deals, and order fresh food with contactless express delivery.
-                  </p>
-
-                  <a
-                    href={zomatoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full py-3 px-4 bg-white hover:bg-neutral-100 text-[#e23744] font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
-                  >
-                    <span>Order on Zomato</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* 3. ORDER ON KUMARI FOODIE */}
+              {/* 2. ORDER ON KUMARI FOODIE */}
               <div className="bg-gradient-to-br from-[#0c38ea] to-[#0425a8] text-white p-5 rounded-3xl shadow-lg relative overflow-hidden group">
                 <div className="absolute right-[-15px] top-[-15px] opacity-10 font-black text-8xl pointer-events-none select-none tracking-tighter">
                   KF

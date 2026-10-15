@@ -10,7 +10,6 @@ interface FloatingNavLinksProps {
   onOpenGiftCard: () => void;
   onOpenGallery?: () => void;
   orderCount: number;
-  lang: 'en' | 'fr';
 }
 
 export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
@@ -20,7 +19,6 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
   onOpenGiftCard,
   onOpenGallery,
   orderCount,
-  lang
 }) => {
   const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(true);
@@ -58,7 +56,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
           className="px-3.5 py-2 rounded-full text-xs font-bold text-[#de2b2b] hover:bg-[#de2b2b]/10 transition-colors whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
         >
           <Play className="w-3.5 h-3.5 fill-[#de2b2b]" />
-          <span>{lang === 'en' ? '0:29 Tour & 23 Photos' : '0:29 டூர்'}</span>
+          <span>0:29 Tour & 23 Photos</span>
         </motion.button>
       )}
 
@@ -70,7 +68,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         className="px-3.5 py-2 rounded-full text-xs font-bold text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
       >
         <Compass className="w-3.5 h-3.5 text-[#de2b2b]" />
-        <span className="hidden sm:inline">{lang === 'en' ? 'Directions' : 'வழித்தடம்'}</span>
+        <span className="hidden sm:inline">Directions</span>
       </motion.button>
 
       <motion.button
@@ -81,7 +79,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         className="px-4 py-2 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
       >
         <Calendar className="w-3.5 h-3.5" />
-        <span>{lang === 'en' ? 'Reserve' : 'முன்பதிவு'}</span>
+        <span>Reserve</span>
       </motion.button>
 
       <motion.button
@@ -92,7 +90,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         className="relative px-4 py-2 bg-[#1a1a1a] text-[#f8efdc] hover:bg-black rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
       >
         <ShoppingBag className="w-3.5 h-3.5 text-[#f8efdc]" />
-        <span>{lang === 'en' ? 'Order online' : 'பார்சல் ஆர்டர்'}</span>
+        <span>Order online</span>
         {orderCount > 0 && (
           <motion.span
             initial={{ scale: 0 }}

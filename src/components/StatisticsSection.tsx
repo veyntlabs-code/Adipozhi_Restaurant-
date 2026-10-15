@@ -5,10 +5,41 @@ import { STATISTICS } from '../data/restaurantData';
 import { Star } from 'lucide-react';
 
 interface StatisticsSectionProps {
-  lang: 'en' | 'fr';
+  onOpenMenus?: () => void;
+  onOpenGoingTo?: () => void;
 }
 
-export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ lang }) => {
+export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
+  onOpenMenus,
+  onOpenGoingTo,
+}) => {
+  const googleReviewsUrl = 'https://www.google.com/maps/place/ADIPOZHI+FAMILY+RESTAURANT/@8.2004001,77.3013765,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f9f8178ae3dd:0xf4d52f55155a3a3b!8m2!3d8.2004001!4d77.3039514!16s%2Fg%2F11w2_3m_78';
+
+  const handleStatClick = (idx: number) => {
+    switch (idx) {
+      case 0: // 4.7 Google Rating
+      case 1: // 284 Google Reviews
+        window.open(googleReviewsUrl, '_blank', 'noopener,noreferrer');
+        break;
+      case 2: // 21 Menu Categories
+        if (onOpenMenus) {
+          onOpenMenus();
+        } else {
+          window.location.href = '/menus/regular';
+        }
+        break;
+      case 3: // 2 Mins from Bus Stand
+        if (onOpenGoingTo) {
+          onOpenGoingTo();
+        } else {
+          window.open(googleReviewsUrl, '_blank', 'noopener,noreferrer');
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <section className="bg-[#f8efdc] py-16 lg:py-20 border-b border-[#1a1a1a]/10 overflow-hidden relative">
       {/* Elegant Classy Background Pattern */}
@@ -42,6 +73,15 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ lang }) =>
                 className="flex justify-center"
               >
                 <motion.div
+                  onClick={() => handleStatClick(idx)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleStatClick(idx);
+                    }
+                  }}
                   animate={{ y: [-40, 40, -40] }}
                   transition={{
                     y: {
@@ -56,7 +96,15 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ lang }) =>
                     boxShadow: '0 20px 25px -5px rgba(222, 43, 43, 0.2)',
                     transition: { duration: 0.25 }
                   }}
+                  whileTap={{ scale: 0.95 }}
                   className="group relative p-6 bg-white shadow-sm transition-all duration-300 mx-auto w-44 h-44 sm:w-48 sm:h-48 cursor-pointer select-none flex flex-col items-center justify-center rounded-full"
+                  title={
+                    idx === 0 || idx === 1 
+                      ? 'Read Google Reviews on Google Maps'
+                      : idx === 2 
+                        ? 'Explore All 21 Menu Categories'
+                        : 'View Location & Directions on Map'
+                  }
                 >
                   {/* Static dotted border ring */}
                   <div className="absolute inset-2 rounded-full border-2 border-dotted border-[#de2b2b]/50 group-hover:border-[#de2b2b] transition-colors duration-300" />
@@ -69,8 +117,8 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ lang }) =>
                     >
                       {stat.value}
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-[#1a1a1a] uppercase tracking-wider text-center px-4 leading-tight">
-                      {lang === 'en' ? stat.label : stat.labelFr}
+                    <span className="text-xs sm:text-sm font-bold text-[#1a1a1a] uppercase tracking-wider text-center px-4 leading-tight group-hover:text-[#de2b2b] transition-colors">
+                      {stat.label}
                     </span>
                   </div>
                 </motion.div>

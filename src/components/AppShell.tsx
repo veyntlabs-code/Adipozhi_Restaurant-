@@ -22,8 +22,6 @@ import { GiftCardModal } from '@/components/GiftCardModal';
 import { MenuItem } from '@/data/restaurantData';
 
 interface AppContextType {
-  lang: 'en' | 'fr';
-  setLang: (lang: 'en' | 'fr') => void;
   navigateTo: (path: string) => void;
   openGoingTo: () => void;
   openMenus: () => void;
@@ -47,7 +45,6 @@ export const useAppContext = () => {
 export function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [lang, setLang] = useState<'en' | 'fr'>('en');
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -125,7 +122,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const totalCartCount = cart.reduce((acc, ci) => acc + ci.quantity, 0);
 
   const contextValue: AppContextType = {
-    lang, setLang, navigateTo,
+    navigateTo,
     openGoingTo: () => setIsGoingToOpen(true),
     openMenus: () => setIsMenusOpen(true),
     openRestaurant: () => setIsRestaurantOpen(true),
@@ -151,8 +148,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           onOpenGiftCard={() => setIsGiftCardOpen(true)}
           onNavigate={navigateTo}
           currentPath={pathname}
-          lang={lang}
-          setLang={setLang}
         />
         <main className="flex-1">{children}</main>
         <ScheduleFooter
@@ -162,7 +157,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           onOpenPrivateRooms={() => setIsPrivateRoomsOpen(true)}
           onOpenGoingTo={() => setIsGoingToOpen(true)}
           onNavigate={navigateTo}
-          lang={lang}
         />
         <FloatingNavLinks
           onOpenGoingTo={() => setIsGoingToOpen(true)}
@@ -170,16 +164,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           onOpenOrder={() => setIsOrderOpen(true)}
           onOpenGiftCard={() => setIsGiftCardOpen(true)}
           orderCount={totalCartCount}
-          lang={lang}
         />
-        <GoingToDrawer isOpen={isGoingToOpen} onClose={() => setIsGoingToOpen(false)} lang={lang} />
-        <MenusModal isOpen={isMenusOpen} onClose={() => setIsMenusOpen(false)} onAddToCart={handleAddToCart} lang={lang} />
-        <TheRestaurantModal isOpen={isRestaurantOpen} onClose={() => setIsRestaurantOpen(false)} onOpenReservation={() => setIsReservationOpen(true)} lang={lang} />
-        <EventsModal isOpen={isEventsOpen} onClose={() => setIsEventsOpen(false)} onOpenReservation={() => setIsReservationOpen(true)} lang={lang} />
-        <PrivateRoomsModal isOpen={isPrivateRoomsOpen} onClose={() => setIsPrivateRoomsOpen(false)} lang={lang} />
-        <ReservationModal isOpen={isReservationOpen} onClose={() => setIsReservationOpen(false)} lang={lang} />
-        <OnlineOrderDrawer isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)} lang={lang} />
-        <GiftCardModal isOpen={isGiftCardOpen} onClose={() => setIsGiftCardOpen(false)} lang={lang} />
+        <GoingToDrawer isOpen={isGoingToOpen} onClose={() => setIsGoingToOpen(false)} />
+        <MenusModal isOpen={isMenusOpen} onClose={() => setIsMenusOpen(false)} onAddToCart={handleAddToCart} />
+        <TheRestaurantModal isOpen={isRestaurantOpen} onClose={() => setIsRestaurantOpen(false)} onOpenReservation={() => setIsReservationOpen(true)} />
+        <EventsModal isOpen={isEventsOpen} onClose={() => setIsEventsOpen(false)} onOpenReservation={() => setIsReservationOpen(true)} />
+        <PrivateRoomsModal isOpen={isPrivateRoomsOpen} onClose={() => setIsPrivateRoomsOpen(false)} />
+        <ReservationModal isOpen={isReservationOpen} onClose={() => setIsReservationOpen(false)} />
+        <OnlineOrderDrawer isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)} />
+        <GiftCardModal isOpen={isGiftCardOpen} onClose={() => setIsGiftCardOpen(false)} />
       </div>
     </AppContext.Provider>
   );

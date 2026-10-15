@@ -19,13 +19,13 @@ import {
   Clock,
   X
 } from 'lucide-react';
+import { MenuFloralBackground } from '@/components/MenuFloralBackground';
 
 interface RegularMenuPageProps {
   onAddToCart: (item: MenuItem, quantity?: number, notes?: string) => void;
   onOpenOrder: () => void;
   onOpenReservation: () => void;
   onNavigate: (path: string) => void;
-  lang: 'en' | 'fr';
 }
 
 export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
@@ -33,7 +33,6 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
   onOpenOrder,
   onOpenReservation,
   onNavigate,
-  lang
 }) => {
   const [serviceType, setServiceType] = useState<'on_site' | 'takeout' | 'delivery'>('on_site');
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['all']);
@@ -101,7 +100,10 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#f8efdc] text-[#1a1a1a] selection:bg-[#de2b2b] selection:text-[#f8efdc]">
+    <div className="min-h-screen text-[#1a1a1a] selection:bg-[#de2b2b] selection:text-[#f8efdc] relative bg-transparent">
+      {/* Floating flower petal background animation */}
+      <MenuFloralBackground />
+
       {/* 1. Header Banner / Hero Title */}
       <section className="bg-[#de2b2b] text-[#f8efdc] pt-10 pb-12 sm:pt-14 sm:pb-16 relative overflow-hidden">
         {/* Background Image with Overlay */}
@@ -163,93 +165,97 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
         </p>
       </div>
 
-      {/* 3. Filter Bar & Search */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-4 border-b border-[#1a1a1a]/10">
-          {/* Dietary Filter Switcher */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-            {[
-              { id: 'all', label: 'All Items' },
-              { id: 'veg', label: 'Pure Veg' },
-              { id: 'non-veg', label: 'Non-Veg' }
-            ].map((diet) => (
-              <button
-                key={diet.id}
-                onClick={() => setSelectedDiet(diet.id as any)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                  selectedDiet === diet.id
-                    ? 'bg-[#de2b2b] text-[#f8efdc] shadow-sm'
-                    : 'bg-white/80 text-[#1a1a1a]/80 hover:bg-white border border-[#1a1a1a]/10'
-                }`}
-              >
-                {diet.label}
-              </button>
-            ))}
+      {/* 3. Filter Bar & Search (Normal flow, does not stick or follow scroll) */}
+      <div className="relative z-10 backdrop-blur-md bg-[#1a0407]/80 border-y border-[#f8efdc]/20 shadow-xl transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 space-y-3">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+            {/* Dietary Filter Switcher */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+              {[
+                { id: 'all', label: 'All Items' },
+                { id: 'veg', label: 'Pure Veg' },
+                { id: 'non-veg', label: 'Non-Veg' }
+              ].map((diet) => (
+                <button
+                  key={diet.id}
+                  onClick={() => setSelectedDiet(diet.id as any)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer shadow-sm ${
+                    selectedDiet === diet.id
+                      ? 'bg-[#de2b2b] text-[#f8efdc] ring-2 ring-[#ffccd5]/40'
+                      : 'bg-white/15 text-[#f8efdc] hover:bg-white/25 border border-white/20 backdrop-blur-sm'
+                  }`}
+                >
+                  {diet.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Input */}
+            <div className="relative min-w-[260px] sm:min-w-[340px]">
+              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/60" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search 21 categories (Biryani, Parotta, Al-Faham...)"
+                className="w-full pl-10 pr-8 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 text-xs text-[#f8efdc] placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#de2b2b] focus:bg-white/30"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-white/70 hover:text-white"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* Search Input */}
-          <div className="relative min-w-[260px] sm:min-w-[320px]">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1a1a1a]/40" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search 21 categories (Biryani, Parotta, Al-Faham...)"
-              className="w-full pl-10 pr-8 py-2 bg-white rounded-full border border-[#1a1a1a]/15 text-xs text-[#1a1a1a] placeholder-[#1a1a1a]/40 focus:outline-none focus:ring-2 focus:ring-[#de2b2b]/30 focus:border-[#de2b2b]"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-[#1a1a1a]/50 hover:text-[#1a1a1a]"
-              >
-                ✕
-              </button>
-            )}
+          {/* 21 Categories Bar (Desktop) */}
+          <div className="hidden md:flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
+            {MENU_CATEGORIES.map((cat) => {
+              const count = cat.id === 'all'
+                ? MENU_ITEMS.length
+                : MENU_ITEMS.filter(i => i.category === cat.id).length;
+
+              const isSelected = selectedCategories.includes(cat.id);
+
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => toggleCategory(cat.id)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 shadow-sm ${
+                    isSelected
+                      ? 'bg-[#de2b2b] text-[#f8efdc] ring-2 ring-[#ffccd5]/50 font-bold'
+                      : 'bg-black/40 text-[#f8efdc]/90 hover:bg-black/60 hover:text-white border border-white/15 backdrop-blur-sm'
+                  }`}
+                >
+                  <span>{cat.name}</span>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                    isSelected ? 'bg-white/25 text-[#f8efdc]' : 'bg-white/10 text-[#f8efdc]/70'
+                  }`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        </div>
 
-        {/* 21 Categories Bar (Desktop) */}
-        <div className="hidden md:flex flex-wrap items-center gap-2 py-3.5 border-b border-[#1a1a1a]/10">
-          {MENU_CATEGORIES.map((cat) => {
-            const count = cat.id === 'all'
-              ? MENU_ITEMS.length
-              : MENU_ITEMS.filter(i => i.category === cat.id).length;
-
-            return (
-              <button
-                key={cat.id}
-                onClick={() => toggleCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
-                  selectedCategories.includes(cat.id)
-                    ? 'bg-[#1a1a1a] text-[#f8efdc] font-bold shadow-sm'
-                    : 'bg-white/70 text-[#1a1a1a]/80 hover:bg-white border border-[#1a1a1a]/10'
-                }`}
-              >
-                <span>{cat.name}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  selectedCategories.includes(cat.id) ? 'bg-white/20 text-[#f8efdc]' : 'bg-black/5 text-[#1a1a1a]/50'
-                }`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Mobile Filter Button */}
-        <div className="flex md:hidden py-3 items-center justify-between border-b border-[#1a1a1a]/10">
-          <span className="text-sm font-bold text-[#1a1a1a]">
-            {selectedCategories.includes('all') 
-              ? 'All Categories' 
-              : `${selectedCategories.length} Categories Selected`}
-          </span>
-          <button 
-            onClick={() => setShowMobileCategoryFilter(true)}
-            className="flex items-center gap-1.5 px-4 py-2 bg-white rounded-full border border-[#1a1a1a]/20 text-xs font-bold text-[#1a1a1a] shadow-sm cursor-pointer"
-          >
-            <Filter className="w-3.5 h-3.5" />
-            Filter
-          </button>
+          {/* Mobile Filter Button */}
+          <div className="flex md:hidden items-center justify-between pt-1">
+            <span className="text-xs font-bold text-[#f8efdc]">
+              {selectedCategories.includes('all') 
+                ? 'All 21 Categories' 
+                : `${selectedCategories.length} Categories Selected`}
+            </span>
+            <button 
+              onClick={() => setShowMobileCategoryFilter(true)}
+              className="flex items-center gap-1.5 px-4 py-1.5 bg-[#de2b2b] text-[#f8efdc] rounded-full border border-white/20 text-xs font-bold shadow-md cursor-pointer"
+            >
+              <Filter className="w-3.5 h-3.5" />
+              Select Category
+            </button>
+          </div>
         </div>
       </div>
 
@@ -283,10 +289,15 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
 
               return (
                 <div key={cat.id} className="scroll-mt-24" id={`category-${cat.id}`}>
-                  <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#1a1a1a] mb-4 border-b border-[#1a1a1a]/10 pb-2 flex items-center justify-between">
-                    <span>{cat.name}</span>
-                    <span className="text-xs sm:text-sm font-medium text-[#1a1a1a]/50 bg-white px-2.5 py-0.5 rounded-full border border-[#1a1a1a]/10">
-                      {categoryDishes.length}
+                  <h2 className="text-2xl sm:text-3xl font-extrabold font-serif text-[#f8efdc] mb-5 border-b border-[#f8efdc]/20 pb-3 flex items-center justify-between drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                    <span className="flex items-center gap-3">
+                      <span className="w-2.5 h-6 rounded-full bg-[#de2b2b] inline-block shadow-[0_0_12px_#de2b2b]" />
+                      <span className="tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#fff7e6] via-[#f8efdc] to-[#f4d19b]">
+                        {cat.name}
+                      </span>
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-[#f8efdc] bg-black/50 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/20 shadow-md">
+                      {categoryDishes.length} items
                     </span>
                   </h2>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 auto-rows-fr">

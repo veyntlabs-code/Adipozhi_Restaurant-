@@ -11,8 +11,7 @@ interface ScheduleFooterProps {
   onOpenPrivateRooms: () => void;
   onOpenGoingTo: () => void;
   onNavigate?: (path: string) => void;
-  lang: 'en' | 'fr';
-}
+  }
 
 export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
   onOpenMenus,
@@ -20,8 +19,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
   onOpenEvents,
   onOpenPrivateRooms,
   onOpenGoingTo,
-  onNavigate,
-  lang
+  onNavigate
 }) => {
   const [selectedDayIndex, setSelectedDayIndex] = useState(5); // default Saturday
   const currentDay = SCHEDULE_DATA[selectedDayIndex];
@@ -43,14 +41,14 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
             <div className="flex items-center justify-between border-b border-[#1a1a1a]/10 pb-4">
               <div className="flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-[#de2b2b]">
                 <Clock className="w-4 h-4" />
-                <span>{lang === 'en' ? 'Schedule & Hours' : 'Horaire d’Ouverture'}</span>
+                <span>{'Schedule & Hours'}</span>
               </div>
               <motion.button
                 whileHover={{ x: 3 }}
                 onClick={onOpenGoingTo}
                 className="text-xs font-bold text-[#de2b2b] flex items-center gap-1 cursor-pointer"
               >
-                <span>{lang === 'en' ? 'Going to Adipozhi' : 'Venir chez Adipozhi'}</span>
+                <span>{'Going to Adipozhi'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </motion.button>
             </div>
@@ -77,7 +75,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                       />
                     )}
                     <span className="relative z-10">
-                      {lang === 'en' ? d.day.slice(0, 3) : d.dayFr.slice(0, 3)}
+                      {d.day.slice(0, 3)}
                     </span>
                   </button>
                 );
@@ -97,16 +95,16 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                 {/* General Service Timings */}
                 <div className="space-y-1">
                   <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Dining room' : 'Salle à manger'}</span>
+                    <span className="text-[#1a1a1a]/70">{'Dining room'}</span>
                     <span className="font-semibold text-[#1a1a1a]">{currentDay.dining}</span>
                   </div>
 
                   <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Takeaway' : 'Pour emporter'}</span>
+                    <span className="text-[#1a1a1a]/70">{'Takeaway'}</span>
                     <span className="font-semibold text-[#1a1a1a]">{currentDay.takeaway}</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-[#1a1a1a]/5">
-                    <span className="text-[#1a1a1a]/70">{lang === 'en' ? 'Delivery' : 'Livraison'}</span>
+                    <span className="text-[#1a1a1a]/70">{'Delivery'}</span>
                     <span className="font-semibold text-[#1a1a1a]">{currentDay.delivery}</span>
                   </div>
                 </div>
@@ -116,16 +114,16 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                   <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1a1a]/10">
                     <div className="flex items-center gap-1.5 text-[11px] uppercase font-bold tracking-wider text-[#de2b2b]">
                       <Utensils className="w-3.5 h-3.5" />
-                      <span>{lang === 'en' ? 'Specialty Timings' : 'Horaires des Spécialités'}</span>
+                      <span>{'Specialty Timings'}</span>
                     </div>
                     {currentDay.muttonBiryani ? (
                       <span className="text-[10px] font-bold text-amber-800 bg-amber-100/90 border border-amber-200/80 px-2 py-0.5 rounded-full flex items-center gap-1">
                         <span>🔥</span>
-                        <span>{lang === 'en' ? 'Weekend Special Active' : 'Spécial Week-end'}</span>
+                        <span>{'Weekend Special Active'}</span>
                       </span>
                     ) : (
                       <span className="text-[10px] text-[#1a1a1a]/50 font-medium">
-                        {lang === 'en' ? 'Daily Fresh Service' : 'Service du Jour'}
+                        {'Daily Fresh Service'}
                       </span>
                     )}
                   </div>
@@ -135,10 +133,10 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     <div className="flex items-center justify-between py-1.5 border-b border-[#1a1a1a]/5">
                       <div className="pr-3">
                         <span className="font-semibold text-[#1a1a1a] block">
-                          {lang === 'en' ? 'Chicken Biryani & Beef Biryani' : 'Biryani Poulet & Boeuf'}
+                          {'Chicken Biryani & Beef Biryani'}
                         </span>
                         <span className="text-[11px] text-[#1a1a1a]/50">
-                          {lang === 'en' ? 'Lunch Service · Fresh Dum Biryani' : 'Service du Midi'}
+                          {'Lunch Service · Fresh Dum Biryani'}
                         </span>
                       </div>
                       <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
@@ -156,14 +154,14 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                         <div className="pr-3">
                           <div className="flex items-center gap-1.5 flex-wrap">
                             <span className="font-bold text-[#1a1a1a]">
-                              {lang === 'en' ? 'Mutton Biryani' : 'Biryani au Mouton'}
+                              {'Mutton Biryani'}
                             </span>
                             <span className="text-[9px] uppercase font-extrabold text-amber-900 bg-amber-200/90 px-1.5 py-0.5 rounded shadow-2xs">
-                              {lang === 'en' ? 'Sat & Sun Only' : 'Sam & Dim Seul'}
+                              {'Sat & Sun Only'}
                             </span>
                           </div>
                           <span className="text-[11px] text-amber-900/70">
-                            {lang === 'en' ? 'Signature Weekend Dum Biryani' : 'Spécial Week-end'}
+                            {'Signature Weekend Dum Biryani'}
                           </span>
                         </div>
                         <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
@@ -176,10 +174,10 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     <div className="flex items-center justify-between py-1.5">
                       <div className="pr-3">
                         <span className="font-semibold text-[#1a1a1a] block">
-                          {lang === 'en' ? 'Dosa & Parotta Varieties' : 'Variétés de Dosa & Parotta'}
+                          {'Dosa & Parotta Varieties'}
                         </span>
                         <span className="text-[11px] text-[#1a1a1a]/50">
-                          {lang === 'en' ? 'Evening & Dinner · Bun Parotta, Kothu & Dosas' : 'Soir & Dîner'}
+                          {'Evening & Dinner · Bun Parotta, Kothu & Dosas'}
                         </span>
                       </div>
                       <span className="font-bold text-[#de2b2b] bg-[#de2b2b]/10 px-2.5 py-1 rounded-md text-xs whitespace-nowrap">
@@ -205,9 +203,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     Family Restaurant · Monday Market
                   </p>
                   <p className="text-xs text-[#1a1a1a]/70 leading-relaxed">
-                    {lang === 'en'
-                      ? 'Comfortable restaurant serving tasty biryani, hot Bun Parottas, Nool parotta, Arabian Grills, and diverse Southern delicacies. Rated 4.7 on Google (284 reviews).'
-                      : 'Restaurant familial servant de délicieux biryanis, parottas et grillades arabes à Monday Market.'}
+                    'Comfortable restaurant serving tasty biryani, hot Bun Parottas, Nool parotta, Arabian Grills, and diverse Southern delicacies. Rated 4.7 on Google (284 reviews).'
                   </p>
                 </div>
 
@@ -215,7 +211,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-1">
                   <div className="space-y-1">
                     <span className="text-[10px] uppercase font-bold tracking-widest text-[#de2b2b] block">
-                      {lang === 'en' ? 'Address' : 'Adresse'}
+                      {'Address'}
                     </span>
                     <a
                       href={RESTAURANT_INFO.googleMapsUrl}
@@ -228,13 +224,13 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                       Monday Market, Tamil Nadu 629802
                     </a>
                     <p className="text-[11px] text-[#de2b2b] font-medium">
-                      {lang === 'en' ? 'Ample parking for cars & two-wheelers' : 'Stationnement disponible'}
+                      {'Ample parking for cars & two-wheelers'}
                     </p>
                   </div>
 
                   <div className="space-y-1">
                     <span className="text-[10px] uppercase font-bold tracking-widest text-[#de2b2b] block">
-                      {lang === 'en' ? 'Orders & Bookings' : 'Commandes'}
+                      {'Orders & Bookings'}
                     </span>
                     <p className="text-[#1a1a1a] font-medium">
                       <a href="tel:09585154254" className="hover:text-[#de2b2b] font-bold text-sm transition-colors">095851 54254</a>
@@ -256,7 +252,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#de2b2b] hover:bg-[#b81d1d] text-white text-xs font-bold rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
                   >
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>{lang === 'en' ? 'View Location & Map' : 'Voir l’emplacement & Carte'}</span>
+                    <span>{'View Location & Map'}</span>
                   </button>
                   <a
                     href={RESTAURANT_INFO.googleMapsUrl}
@@ -276,7 +272,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                   whileHover={{ y: -4, scale: 1.01 }}
                   onClick={onOpenGoingTo}
                   className="group relative rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-[3px] border-white bg-[#1a1a1a] aspect-[3/4] w-full max-w-[340px] sm:max-w-[360px] cursor-pointer"
-                  title={lang === 'en' ? 'Click for location & directions' : 'Cliquer pour l’itinéraire'}
+                  title={'Click for location & directions'}
                 >
                   <img
                     src="/storefront.jpg"
@@ -289,7 +285,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                   <div className="absolute top-3.5 right-3.5 pointer-events-none">
                     <span className="px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md text-[11px] font-semibold text-[#f8efdc] border border-white/20 shadow-md flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      {lang === 'en' ? 'Storefront' : 'Restaurant'}
+                      {'Storefront'}
                     </span>
                   </div>
 
