@@ -426,16 +426,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* ═══════ RIGHT: 9:16 Vertical Arched Video Showcase ═══════ */}
+            {/* ═══════ RIGHT: Vertical Arched Video Showcase (Increased Length) ═══════ */}
             <motion.div
               data-parallax-layer="2"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-1 -mt-8 sm:-mt-12 lg:-mt-16 xl:-mt-20 z-20"
+              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-1 -mt-8 sm:-mt-12 lg:-mt-16 xl:-mt-22 z-20"
             >
-              {/* 9:16 Ratio Container - Width increased & scalable */}
-              <div className="relative w-full max-w-[390px] sm:max-w-[460px] xl:max-w-[500px] max-h-[76vh] sm:max-h-[82vh] aspect-[9/16] group">
+              {/* Scalable Container with Increased Length / Height */}
+              <div className="relative w-full max-w-[390px] sm:max-w-[460px] xl:max-w-[500px] h-[540px] sm:h-[640px] lg:h-[680px] xl:h-[720px] max-h-[88vh] group">
                 
                 {/* Ambient Backlight / Glow */}
                 <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#de2b2b]/40 via-[#f8efdc]/20 to-[#7c2627]/40 rounded-[200px] blur-3xl opacity-80 pointer-events-none -z-10" />
