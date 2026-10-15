@@ -385,7 +385,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Subheading */}
               <div className="space-y-1.5">
                 <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-[#f8efdc]/90">
-                  Adipozhi Family Restaurant Since 2020
+                  Adipozhi Family Restaurant Since 2026
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-[#f8efdc]/80 font-light leading-relaxed max-w-xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
                   In the heart of Monday Market, blending warmth, grandeur and togetherness in a vibrant and welcoming ambiance.
@@ -436,7 +436,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               {/* Scalable Container with Increased Length / Height */}
               <div className="relative w-full max-w-[390px] sm:max-w-[460px] xl:max-w-[500px] h-[540px] sm:h-[640px] lg:h-[680px] xl:h-[720px] max-h-[88vh] group">
-                
+
                 {/* Ambient Backlight / Glow */}
                 <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#de2b2b]/40 via-[#f8efdc]/20 to-[#7c2627]/40 rounded-[200px] blur-3xl opacity-80 pointer-events-none -z-10" />
 
