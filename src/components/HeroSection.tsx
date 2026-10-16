@@ -444,6 +444,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="relative w-full h-full overflow-hidden rounded-t-[195px] sm:rounded-t-[245px] rounded-b-[2.2rem] sm:rounded-b-[2.8rem] shadow-[0_30px_90px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/35 ring-1 ring-white/30 bg-black">
                   <video
                     src="/images/hero/hero_video.mp4"
+                    poster="/images/hero/hero_video_poster.jpg"
+                    preload="auto"
                     autoPlay
                     loop
                     muted={isMuted}
