@@ -304,8 +304,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       className="relative overflow-hidden select-none bg-cover bg-center"
       style={{ backgroundImage: "url('/images/roses/logo-wall.jpg')" }}
     >
-      {/* ─── Full-bleed hero container ─── */}
-      <div className="relative min-h-[92vh] sm:min-h-screen flex flex-col">
+      {/* ─── Full-bleed hero container with expanded height ─── */}
+      <div className="relative min-h-[96vh] sm:min-h-[100vh] lg:min-h-[105vh] flex flex-col justify-between">
 
         {/* ─── Organic background blobs ─── */}
         <BlobShape1 className="absolute -top-32 -left-32 w-[500px] h-[500px] text-[#c42525] opacity-60 pointer-events-none" />
@@ -352,8 +352,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <GoldenDewParticle delay={4.5} size={4} left="93%" duration={12.5} />
         </div>
 
-        {/* ─── Main content grid ─── */}
-        <div className="relative z-10 flex-1 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 lg:pt-12 pb-24 sm:pb-28 flex flex-col justify-center">
+        {/* ─── Main content grid (Increased breathing room top & bottom) ─── */}
+        <div className="relative z-10 flex-1 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12 pt-10 sm:pt-14 lg:pt-16 pb-28 sm:pb-36 flex flex-col justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
             {/* ═══════ LEFT: Giant italic headline ═══════ */}

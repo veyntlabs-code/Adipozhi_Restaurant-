@@ -10,7 +10,7 @@ export const AdipozhiPageLoader: React.FC = () => {
   const taglineSequence = [
     'அடிப்பொழி பேமிலி ரெஸ்டாரண்ட்',
     'Aromatic Dum Biryani & Charcoal Al-Faham',
-    'Monday Market · Est. 2024',
+    'Monday Market · Est. 2026',
   ];
 
   useEffect(() => {
