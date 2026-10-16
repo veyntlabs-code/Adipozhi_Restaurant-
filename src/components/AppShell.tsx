@@ -20,6 +20,7 @@ import { OnlineOrderDrawer } from '@/components/OnlineOrderDrawer';
 export interface CartItem { item: MenuItem; quantity: number; specialNotes?: string; }
 import { GiftCardModal } from '@/components/GiftCardModal';
 import { MenuItem } from '@/data/restaurantData';
+import { AdipozhiPageLoader } from '@/components/AdipozhiPageLoader';
 
 interface AppContextType {
   navigateTo: (path: string) => void;
@@ -137,6 +138,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <AppContext.Provider value={contextValue}>
       <div className="min-h-screen bg-[#f8efdc] text-[#1a1a1a] flex flex-col font-sans selection:bg-[#de2b2b] selection:text-[#f8efdc]">
+        <AdipozhiPageLoader />
 
         <Header
           onOpenMenus={() => navigateTo('/menus/regular')}
