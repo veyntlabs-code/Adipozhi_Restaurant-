@@ -426,22 +426,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* ═══════ RIGHT: Vertical Arched Video Showcase (Balanced & Fully Visible) ═══════ */}
+            {/* ═══════ RIGHT: Vertical Arched Video Showcase (Elevated & Taller) ═══════ */}
             <motion.div
               data-parallax-layer="2"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-2 mt-4 sm:mt-6 lg:mt-8 z-20"
+              className="lg:col-span-5 relative flex items-center justify-center lg:justify-end py-1 -mt-4 sm:-mt-6 lg:-mt-8 z-20"
             >
-              {/* Scalable Container with Balanced Height to avoid hitting header */}
-              <div className="relative w-full max-w-[360px] sm:max-w-[420px] xl:max-w-[460px] h-[480px] sm:h-[560px] lg:h-[600px] xl:h-[640px] max-h-[76vh] group">
+              {/* Scalable Container with Substantially Increased Height */}
+              <div className="relative w-full max-w-[390px] sm:max-w-[450px] xl:max-w-[490px] h-[600px] sm:h-[700px] lg:h-[760px] xl:h-[820px] max-h-[88vh] group">
 
                 {/* Ambient Backlight / Glow */}
                 <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#de2b2b]/40 via-[#f8efdc]/20 to-[#7c2627]/40 rounded-[200px] blur-3xl opacity-80 pointer-events-none -z-10" />
 
                 {/* Arched Video Frame */}
-                <div className="relative w-full h-full overflow-hidden rounded-t-[180px] sm:rounded-t-[230px] rounded-b-[2rem] sm:rounded-b-[2.5rem] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/30 ring-1 ring-white/30 bg-black">
+                <div className="relative w-full h-full overflow-hidden rounded-t-[195px] sm:rounded-t-[245px] rounded-b-[2.2rem] sm:rounded-b-[2.8rem] shadow-[0_30px_90px_-15px_rgba(0,0,0,0.85)] border-4 sm:border-[6px] border-[#f8efdc]/35 ring-1 ring-white/30 bg-black">
                   <video
                     src="/images/hero/hero_video.mp4"
                     autoPlay
