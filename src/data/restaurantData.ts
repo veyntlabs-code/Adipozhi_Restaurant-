@@ -233,11 +233,11 @@ export const MENU_CATEGORIES = [
   { id: 'chicken-starters', name: '4. Non-Veg Starters — Chicken' },
   { id: 'mutton-starters', name: '5. Non-Veg Starters — Mutton' },
   { id: 'beef-starters', name: '6. Non-Veg Starters — Beef' },
-  { id: 'seafood-starters', name: '7. Non-Veg Starters — Seafoods' },
+  { id: 'seafood-starters', name: '7. Non-Veg Starters — Seafood' },
   { id: 'arabian-starters', name: '8. Arabian Starters' },
-  { id: 'arabian-spicy', name: "9. Arabian Spicy’s" },
+  { id: 'arabian-spicy', name: '9. Arabian Spicy Specials' },
   { id: 'pulaos', name: '10. Pulaos' },
-  { id: 'biriyanis', name: '11. Biriyani’s' },
+  { id: 'biriyanis', name: '11. Biriyanis' },
   { id: 'family-pack', name: '12. Family Pack — Only Parcel' },
   { id: 'chettinadu', name: '13. Chettinadu Masalas' },
   { id: 'indian-gravy', name: '14. Indian Gravy & Masala' },
@@ -435,8 +435,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true
   },
   {
-    id: 'veg-gobi-manjurian-dry',
-    name: 'Gobi Manjurian Dry',
+    id: 'veg-gobi-manchurian-dry',
+    name: 'Gobi Manchurian Dry',
     category: 'veg-starters',
     price: 160,
     description: 'Crispy cauliflower tossed in Indo-Chinese dark soy, garlic, spring onions, and green chillies.',
@@ -552,8 +552,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'chk-manjurian-dry',
-    name: 'Chicken Manjurian Dry',
+    id: 'chk-manchurian-dry',
+    name: 'Chicken Manchurian Dry',
     category: 'chicken-starters',
     price: 230,
     description: 'Crispy fried chicken cubes tossed in ginger-garlic sauce, dark soy, and spring onions.',
@@ -1002,9 +1002,9 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
 
-  // 11. BIRIYANI’S
+  // 11. BIRIYANIS
   {
-    id: 'briyani-egg',
+    id: 'biriyani-egg',
     name: 'Egg Biriyani',
     category: 'biriyanis',
     price: 160,
@@ -1014,8 +1014,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-chicken-dum',
-    name: 'Chicken Dum Briyani',
+    id: 'biriyani-chicken-dum',
+    name: 'Chicken Dum Biriyani',
     category: 'biriyanis',
     price: 200,
     description: 'Our crowned signature! Fragrant seeraga samba & basmati dum biryani with succulent chicken, egg, brinjal salna, and onion raita.',
@@ -1024,8 +1024,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-naatukozhi',
-    name: 'Naatukozhi Briyani',
+    id: 'biriyani-naatukozhi',
+    name: 'Naatukozhi Biriyani',
     category: 'biriyanis',
     price: 250,
     description: 'Authentic country chicken dum biryani cooked with traditional spices and country ghee.',
@@ -1034,8 +1034,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-kaadai',
-    name: 'Kaadai Briyani',
+    id: 'biriyani-kaadai',
+    name: 'Kaadai Biriyani',
     category: 'biriyanis',
     price: 250,
     description: 'Whole quail dum biryani bursting with rich southern flavors and fragrant rice.',
@@ -1044,8 +1044,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-chicken-65',
-    name: 'Chicken 65 Briyani',
+    id: 'biriyani-chicken-65',
+    name: 'Chicken 65 Biriyani',
     category: 'biriyanis',
     price: 230,
     description: 'Dum biryani rice topped with freshly fried spicy Chicken 65 pieces and hard-boiled egg.',
@@ -1054,7 +1054,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-beef',
+    id: 'biriyani-beef',
     name: 'Beef Biriyani',
     category: 'biriyanis',
     price: 240,
@@ -1064,8 +1064,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-mutton-dum',
-    name: 'Mutton Dum Briyani',
+    id: 'biriyani-mutton-dum',
+    name: 'Mutton Dum Biriyani',
     category: 'biriyanis',
     price: 290,
     description: 'Tender mutton cooked on dum with aged basmati, saffron, mint, and pure ghee.',
@@ -1074,8 +1074,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'briyani-plain',
-    name: 'Plain Briyani (Kuska)',
+    id: 'biriyani-plain',
+    name: 'Plain Biriyani (Kuska)',
     category: 'biriyanis',
     price: 130,
     description: 'Rich, flavorful dum biryani rice served with raita and salna.',
@@ -1087,7 +1087,7 @@ export const MENU_ITEMS: MenuItem[] = [
   // 12. FAMILY PACK — ONLY PARCEL
   {
     id: 'fam-half-bucket-chicken',
-    name: 'Half Bucket Chicken Briyani',
+    name: 'Half Bucket Chicken Biriyani',
     category: 'family-pack',
     price: 1100,
     isParcelOnly: true,
@@ -1099,7 +1099,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'fam-full-bucket-chicken',
-    name: 'Full Bucket Chicken Briyani',
+    name: 'Full Bucket Chicken Biriyani',
     category: 'family-pack',
     price: 2200,
     isParcelOnly: true,
@@ -1111,7 +1111,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'fam-half-bucket-beef',
-    name: 'Half Bucket Beef Briyani',
+    name: 'Half Bucket Beef Biriyani',
     category: 'family-pack',
     price: 1300,
     isParcelOnly: true,
@@ -1122,7 +1122,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'fam-full-bucket-beef',
-    name: 'Full Bucket Beef Briyani',
+    name: 'Full Bucket Beef Biriyani',
     category: 'family-pack',
     price: 2600,
     isParcelOnly: true,
@@ -1133,7 +1133,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'fam-half-bucket-mutton',
-    name: 'Half Bucket Mutton Briyani',
+    name: 'Half Bucket Mutton Biriyani',
     category: 'family-pack',
     price: 1600,
     isParcelOnly: true,
@@ -1144,7 +1144,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'fam-full-bucket-mutton',
-    name: 'Full Bucket Mutton Briyani',
+    name: 'Full Bucket Mutton Biriyani',
     category: 'family-pack',
     price: 3200,
     isParcelOnly: true,
@@ -1228,8 +1228,8 @@ export const MENU_ITEMS: MenuItem[] = [
 
   // 14. INDIAN GRAVY & MASALA — Veg
   {
-    id: 'ind-gobi-manjurian-gravy',
-    name: 'Gobi Manjurian Gravy (Semi/Dry)',
+    id: 'ind-gobi-manchurian-gravy',
+    name: 'Gobi Manchurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 170,
@@ -1239,8 +1239,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true
   },
   {
-    id: 'ind-mushroom-manjurian-gravy',
-    name: 'Mushroom Manjurian Gravy (Semi/Dry)',
+    id: 'ind-mushroom-manchurian-gravy',
+    name: 'Mushroom Manchurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 180,
@@ -1250,8 +1250,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true
   },
   {
-    id: 'ind-paneer-manjurian-gravy',
-    name: 'Paneer Manjurian Gravy (Semi/Dry)',
+    id: 'ind-paneer-manchurian-gravy',
+    name: 'Paneer Manchurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Veg',
     price: 210,
@@ -1329,8 +1329,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'ind-chicken-manjurian-gravy',
-    name: 'Chicken Manjurian Gravy (Semi/Dry)',
+    id: 'ind-chicken-manchurian-gravy',
+    name: 'Chicken Manchurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 240,
@@ -1362,8 +1362,8 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false
   },
   {
-    id: 'ind-prawn-manjurian-gravy',
-    name: 'Prawn Manjurian Gravy (Semi/Dry)',
+    id: 'ind-prawn-manchurian-gravy',
+    name: 'Prawn Manchurian Gravy (Semi/Dry)',
     category: 'indian-gravy',
     subCategory: 'Non-Veg',
     price: 260,

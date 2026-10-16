@@ -186,7 +186,7 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
               >
                 {/* Large Background Quote Watermark */}
                 <span className={`absolute top-2 right-4 text-8xl font-serif leading-none opacity-10 pointer-events-none select-none ${review.highlight ? 'text-black' : 'text-[#de2b2b]'}`}>
-                  "
+                  &quot;
                 </span>
 
                 <div className="flex flex-col h-full z-10 text-left">
@@ -209,7 +209,7 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
                   </div>
 
                   <p className={`text-sm font-light leading-relaxed flex-1 ${review.highlight ? 'text-[#f8efdc]/95' : 'text-[#1a1a1a]/70'}`}>
-                    "{review.text}"
+                    &quot;{review.text}&quot;
                   </p>
 
                   <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest pt-4 border-t border-black/5">

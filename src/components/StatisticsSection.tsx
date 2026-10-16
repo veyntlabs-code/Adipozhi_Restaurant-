@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'motion/react';
 import { STATISTICS } from '../data/restaurantData';
-import { Star } from 'lucide-react';
 
 interface StatisticsSectionProps {
   onOpenMenus?: () => void;
@@ -13,6 +13,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
   onOpenMenus,
   onOpenGoingTo,
 }) => {
+  const router = useRouter();
   const googleReviewsUrl = 'https://www.google.com/maps/place/ADIPOZHI+FAMILY+RESTAURANT/@8.2004001,77.3013765,17z/data=!3m1!4b1!4m6!3m5!1s0x3b04f9f8178ae3dd:0xf4d52f55155a3a3b!8m2!3d8.2004001!4d77.3039514!16s%2Fg%2F11w2_3m_78';
 
   const handleStatClick = (idx: number) => {
@@ -25,7 +26,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
         if (onOpenMenus) {
           onOpenMenus();
         } else {
-          window.location.href = '/menus/regular';
+          router.push('/menus/regular');
         }
         break;
       case 3: // 2 Mins from Bus Stand

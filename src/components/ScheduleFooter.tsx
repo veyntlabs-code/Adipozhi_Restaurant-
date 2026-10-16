@@ -203,7 +203,7 @@ export const ScheduleFooter: React.FC<ScheduleFooterProps> = ({
                     Family Restaurant · Monday Market
                   </p>
                   <p className="text-xs text-[#1a1a1a]/70 leading-relaxed">
-                    'Comfortable restaurant serving tasty biryani, hot Bun Parottas, Nool parotta, Arabian Grills, and diverse Southern delicacies. Rated 4.7 on Google (284 reviews).'
+                    &apos;Comfortable restaurant serving tasty biryani, hot Bun Parottas, Nool parotta, Arabian Grills, and diverse Southern delicacies. Rated 4.7 on Google (284 reviews).&apos;
                   </p>
                 </div>
 

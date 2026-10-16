@@ -146,7 +146,7 @@ export const TheRestaurantSection: React.FC<TheRestaurantSectionProps> = ({
                       {currentAtmosphere.name}
                     </h3>
                     <p className="text-sm font-medium italic text-[#f8efdc]/90">
-                      "{currentAtmosphere.tagline}"
+                      &quot;{currentAtmosphere.tagline}&quot;
                     </p>
                     <p className="text-sm text-[#f8efdc]/80 leading-relaxed font-light">
                       {currentAtmosphere.description}

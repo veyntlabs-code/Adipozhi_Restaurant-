@@ -270,7 +270,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
                       </h3>
 
                       <p className="text-sm italic font-medium text-[#f8efdc]/90">
-                        "{current.tagline}"
+                        &quot;{current.tagline}&quot;
                       </p>
 
                       <p className="text-xs sm:text-sm text-[#f8efdc]/80 leading-relaxed font-light">

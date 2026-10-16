@@ -178,7 +178,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
               ].map((diet) => (
                 <button
                   key={diet.id}
-                  onClick={() => setSelectedDiet(diet.id as any)}
+                  onClick={() => setSelectedDiet(diet.id as 'all' | 'veg' | 'non-veg')}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer shadow-sm ${
                     selectedDiet === diet.id
                       ? 'bg-[#de2b2b] text-[#f8efdc] ring-2 ring-[#ffccd5]/40'

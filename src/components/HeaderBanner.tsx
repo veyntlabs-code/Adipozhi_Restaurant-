@@ -5,7 +5,7 @@ import { BANNER_MESSAGES } from '../data/restaurantData';
 import { Wine, Pizza, Fish, Coffee, Sparkles } from 'lucide-react';
 
 interface HeaderBannerProps {
-  lang?: 'en' | 'fr'; setLang?: any;
+  lang?: 'en' | 'fr'; setLang?: (lang: "en" | "fr") => void;
 }
 
 export const HeaderBanner: React.FC<HeaderBannerProps> = () => {
