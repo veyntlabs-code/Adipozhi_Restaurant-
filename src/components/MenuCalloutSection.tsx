@@ -80,7 +80,7 @@ export const MenuCalloutSection: React.FC<MenuCalloutSectionProps> = ({
         </div>
       </div>
 
-      <div className="w-full relative z-10 h-[520px] sm:h-[650px] lg:h-[750px]">
+      <div className="w-full relative z-10 h-[560px] sm:h-[660px] lg:h-[760px]">
         <PolaroidLineCarousel
           slides={MENU_ITEMS.map((item) => ({
             image: item.image,

@@ -245,11 +245,11 @@ const PL_CSS = [
   ".pl-note{height:46px;display:flex;align-items:center;justify-content:center;padding:0 6px;font:italic 400 15px/1.1 ui-serif,Georgia,'Times New Roman',serif;color:#3b3833;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
   ".pl-peg{position:absolute;left:50%;top:0;width:10px;height:26px;margin-left:-5px;border-radius:2px;background:linear-gradient(90deg,#c9a67a,#e3c9a1 45%,#b8915f);box-shadow:0 2px 3px rgba(0,0,0,.25)}",
   ".pl-peg::after{content:'';position:absolute;left:4px;top:8px;width:2px;height:7px;background:rgba(80,60,30,.45);border-radius:1px}",
-  ".pl-bar{position:absolute;left:clamp(16px,4vw,56px);right:clamp(16px,4vw,56px);bottom:clamp(20px,4vh,40px);display:flex;align-items:center;gap:clamp(12px,2vw,24px);cursor:default}",
+  ".pl-bar{position:absolute;left:clamp(16px,4vw,56px);right:clamp(16px,4vw,56px);bottom:clamp(16px,3vh,36px);display:flex;align-items:center;gap:clamp(12px,2vw,24px);cursor:default;z-index:40}",
   ".pl-cap{flex:1;min-width:0;overflow:hidden;padding-bottom:.15em}",
   ".pl-cap>*{display:block;animation:pl-in .55s cubic-bezier(.2,.8,.2,1) both}",
-  ".pl-title{font:500 clamp(18px,2.2vw,26px)/1.15 ui-serif,Georgia,'Times New Roman',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
-  ".pl-sub{margin-top:4px;font:400 13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--pl-muted)}",
+  ".pl-title{font:500 clamp(18px,2.2vw,26px)/1.15 ui-serif,Georgia,'Times New Roman',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f8efdc;text-shadow:0 2px 10px rgba(0,0,0,0.8)}",
+  ".pl-sub{margin-top:4px;font:400 13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--pl-muted);text-shadow:0 1px 6px rgba(0,0,0,0.8)}",
   ".pl-count{font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--pl-muted)}",
   ".pl-count b{color:var(--pl-ink);font-weight:500}",
   ".pl-btn{appearance:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--pl-line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background .2s ease,color .2s ease}",
@@ -257,6 +257,7 @@ const PL_CSS = [
   ".pl-btn:focus-visible{outline:2px solid var(--pl-ink);outline-offset:2px}",
   ".pl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}",
   "@keyframes pl-in{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}",
+  "@media (max-width: 640px){.pl-bar{left:12px;right:12px;bottom:10px;background:rgba(20,10,10,0.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 14px;border-radius:9999px;border:1px solid rgba(248,239,220,0.22);box-shadow:0 12px 30px rgba(0,0,0,0.65)}.pl-title{font-size:15px;line-height:1.2}.pl-sub{font-size:11px;margin-top:1px}.pl-btn{width:32px;height:32px}}",
   "@media (prefers-reduced-motion:reduce){.pl-cap>*{animation:none}.pl-print{transition:none}}",
 ].join("\n")
 
@@ -303,11 +304,10 @@ export default function PolaroidLineCarousel({
     if (!root) return
     const ro = new ResizeObserver(() => {
       const r = root.getBoundingClientRect()
-      // On mobile (r.width < 640), allocate up to 78% of the screen width so polaroids are big, prominent, and readable
       const isMobile = r.width < 640
-      const widthRatio = isMobile ? 0.78 : 0.42
-      const heightRatio = isMobile ? 0.58 : 0.42
-      const minW = isMobile ? 260 : 180
+      const widthRatio = isMobile ? 0.65 : 0.42
+      const heightRatio = isMobile ? 0.45 : 0.42
+      const minW = isMobile ? 220 : 180
       const cw = Math.round(Math.max(minW, Math.min(cardWidth, r.width * widthRatio, r.height * heightRatio)))
       setSize({ w: r.width, h: r.height, cw })
     })
@@ -340,7 +340,10 @@ export default function PolaroidLineCarousel({
       const dt = Math.min(0.033, (now - prev) / 1000)
       prev = now
       const { w, h, cw } = size
-      const y0 = Math.max(40, h * 0.2)
+      const o = opts.current
+      const isMobile = w < 640
+      const y0 = isMobile ? Math.max(20, h * 0.08) : Math.max(40, h * 0.18)
+      const currentSag = isMobile ? Math.min(o.sag, 22) : o.sag
       const d = drag.current
       let lineVel: number
       if (d && d.moved) {
@@ -350,7 +353,6 @@ export default function PolaroidLineCarousel({
         ;[S.off, S.vel] = springStep(S.off, S.vel, S.target, dt)
         lineVel = -(S.off - before) / Math.max(dt, 1e-3)
       }
-      const o = opts.current
       const g = reduce ? 0 : o.swing
       const near = nearestAt(S.off, spacing, n)
       for (let i = 0; i < n; i++) {
@@ -368,11 +370,11 @@ export default function PolaroidLineCarousel({
         if (g) a += Math.sin(now / 1300 + i * 1.7) * 0.0009 * g
         S.a[i] = a
         S.w[i] = av
-        const y = stringY(x, w, y0, o.sag) - 6
+        const y = stringY(x, w, y0, currentSag) - 6
         el.style.transform = "translate(" + (x - cw / 2).toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + a.toFixed(4) + "rad)"
         el.style.zIndex = String(i === near ? n + 1 : n - Math.abs(i - near))
       }
-      pathRef.current?.setAttribute("d", "M0 " + y0 + " Q" + w / 2 + " " + (y0 + 2 * o.sag) + " " + w + " " + y0)
+      pathRef.current?.setAttribute("d", "M0 " + y0 + " Q" + w / 2 + " " + (y0 + 2 * currentSag) + " " + w + " " + y0)
       if (near !== activeRef.current) {
         activeRef.current = near
         setActive(near)
