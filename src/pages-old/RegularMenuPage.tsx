@@ -20,6 +20,7 @@ import {
   X
 } from 'lucide-react';
 import { MenuFloralBackground } from '@/components/MenuFloralBackground';
+import { SafeImage } from '@/components/SafeImage';
 
 interface RegularMenuPageProps {
   onAddToCart: (item: MenuItem, quantity?: number, notes?: string) => void;
@@ -320,10 +321,11 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                   {/* Dish Image or Placeholder */}
                   <div className="w-full h-28 sm:h-48 overflow-hidden bg-[#f8efdc]/50 shrink-0 flex items-center justify-center">
                     {dish.image ? (
-                      <img 
+                      <SafeImage 
                         src={dish.image} 
                         alt={dish.name} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        wrapperClassName="w-full h-full"
                         loading="lazy"
                       />
                     ) : (

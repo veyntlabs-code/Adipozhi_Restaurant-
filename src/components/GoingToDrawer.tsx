@@ -38,13 +38,13 @@ export const GoingToDrawer: React.FC<GoingToDrawerProps> = ({
             onClick={onClose}
             className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
           />
-          <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+          <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="w-screen max-w-md bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl p-6 sm:p-8 overflow-y-auto overscroll-contain min-h-0"
+              className="w-full sm:w-[420px] max-w-full bg-[#f8efdc] text-[#1a1a1a] border-l border-[#1a1a1a]/20 flex flex-col justify-between shadow-2xl p-5 sm:p-8 overflow-y-auto overscroll-contain min-h-0"
             >
               <div className="space-y-6">
                 {/* Header */}

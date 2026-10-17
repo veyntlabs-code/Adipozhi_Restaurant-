@@ -292,13 +292,12 @@ const RoseAmbientOrbs = () => (
 /* ──────────────── Full Page Floating Flower Petal Background Component (Identical to HeroSection) ──────────────── */
 export const MenuFloralBackground: React.FC = () => {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 select-none">
       {/* 1. Exactly the Rose Wallpaper from the Hero Section (`/images/roses/logo-wall.jpg`) */}
       <div
         className="absolute inset-0 bg-cover bg-center pointer-events-none"
         style={{
           backgroundImage: "url('/images/roses/logo-wall.jpg')",
-          backgroundAttachment: 'fixed',
         }}
       />
 
@@ -314,55 +313,52 @@ export const MenuFloralBackground: React.FC = () => {
       {/* 3. Hero Section Aesthetic Rose Breathing Light & Ambient Orbs */}
       <RoseAmbientOrbs />
 
-      {/* 4. Subtle decorative spinning rose filigrees in corners (exact same from HeroSection) */}
+      {/* 4. Subtle decorative spinning rose filigrees in corners (hidden on small mobile to conserve GPU memory) */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 75, repeat: Infinity, ease: 'linear' }}
-        className="absolute -top-16 -right-16 w-80 h-80 text-[#f8efdc]/[0.08] pointer-events-none z-[2]"
+        className="hidden sm:block absolute -top-16 -right-16 w-80 h-80 text-[#f8efdc]/[0.08] pointer-events-none z-[2]"
       >
         <ElegantRoseOutline className="w-full h-full" />
       </motion.div>
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-10 -left-20 w-96 h-96 text-[#f8efdc]/[0.07] pointer-events-none z-[2]"
+        className="hidden sm:block absolute bottom-10 -left-20 w-96 h-96 text-[#f8efdc]/[0.07] pointer-events-none z-[2]"
       >
         <ElegantRoseOutline className="w-full h-full" />
       </motion.div>
 
-      {/* 5. ─── Aesthetic Floating Flower Petals (Exact same setup as HeroSection) ─── */}
+      {/* 5. ─── Aesthetic Floating Flower Petals (Optimized: 4 petals on mobile, full lush set on desktop) ─── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[4]">
-        {/* Layer 1: Foreground vibrant flower petals */}
-        <FloatingPetal left="5%" delay={0} duration={10} size={30} drift={60} initialRotation={15} rotateZTarget={260} variant="classic" color="#de2b2b" />
-        <FloatingPetal left="14%" delay={3.5} duration={12} size={34} drift={-70} initialRotation={45} rotateZTarget={-290} variant="curved" color="#e63946" />
-        <FloatingPetal left="24%" delay={1} duration={9.5} size={28} drift={50} initialRotation={-20} rotateZTarget={220} variant="flutter" color="#ff4d6d" />
-        <FloatingPetal left="33%" delay={5} duration={11.5} size={32} drift={-55} initialRotation={75} rotateZTarget={310} variant="classic" color="#c1121f" />
-        <FloatingPetal left="44%" delay={2} duration={10.5} size={26} drift={45} initialRotation={-35} rotateZTarget={-240} variant="curved" color="#e63946" />
-        <FloatingPetal left="54%" delay={6.5} duration={13} size={35} drift={-65} initialRotation={110} rotateZTarget={300} variant="classic" color="#de2b2b" />
-        <FloatingPetal left="64%" delay={0.8} duration={11} size={30} drift={55} initialRotation={-15} rotateZTarget={270} variant="flutter" color="#ff4d6d" />
-        <FloatingPetal left="74%" delay={4.2} duration={12.5} size={36} drift={-50} initialRotation={85} rotateZTarget={-320} variant="curved" color="#9b111e" />
-        <FloatingPetal left="84%" delay={2.8} duration={10} size={28} drift={40} initialRotation={30} rotateZTarget={210} variant="classic" color="#e63946" />
-        <FloatingPetal left="93%" delay={5.8} duration={11.8} size={32} drift={-45} initialRotation={-40} rotateZTarget={-250} variant="flutter" color="#de2b2b" />
+        {/* Universal Core Petals (Fast, smooth 60fps on all mobile screens) */}
+        <FloatingPetal left="8%" delay={0} duration={11} size={26} drift={40} initialRotation={15} rotateZTarget={240} variant="classic" color="#de2b2b" />
+        <FloatingPetal left="34%" delay={3.5} duration={12} size={28} drift={-45} initialRotation={45} rotateZTarget={-260} variant="curved" color="#e63946" />
+        <FloatingPetal left="64%" delay={1.5} duration={10.5} size={25} drift={35} initialRotation={-20} rotateZTarget={200} variant="flutter" color="#ff4d6d" />
+        <FloatingPetal left="86%" delay={4.2} duration={12} size={28} drift={-40} initialRotation={80} rotateZTarget={-250} variant="curved" color="#9b111e" />
 
-        {/* Layer 2: Delicate smaller fluttering flower petals */}
-        <FloatingPetal left="9%" delay={7.2} duration={8.5} size={20} drift={35} initialRotation={50} rotateZTarget={180} variant="flutter" color="#ff758f" />
-        <FloatingPetal left="28%" delay={8.5} duration={9} size={22} drift={-40} initialRotation={-60} rotateZTarget={-200} variant="curved" color="#ff4d6d" />
-        <FloatingPetal left="59%" delay={3.8} duration={8.8} size={21} drift={45} initialRotation={35} rotateZTarget={220} variant="classic" color="#ff758f" />
-        <FloatingPetal left="79%" delay={9.2} duration={9.2} size={23} drift={-35} initialRotation={-25} rotateZTarget={-190} variant="flutter" color="#e63946" />
+        {/* Desktop-only extra petals and sparkles for enhanced depth without mobile lag */}
+        <div className="hidden sm:contents">
+          <FloatingPetal left="18%" delay={2} duration={9.5} size={28} drift={50} initialRotation={-35} rotateZTarget={-240} variant="curved" color="#e63946" />
+          <FloatingPetal left="48%" delay={6} duration={13} size={34} drift={-60} initialRotation={110} rotateZTarget={300} variant="classic" color="#de2b2b" />
+          <FloatingPetal left="74%" delay={0.8} duration={11} size={30} drift={55} initialRotation={-15} rotateZTarget={270} variant="flutter" color="#ff4d6d" />
+          <FloatingPetal left="93%" delay={5.8} duration={11.8} size={32} drift={-45} initialRotation={-40} rotateZTarget={-250} variant="flutter" color="#de2b2b" />
 
-        {/* Layer 3: Atmospheric soft-blurred background petals (cinematic depth of field) */}
-        <FloatingPetal left="12%" delay={4.5} duration={15} size={46} drift={-80} initialRotation={-40} rotateZTarget={190} variant="classic" color="#a01a28" blur={2.5} />
-        <FloatingPetal left="38%" delay={7.8} duration={16} size={52} drift={90} initialRotation={60} rotateZTarget={-230} variant="curved" color="#7c121e" blur={3.5} />
-        <FloatingPetal left="68%" delay={1.2} duration={17} size={48} drift={-75} initialRotation={-15} rotateZTarget={280} variant="classic" color="#9b111e" blur={2.5} />
-        <FloatingPetal left="88%" delay={9.5} duration={15.5} size={44} drift={70} initialRotation={50} rotateZTarget={-210} variant="flutter" color="#800f1c" blur={3} />
+          {/* Delicate smaller fluttering flower petals */}
+          <FloatingPetal left="12%" delay={7.2} duration={8.5} size={20} drift={35} initialRotation={50} rotateZTarget={180} variant="flutter" color="#ff758f" />
+          <FloatingPetal left="52%" delay={3.8} duration={8.8} size={21} drift={45} initialRotation={35} rotateZTarget={220} variant="classic" color="#ff758f" />
 
-        {/* Golden rose dew sparkles */}
-        <GoldenDewParticle delay={0} size={5} left="10%" duration={10} />
-        <GoldenDewParticle delay={2} size={3} left="25%" duration={12} />
-        <GoldenDewParticle delay={1} size={6} left="48%" duration={9.5} />
-        <GoldenDewParticle delay={3.5} size={4} left="66%" duration={13} />
-        <GoldenDewParticle delay={1.8} size={5} left="82%" duration={11} />
-        <GoldenDewParticle delay={4.5} size={4} left="92%" duration={12.5} />
+          {/* Atmospheric soft-blurred background petals */}
+          <FloatingPetal left="15%" delay={4.5} duration={15} size={46} drift={-80} initialRotation={-40} rotateZTarget={190} variant="classic" color="#a01a28" blur={2.5} />
+          <FloatingPetal left="72%" delay={1.2} duration={17} size={48} drift={-75} initialRotation={-15} rotateZTarget={280} variant="classic" color="#9b111e" blur={2.5} />
+
+          {/* Golden rose dew sparkles */}
+          <GoldenDewParticle delay={0} size={5} left="10%" duration={10} />
+          <GoldenDewParticle delay={2} size={3} left="25%" duration={12} />
+          <GoldenDewParticle delay={1} size={6} left="48%" duration={9.5} />
+          <GoldenDewParticle delay={3.5} size={4} left="66%" duration={13} />
+          <GoldenDewParticle delay={1.8} size={5} left="82%" duration={11} />
+        </div>
       </div>
     </div>
   );

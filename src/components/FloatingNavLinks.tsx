@@ -45,7 +45,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
       }}
       transition={{ type: 'spring', damping: 22, stiffness: 260 }}
       whileHover={{ y: 0, opacity: 1, scale: 1 }}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-wrap items-center gap-2 p-1.5 bg-[#f8efdc]/95 backdrop-blur-md border border-[#1a1a1a]/20 rounded-full shadow-2xl select-none transition-shadow hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 max-w-[calc(100vw-24px)] flex items-center gap-1 sm:gap-2 p-1 sm:p-1.5 bg-[#f8efdc]/95 backdrop-blur-md border border-[#1a1a1a]/20 rounded-full shadow-2xl select-none transition-shadow hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
     >
       {onOpenGallery && (
         <motion.button
@@ -76,7 +76,7 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         whileHover={{ scale: 1.05, y: -1 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpenReservation}
-        className="px-4 py-2 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
+        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#de2b2b] text-[#f8efdc] hover:bg-[#7c2627] rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
       >
         <Calendar className="w-3.5 h-3.5" />
         <span>Reserve</span>
@@ -87,10 +87,10 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
         whileHover={{ scale: 1.05, y: -1 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpenOrder}
-        className="relative px-4 py-2 bg-[#1a1a1a] text-[#f8efdc] hover:bg-black rounded-full text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
+        className="relative px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1a1a1a] text-[#f8efdc] hover:bg-black rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-md cursor-pointer"
       >
         <ShoppingBag className="w-3.5 h-3.5 text-[#f8efdc]" />
-        <span>Order online</span>
+        <span><span className="hidden xs:inline">Order </span>Online</span>
         {orderCount > 0 && (
           <motion.span
             initial={{ scale: 0 }}

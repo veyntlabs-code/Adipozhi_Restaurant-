@@ -177,11 +177,12 @@ export const Header: React.FC<HeaderProps> = ({
       <AnimatePresence>
         {burgerOpen && (
           <motion.div
+            data-lenis-prevent
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'calc(100vh - 80px)' }}
+            animate={{ opacity: 1, height: 'calc(100dvh - 80px)' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden fixed inset-0 top-20 sm:top-24 bg-[#f8efdc] z-50 p-6 flex flex-col justify-between overflow-y-auto"
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden fixed inset-0 top-20 sm:top-24 bg-[#f8efdc] z-50 p-6 flex flex-col justify-between overflow-y-auto overscroll-contain"
           >
             <div className="space-y-6">
               <nav className="flex flex-col gap-4 text-2xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
