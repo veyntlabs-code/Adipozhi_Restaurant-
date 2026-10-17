@@ -1412,7 +1412,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 270,
     description: 'Special chicken masala cooked with drumstick leaves (murungai keerai) and southern spices.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Spicy Chicken Curry at AdipoZhi.png',
+    image: '/adipoo rest/INDIAN GRAVY & MASALA/Ginger Chicken Gravy.jpg',
     tags: ['House Special', 'Chef Pick'],
     isVeg: false
   },
