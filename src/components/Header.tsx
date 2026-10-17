@@ -231,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <Phone className="w-4 h-4 text-[#de2b2b] shrink-0" />
                   <div>
                     <div className="font-bold text-[#1a1a1a] uppercase text-[10px]">Phone</div>
-                    <a href="tel:+919585154254" className="hover:text-[#de2b2b] font-bold"><Phone className="w-4 h-4" /></a>
+                    <a href="tel:+919585154254" className="hover:text-[#de2b2b] font-bold text-xs">+91 95851 54254</a>
                   </div>
                 </div>
               </div>
