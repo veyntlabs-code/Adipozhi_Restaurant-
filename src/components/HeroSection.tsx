@@ -302,9 +302,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       ref={containerRef}
       id="hero-section"
-      className="relative overflow-hidden select-none bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/roses/logo-wall.jpg')" }}
+      className="relative bg-[#a81c1c] bg-gradient-to-br from-[#c42525] via-[#a81c1c] to-[#7c1616] overflow-hidden select-none"
     >
+      {/* Subtle atmospheric rose wall texture with rich crimson overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay pointer-events-none z-0"
+        style={{ backgroundImage: "url('/images/roses/logo-wall.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/30 pointer-events-none z-0" />
+
       {/* ─── Full-bleed hero container with expanded height ─── */}
       <div className="relative min-h-[96vh] sm:min-h-[100vh] lg:min-h-[105vh] flex flex-col justify-between">
 

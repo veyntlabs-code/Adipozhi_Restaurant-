@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://adipozhi.in/sitemap.xml',
+    sitemap: 'https://www.adipozhi.in/sitemap.xml',
   };
 }

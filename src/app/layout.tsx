@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     'அடிப்பொழி',
     'அடிப்பொழி பேமிலி ரெஸ்டாரண்ட்'
   ],
-  authors: [{ name: 'Adipozhi Family Restaurant', url: 'https://adipozhi.in' }],
+  authors: [{ name: 'Adipozhi Family Restaurant', url: 'https://www.adipozhi.in' }],
   creator: 'Adipozhi Family Restaurant',
   publisher: 'Adipozhi Family Restaurant',
   formatDetection: {
@@ -70,12 +70,12 @@ export const metadata: Metadata = {
     email: false,
   },
   alternates: {
-    canonical: 'https://adipozhi.in',
+    canonical: 'https://www.adipozhi.in',
   },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://adipozhi.in',
+    url: 'https://www.adipozhi.in',
     siteName: 'Adipozhi Family Restaurant',
     title: 'Adipozhi Family Restaurant | Best Restaurant & Biryani in Monday Market',
     description:
