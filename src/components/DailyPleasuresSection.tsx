@@ -25,28 +25,30 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const isMobile = windowWidth < 768;
+
   // Generous card width for prominent plate presence
   const cardWidth = windowWidth < 640 ? 320 : windowWidth < 1024 ? 440 : 500;
   const maxTranslate = (totalItems - 1) * cardWidth;
 
-  // Track page scroll through the extended sticky container (680vh for slow, luxurious journey)
+  // Track page scroll through the extended sticky container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
   });
 
-  // Weighted, velvety-smooth spring physics for cinematic, slow-motion gliding
+  // Responsive spring physics: snappier on mobile for zero-lag touch tracking
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 38,
-    damping: 28,
-    mass: 1.4,
+    stiffness: isMobile ? 85 : 42,
+    damping: isMobile ? 24 : 28,
+    mass: isMobile ? 0.6 : 1.2,
     restDelta: 0.0001
   });
 
   // Horizontal translation with generous padding to center active item
   const trackX = useTransform(smoothProgress, [0, 1], [0, -maxTranslate]);
 
-  // Slow, mesmerizing turntable rotation (360° total across the entire 680vh)
+  // Slow turntable rotation
   const evenRotation = useTransform(smoothProgress, [0, 1], [0, -360]);
   const oddRotation = useTransform(smoothProgress, [0, 1], [0, 360]);
 
@@ -58,6 +60,31 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
       setActiveIdx(nextIdx);
     }
   });
+
+  // Touch swipe support for direct horizontal navigation on mobile
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const diffX = e.changedTouches[0].clientX - touchStartX.current;
+    const diffY = e.changedTouches[0].clientY - touchStartY.current;
+    touchStartX.current = null;
+    touchStartY.current = null;
+
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+      if (diffX < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+  };
 
   // Smooth scroll to specific dish
   const scrollToItem = useCallback((idx: number) => {
@@ -107,11 +134,15 @@ export const DailyPleasuresSection: React.FC<DailyPleasuresSectionProps> = ({
   return (
     <section
       ref={containerRef}
-      className="relative text-white select-none transition-colors duration-1000 ease-out h-[680vh]"
+      className="relative text-white select-none transition-colors duration-1000 ease-out h-[240vh] sm:h-[340vh] lg:h-[500vh] max-w-full overflow-x-clip"
       style={{ backgroundColor: currentPleasure.color }}
     >
-      {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center overflow-hidden pt-20 sm:pt-28 pb-14 sm:pb-24 px-4">
+      {/* Sticky Full-Viewport Stage with 100dvh for mobile address bar stability */}
+      <div 
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="sticky top-0 h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden pt-20 sm:pt-28 pb-14 sm:pb-24 px-4"
+      >
         {/* Animated Radial Backsplash */}
         <AnimatePresence>
           <motion.div
