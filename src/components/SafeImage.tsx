@@ -31,6 +31,8 @@ export const SafeImage: React.FC<SafeImageProps> = ({
     if (!hasError && fallbackSrc && imgSrc !== fallbackSrc) {
       setHasError(true);
       setImgSrc(fallbackSrc);
+    } else {
+      setIsLoaded(true);
     }
   };
 

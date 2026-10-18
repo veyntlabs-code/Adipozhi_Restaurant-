@@ -81,7 +81,7 @@ export const TheRestaurantSection: React.FC<TheRestaurantSectionProps> = ({
           </div>
 
           {/* Segmented Atmosphere Tabs */}
-          <div className="flex flex-wrap gap-2 p-1.5 bg-black/25 backdrop-blur-md rounded-full max-w-fit border border-white/10">
+          <div className="inline-flex flex-col sm:flex-row gap-1.5 p-1.5 bg-black/30 backdrop-blur-md rounded-2xl sm:rounded-full w-full sm:w-auto border border-white/10">
             {ATMOSPHERES.map((atm) => {
               const isActive = atm.id === activeTab;
               return (
@@ -89,14 +89,14 @@ export const TheRestaurantSection: React.FC<TheRestaurantSectionProps> = ({
                   key={atm.id}
                   type="button"
                   onClick={() => setActiveTab(atm.id)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer select-none ${
+                  className={`relative px-4 sm:px-5 py-2.5 rounded-xl sm:rounded-full text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer select-none text-center ${
                     isActive ? 'text-[#7c2627]' : 'text-[#f8efdc] hover:text-white'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeAtmospherePill"
-                      className="absolute inset-0 bg-[#f8efdc] rounded-full shadow-lg"
+                      className="absolute inset-0 bg-[#f8efdc] rounded-xl sm:rounded-full shadow-lg"
                       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                     />
                   )}

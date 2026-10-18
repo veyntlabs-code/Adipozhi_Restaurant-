@@ -47,37 +47,59 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const lenisRef = React.useRef<Lenis | null>(null);
+
   useEffect(() => {
-    // Check if device is touch or small screen
-    const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Only run Lenis smooth-scroll on desktop pointer devices
+    // Touch devices already have hardware-accelerated 120Hz/60Hz native momentum scrolling
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+        window.innerWidth < 1024);
+
+    if (isTouchDevice) {
+      // Mobile touch: let ScrollTrigger listen to native window scroll directly
+      ScrollTrigger.config({ limitCallbacks: true });
+      return;
+    }
 
     const lenis = new Lenis({
-      duration: isTouch ? 1.0 : 1.4,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.8,
+      wheelMultiplier: 0.9,
       touchMultiplier: 1.0,
-      syncTouch: false, // Prevent interception lag on mobile browsers
+      syncTouch: false,
     });
+    lenisRef.current = lenis;
 
-    gsap.registerPlugin(ScrollTrigger);
     lenis.on('scroll', ScrollTrigger.update);
     
     const tick = (time: number) => { lenis.raf(time * 1000); };
     gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    // Keep default lag smoothing for gentle frame-drop recovery instead of hard jumps
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(tick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   const navigateTo = (path: string) => {
     router.push(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
   };
 
   const [isGoingToOpen, setIsGoingToOpen] = useState(false);
@@ -89,6 +111,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
   const [isGiftCardOpen, setIsGiftCardOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  const isAnyModalOpen =
+    isGoingToOpen ||
+    isMenusOpen ||
+    isRestaurantOpen ||
+    isEventsOpen ||
+    isPrivateRoomsOpen ||
+    isReservationOpen ||
+    isOrderOpen ||
+    isGiftCardOpen;
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (isAnyModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isAnyModalOpen]);
 
   const handleAddToCart = (item: MenuItem, quantity: number = 1, specialNotes?: string) => {
     setCart((prev) => {

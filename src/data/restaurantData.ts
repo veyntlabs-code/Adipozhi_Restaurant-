@@ -1234,7 +1234,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 170,
     description: 'Crispy cauliflower florets in savoury garlic, soy, and spring onion gravy.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Gobi Manchurian at Adipozhi (1).png',
+    image: '/nwwwww/Steaming Gobi Manchurian at Adipozhi.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1245,7 +1245,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 180,
     description: 'Juicy mushrooms in seasoned Indo-Chinese Manchurian gravy with ginger and green chillies.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Glossy Mushroom Manchurian at AdipoZhi.png',
+    image: '/nwwwww/Glossy Mushroom Gravy with Rose Branding.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1256,7 +1256,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 210,
     description: 'Soft paneer cubes simmered in spiced dark soya gravy with bell peppers.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Paneer Manchurian Feast.png',
+    image: '/nwwwww/Glossy Paneer Manchurian Feast.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1267,7 +1267,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 190,
     description: 'Cauliflower tossed in rich onion-tomato gravy with garam masala and fresh coriander.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Gobi Manchurian at Adipozhi.png',
+    image: '/nwwwww/Gobi Aloo Masala at AdipoZhi.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1278,7 +1278,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 250,
     description: 'Cottage cheese, capsicum, and onions cooked in wok with freshly ground kadai coriander and red chillies.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Paneer Kadai Masala at Adipozhi.png',
+    image: '/nwwwww/AdipoZhi Spicy Paneer Bowl.png',
     tags: ['Chef Pick', 'Vegetarian'],
     isVeg: true
   },
@@ -1289,7 +1289,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 230,
     description: 'Button mushrooms sautéed in a thick kadai masala with roasted spices and peppers.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Spicy Mushroom Skillet with Rose Branding.png',
+    image: '/nwwwww/Glossy Mushroom Gravy with Rose Branding.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1300,7 +1300,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Veg',
     price: 250,
     description: 'Assorted seasonal garden vegetables simmered in creamy onion, tomato, and cashew gravy.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Adipozhi Mixed Vegetable Curry Feast.png',
+    image: '/nwwwww/Glossy Mixed Vegetable Curry Feast.png',
     tags: ['Vegetarian'],
     isVeg: true
   },
@@ -1324,7 +1324,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 240,
     description: 'Crisp chicken cubes in glossy soy, chilli, garlic, and capsicum sauce.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Adipozhi Chilli Chicken Feast.png',
+    image: '/nwwwww/Glossy Chili Chicken Bowl at AdipoZhi.png',
     tags: ['Popular'],
     isVeg: false
   },
@@ -1335,7 +1335,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 240,
     description: 'Indo-Chinese chicken balls in rich ginger-garlic and dark soy sauce.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Sizzling Chicken Manchurian Feast.png',
+    image: '/nwwwww/Glossy Chilly Chicken Gravy Feast.png',
     tags: [],
     isVeg: false
   },
@@ -1346,7 +1346,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 250,
     description: 'Chicken simmered in rich gravy packed with roasted garlic and crushed black pepper.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Garlic Chicken at Adipozhi.png',
+    image: '/nwwwww/Spicy Indo-Chinese Bowl at AdipoZhi.png',
     tags: ['Chef Pick'],
     isVeg: false
   },
@@ -1368,7 +1368,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Non-Veg',
     price: 260,
     description: 'Crisp fried prawns in savory Indo-Chinese Manchurian sauce with spring onions.',
-    image: '/adipoo rest/INDIAN GRAVY & MASALA/Steaming Prawn Manchurian Feast.png',
+    image: '/nwwwww/Steaming Prawn Manchurian Feast.png',
     tags: ['Seafood Special'],
     isVeg: false
   },
@@ -1802,7 +1802,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'parotta-varieties',
     price: 50,
     description: 'Crispy on the outside, fluffy and buttery inside. Madurai style puff bun parotta.',
-    image: '/menu 16-21/PAROTTA VARIETIES/Flaky Parotta Buns with Curry.png',
+    image: '/menu 16-21/PAROTTA VARIETIES/Bun Parotta Top Down.jpg',
     tags: ['Bestseller', 'Crowd Favorite'],
     isVeg: false
   },
