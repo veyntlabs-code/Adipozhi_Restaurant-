@@ -45,9 +45,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
     <section className="bg-[#f8efdc] py-16 lg:py-20 border-b border-[#1a1a1a]/10 overflow-hidden relative">
       {/* Elegant Classy Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
-        <motion.div
-          animate={{ backgroundPosition: ["0px 0px", "100px 100px"] }}
-          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'radial-gradient(#1a1a1a 1px, transparent 1px)',
@@ -63,12 +61,12 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.85, y: 30 }}
+                initial={{ opacity: 0, scale: 0.85, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{
-                  duration: 0.7,
-                  delay: idx * 0.12,
+                  duration: 0.6,
+                  delay: idx * 0.1,
                   ease: [0.16, 1, 0.3, 1]
                 }}
                 className="flex justify-center"
@@ -83,11 +81,11 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
                       handleStatClick(idx);
                     }
                   }}
-                  animate={{ y: [-40, 40, -40] }}
+                  animate={{ y: [-6, 6, -6] }}
                   transition={{
                     y: {
                       repeat: Infinity,
-                      duration: 4 + (idx % 3) * 0.5,
+                      duration: 4.5 + (idx % 3) * 0.5,
                       ease: "easeInOut",
                       delay: idx * 0.2
                     }

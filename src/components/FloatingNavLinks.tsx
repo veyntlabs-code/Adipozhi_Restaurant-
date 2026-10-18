@@ -27,11 +27,13 @@ export const FloatingNavLinks: React.FC<FloatingNavLinksProps> = ({
     const previous = scrollY.getPrevious() ?? 0;
     const diff = latest - previous;
 
+    if (Math.abs(diff) < 20) return;
+
     // Hide when scrolling down fast, show when scrolling up
-    if (diff > 14 && latest > 250) {
-      setIsVisible(false);
-    } else if (diff < -8 || latest <= 250) {
-      setIsVisible(true);
+    if (diff > 25 && latest > 250) {
+      setIsVisible((prev) => (prev ? false : prev));
+    } else if (diff < -20 || latest <= 250) {
+      setIsVisible((prev) => (!prev ? true : prev));
     }
   });
 

@@ -20,25 +20,25 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
         {/* Animated Glowing Orbs */}
         <motion.div
           animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 100, 0],
-            y: [0, 50, 0]
+            scale: [1, 1.15, 1],
+            x: [0, 60, 0],
+            y: [0, 30, 0]
           }}
           transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
-          className="absolute -top-40 -right-20 w-[600px] h-[600px] bg-[#de2b2b]/10 rounded-full blur-[100px]"
+          className="absolute -top-40 -right-20 w-[600px] h-[600px] bg-[#de2b2b]/10 rounded-full blur-3xl sm:blur-[100px]"
         />
         <motion.div
           animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -100, 0],
-            y: [0, -80, 0]
+            scale: [1, 1.2, 1],
+            x: [0, -60, 0],
+            y: [0, -40, 0]
           }}
           transition={{ repeat: Infinity, duration: 20, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/2 -left-40 w-[800px] h-[800px] bg-[#e4a853]/15 rounded-full blur-[120px]"
+          className="absolute top-1/2 -left-40 w-[800px] h-[800px] bg-[#e4a853]/15 rounded-full blur-3xl sm:blur-[120px]"
         />
 
         {/* Endless Scrolling Text Marquee (Subtle) */}
-        <div className="absolute inset-0 flex flex-col justify-center gap-32 opacity-[0.03]">
+        <div className="absolute inset-0 flex flex-col justify-center gap-32 opacity-[0.03] overflow-hidden">
           <motion.div
             animate={{ x: [0, -1500] }}
             transition={{ repeat: Infinity, duration: 50, ease: "linear" }}

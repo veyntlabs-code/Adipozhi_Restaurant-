@@ -115,15 +115,15 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-[#91964f]/12 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#de2b2b]/10 rounded-full blur-[140px] pointer-events-none z-0" />
 
-      {/* Floating Champagne Bubbles */}
+      {/* Floating Champagne Bubbles (Optimized count & GPU performance) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {[...Array(20)].map((_, i) => {
+        {[...Array(12)].map((_, i) => {
           const size = ((i % 3) + 1) * 6;
           const isOutline = i % 3 === 0;
           const leftPos = (i * 29) % 100;
           const duration = 16 + (i % 5) * 4;
           const delay = (i % 7) * 2;
-          const sway = i % 2 === 0 ? 40 : -40;
+          const sway = i % 2 === 0 ? 30 : -30;
 
           return (
             <motion.div
@@ -131,7 +131,7 @@ export const CelebrationSection: React.FC<CelebrationSectionProps> = ({
               className={`absolute rounded-full ${
                 isOutline
                   ? 'border-[1.5px] border-[#e5c98d]/40 bg-transparent'
-                  : 'bg-[#f8efdc]/15 backdrop-blur-sm'
+                  : 'bg-[#f8efdc]/25 sm:backdrop-blur-sm'
               }`}
               style={{
                 width: `${size}px`,

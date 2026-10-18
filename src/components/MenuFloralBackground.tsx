@@ -238,7 +238,7 @@ const RoseAmbientOrbs = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none z-[3]">
     {/* Header-matching vibrant crimson rose bloom in top */}
     <motion.div
-      className="absolute -top-24 left-1/4 w-[750px] h-[550px] rounded-full blur-[110px] pointer-events-none"
+      className="absolute -top-24 left-1/4 w-[750px] h-[550px] rounded-full blur-3xl sm:blur-[110px] pointer-events-none transform-gpu"
       style={{
         background: 'radial-gradient(circle, rgba(222,43,43,0.55) 0%, rgba(196,37,37,0.3) 50%, transparent 80%)',
       }}
@@ -255,7 +255,7 @@ const RoseAmbientOrbs = () => (
 
     {/* Vibrant rose aura breathing in bottom right */}
     <motion.div
-      className="absolute -bottom-20 -right-20 w-[680px] h-[680px] rounded-full blur-[120px] pointer-events-none"
+      className="absolute -bottom-20 -right-20 w-[680px] h-[680px] rounded-full blur-3xl sm:blur-[120px] pointer-events-none transform-gpu"
       style={{
         background: 'radial-gradient(circle, rgba(222,43,43,0.48) 0%, rgba(180,30,40,0.25) 60%, transparent 85%)',
       }}
@@ -272,7 +272,7 @@ const RoseAmbientOrbs = () => (
 
     {/* Center rose warmth */}
     <motion.div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full blur-[140px] pointer-events-none"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full blur-3xl sm:blur-[140px] pointer-events-none transform-gpu"
       style={{
         background: 'radial-gradient(circle, rgba(222,43,43,0.32) 0%, rgba(248,239,220,0.08) 50%, transparent 75%)',
       }}

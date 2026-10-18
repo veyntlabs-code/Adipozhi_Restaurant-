@@ -197,12 +197,11 @@ export default function ReviewSlider({
         const node = containerRef.current
         if (!node) return
         const onWheel = (event: WheelEvent) => {
-            event.preventDefault()
-            const dominant =
-                Math.abs(event.deltaX) > Math.abs(event.deltaY)
-                    ? event.deltaX
-                    : event.deltaY
-            target.current += dominant * input.current.wheelMultiplier
+            // Only intercept if the user is scrolling horizontally
+            if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+                event.preventDefault()
+                target.current += event.deltaX * input.current.wheelMultiplier
+            }
         }
         node.addEventListener("wheel", onWheel, { passive: false })
         return () => node.removeEventListener("wheel", onWheel)
@@ -212,27 +211,73 @@ export default function ReviewSlider({
         const node = containerRef.current
         if (!node) return
         let pointer: number | null = null
+        let startX = 0
+        let startY = 0
         let lastX = 0
+        let isDragging = false
+        let isDecided = false
 
         const onDown = (event: PointerEvent) => {
             if (pointer !== null) return
             pointer = event.pointerId
+            startX = event.clientX
+            startY = event.clientY
             lastX = event.clientX
-            isInteracting.current = true
-            node.setPointerCapture(event.pointerId)
+            isDragging = false
+            isDecided = false
+
+            if (event.pointerType === 'mouse') {
+                isInteracting.current = true
+                isDragging = true
+                isDecided = true
+                try {
+                    node.setPointerCapture(event.pointerId)
+                } catch {}
+            }
         }
         const onMove = (event: PointerEvent) => {
             if (pointer !== event.pointerId) return
-            const dx = event.clientX - lastX
-            lastX = event.clientX
-            target.current += (input.current.flip ? dx : -dx) * input.current.dragMultiplier
+
+            if (!isDecided) {
+                const diffX = Math.abs(event.clientX - startX)
+                const diffY = Math.abs(event.clientY - startY)
+
+                // If user is scrolling vertically, let native scroll handle it
+                if (diffY > diffX && diffY > 8) {
+                    isDecided = true
+                    pointer = null
+                    isInteracting.current = false
+                    return
+                }
+
+                // If user is swiping horizontally, take control
+                if (diffX > diffY && diffX > 8) {
+                    isDecided = true
+                    isDragging = true
+                    isInteracting.current = true
+                    try {
+                        node.setPointerCapture(event.pointerId)
+                    } catch {}
+                }
+            }
+
+            if (isDragging) {
+                const dx = event.clientX - lastX
+                lastX = event.clientX
+                target.current += (input.current.flip ? dx : -dx) * input.current.dragMultiplier
+            }
         }
         const onUp = (event: PointerEvent) => {
             if (pointer !== event.pointerId) return
             pointer = null
             isInteracting.current = false
-            if (node.hasPointerCapture(event.pointerId))
-                node.releasePointerCapture(event.pointerId)
+            isDragging = false
+            isDecided = false
+            if (node.hasPointerCapture(event.pointerId)) {
+                try {
+                    node.releasePointerCapture(event.pointerId)
+                } catch {}
+            }
         }
         const onMouseEnter = () => { isHovering.current = true }
         const onMouseLeave = () => { isHovering.current = false }

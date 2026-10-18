@@ -285,7 +285,7 @@ export default function PolaroidLineCarousel({
   const pathRef = React.useRef(null as SVGPathElement | null)
   const cards = React.useRef([] as (HTMLDivElement | null)[])
   const sim = React.useRef({ off: 0, vel: 0, target: 0, a: [] as number[], w: [] as number[] })
-  const drag = React.useRef(null as null | { x: number; off: number; lx: number; lt: number; v: number; moved: boolean })
+  const drag = React.useRef(null as null | { x: number; y?: number; off: number; lx: number; lt: number; v: number; moved: boolean })
   const lastTouch = React.useRef(0)
   const activeRef = React.useRef(0)
   const opts = React.useRef({ sag, swing })
@@ -409,16 +409,28 @@ export default function PolaroidLineCarousel({
   const onDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest(".pl-bar")) return
     lastTouch.current = performance.now()
-    drag.current = { x: e.clientX, off: sim.current.off, lx: e.clientX, lt: e.timeStamp, v: 0, moved: false }
+    drag.current = { x: e.clientX, y: e.clientY, off: sim.current.off, lx: e.clientX, lt: e.timeStamp, v: 0, moved: false }
   }
   const onMove = (e: React.PointerEvent) => {
     const d = drag.current
     if (!d) return
     const dx = e.clientX - d.x
-    if (!d.moved && Math.abs(dx) > 5) {
-      d.moved = true
-      setDragging(true)
-      rootRef.current?.setPointerCapture(e.pointerId)
+    const dy = e.clientY - (d.y ?? e.clientY)
+
+    if (!d.moved) {
+      // If user is predominantly scrolling vertically, abort carousel dragging and let the page scroll
+      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) {
+        drag.current = null
+        return
+      }
+      // If predominantly horizontal movement
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+        d.moved = true
+        setDragging(true)
+        try {
+          rootRef.current?.setPointerCapture(e.pointerId)
+        } catch {}
+      }
     }
     if (!d.moved) return
     const dt = Math.max(1, e.timeStamp - d.lt)

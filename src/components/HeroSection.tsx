@@ -261,39 +261,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     gsap.registerPlugin(ScrollTrigger);
 
     const triggerElement = containerRef.current;
+    if (!triggerElement) return;
 
-    if (triggerElement) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: triggerElement,
-          start: "0% 0%",
-          end: "100% 0%",
-          scrub: 0
-        }
-      });
+    const isTouch = typeof window !== 'undefined' && 
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
 
-      const layers = [
-        { layer: "1", yPercent: 20 },
-        { layer: "2", yPercent: 40 }
-      ];
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: "0% 0%",
+        end: "100% 0%",
+        scrub: isTouch ? 0.3 : 0.1,
+      }
+    });
 
-      layers.forEach((layerObj, idx) => {
-        tl.to(
-          triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
-          {
-            yPercent: layerObj.yPercent,
-            ease: "none"
-          },
-          idx === 0 ? undefined : "<"
-        );
-      });
-    }
+    const layers = [
+      { layer: "1", yPercent: isTouch ? 10 : 20 },
+      { layer: "2", yPercent: isTouch ? 18 : 40 }
+    ];
+
+    layers.forEach((layerObj, idx) => {
+      tl.to(
+        triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+        {
+          yPercent: layerObj.yPercent,
+          ease: "none"
+        },
+        idx === 0 ? undefined : "<"
+      );
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
-      if (triggerElement) {
-        gsap.killTweensOf(triggerElement.querySelectorAll('[data-parallax-layer]'));
-      }
+      tl.scrollTrigger?.kill();
+      tl.kill();
+      gsap.killTweensOf(triggerElement.querySelectorAll('[data-parallax-layer]'));
     };
   }, []);
 
@@ -319,37 +320,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* ─── Floating Flower Petals Animation ─── */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-[6]">
-          {/* Layer 1: Foreground vibrant flower petals */}
+          {/* Layer 1: Foreground vibrant flower petals (6 on mobile, 10 on desktop) */}
           <FloatingPetal left="4%" delay={0} duration={10} size={30} drift={60} initialRotation={15} rotateZTarget={260} variant="classic" color="#de2b2b" />
-          <FloatingPetal left="15%" delay={3.5} duration={12} size={34} drift={-70} initialRotation={45} rotateZTarget={-290} variant="curved" color="#e63946" />
           <FloatingPetal left="25%" delay={1} duration={9.5} size={28} drift={50} initialRotation={-20} rotateZTarget={220} variant="flutter" color="#ff4d6d" />
-          <FloatingPetal left="35%" delay={5} duration={11.5} size={32} drift={-55} initialRotation={75} rotateZTarget={310} variant="classic" color="#c1121f" />
-          <FloatingPetal left="45%" delay={2} duration={10.5} size={26} drift={45} initialRotation={-35} rotateZTarget={-240} variant="curved" color="#e63946" />
           <FloatingPetal left="55%" delay={6.5} duration={13} size={35} drift={-65} initialRotation={110} rotateZTarget={300} variant="classic" color="#de2b2b" />
-          <FloatingPetal left="65%" delay={0.8} duration={11} size={30} drift={55} initialRotation={-15} rotateZTarget={270} variant="flutter" color="#ff4d6d" />
           <FloatingPetal left="76%" delay={4.2} duration={12.5} size={36} drift={-50} initialRotation={85} rotateZTarget={-320} variant="curved" color="#9b111e" />
-          <FloatingPetal left="85%" delay={2.8} duration={10} size={28} drift={40} initialRotation={30} rotateZTarget={210} variant="classic" color="#e63946" />
           <FloatingPetal left="94%" delay={5.8} duration={11.8} size={32} drift={-45} initialRotation={-40} rotateZTarget={-250} variant="flutter" color="#de2b2b" />
 
-          {/* Layer 2: Delicate smaller fluttering flower petals */}
-          <FloatingPetal left="10%" delay={7.2} duration={8.5} size={20} drift={35} initialRotation={50} rotateZTarget={180} variant="flutter" color="#ff758f" />
-          <FloatingPetal left="29%" delay={8.5} duration={9} size={22} drift={-40} initialRotation={-60} rotateZTarget={-200} variant="curved" color="#ff4d6d" />
-          <FloatingPetal left="60%" delay={3.8} duration={8.8} size={21} drift={45} initialRotation={35} rotateZTarget={220} variant="classic" color="#ff758f" />
-          <FloatingPetal left="80%" delay={9.2} duration={9.2} size={23} drift={-35} initialRotation={-25} rotateZTarget={-190} variant="flutter" color="#e63946" />
+          {/* Desktop-only extra petals & heavy blur layers for max FPS on mobile */}
+          <div className="hidden sm:contents">
+            <FloatingPetal left="15%" delay={3.5} duration={12} size={34} drift={-70} initialRotation={45} rotateZTarget={-290} variant="curved" color="#e63946" />
+            <FloatingPetal left="35%" delay={5} duration={11.5} size={32} drift={-55} initialRotation={75} rotateZTarget={310} variant="classic" color="#c1121f" />
+            <FloatingPetal left="45%" delay={2} duration={10.5} size={26} drift={45} initialRotation={-35} rotateZTarget={-240} variant="curved" color="#e63946" />
+            <FloatingPetal left="65%" delay={0.8} duration={11} size={30} drift={55} initialRotation={-15} rotateZTarget={270} variant="flutter" color="#ff4d6d" />
+            <FloatingPetal left="85%" delay={2.8} duration={10} size={28} drift={40} initialRotation={30} rotateZTarget={210} variant="classic" color="#e63946" />
 
-          {/* Layer 3: Atmospheric soft-blurred background petals (cinematic depth of field) */}
-          <FloatingPetal left="12%" delay={4.5} duration={15} size={46} drift={-80} initialRotation={-40} rotateZTarget={190} variant="classic" color="#a01a28" blur={2.5} />
-          <FloatingPetal left="38%" delay={7.8} duration={16} size={52} drift={90} initialRotation={60} rotateZTarget={-230} variant="curved" color="#7c121e" blur={3.5} />
-          <FloatingPetal left="68%" delay={1.2} duration={17} size={48} drift={-75} initialRotation={-15} rotateZTarget={280} variant="classic" color="#9b111e" blur={2.5} />
-          <FloatingPetal left="88%" delay={9.5} duration={15.5} size={44} drift={70} initialRotation={50} rotateZTarget={-210} variant="flutter" color="#800f1c" blur={3} />
+            {/* Layer 2: Delicate smaller fluttering flower petals */}
+            <FloatingPetal left="10%" delay={7.2} duration={8.5} size={20} drift={35} initialRotation={50} rotateZTarget={180} variant="flutter" color="#ff758f" />
+            <FloatingPetal left="29%" delay={8.5} duration={9} size={22} drift={-40} initialRotation={-60} rotateZTarget={-200} variant="curved" color="#ff4d6d" />
+            <FloatingPetal left="60%" delay={3.8} duration={8.8} size={21} drift={45} initialRotation={35} rotateZTarget={220} variant="classic" color="#ff758f" />
+            <FloatingPetal left="80%" delay={9.2} duration={9.2} size={23} drift={-35} initialRotation={-25} rotateZTarget={-190} variant="flutter" color="#e63946" />
 
-          {/* Golden rose dew sparkles */}
-          <GoldenDewParticle delay={0} size={5} left="8%" duration={10} />
-          <GoldenDewParticle delay={2} size={3} left="26%" duration={12} />
-          <GoldenDewParticle delay={1} size={6} left="50%" duration={9.5} />
-          <GoldenDewParticle delay={3.5} size={4} left="70%" duration={13} />
-          <GoldenDewParticle delay={1.8} size={5} left="84%" duration={11} />
-          <GoldenDewParticle delay={4.5} size={4} left="93%" duration={12.5} />
+            {/* Layer 3: Atmospheric soft-blurred background petals (cinematic depth of field) */}
+            <FloatingPetal left="12%" delay={4.5} duration={15} size={46} drift={-80} initialRotation={-40} rotateZTarget={190} variant="classic" color="#a01a28" blur={2.5} />
+            <FloatingPetal left="38%" delay={7.8} duration={16} size={52} drift={90} initialRotation={60} rotateZTarget={-230} variant="curved" color="#7c121e" blur={3.5} />
+            <FloatingPetal left="68%" delay={1.2} duration={17} size={48} drift={-75} initialRotation={-15} rotateZTarget={280} variant="classic" color="#9b111e" blur={2.5} />
+            <FloatingPetal left="88%" delay={9.5} duration={15.5} size={44} drift={70} initialRotation={50} rotateZTarget={-210} variant="flutter" color="#800f1c" blur={3} />
+
+            {/* Golden rose dew sparkles */}
+            <GoldenDewParticle delay={0} size={5} left="8%" duration={10} />
+            <GoldenDewParticle delay={2} size={3} left="26%" duration={12} />
+            <GoldenDewParticle delay={1} size={6} left="50%" duration={9.5} />
+            <GoldenDewParticle delay={3.5} size={4} left="70%" duration={13} />
+            <GoldenDewParticle delay={1.8} size={5} left="84%" duration={11} />
+            <GoldenDewParticle delay={4.5} size={4} left="93%" duration={12.5} />
+          </div>
         </div>
 
         {/* ─── Main content grid (Increased breathing room top & bottom) ─── */}
