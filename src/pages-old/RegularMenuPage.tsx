@@ -301,7 +301,7 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
                       {categoryDishes.length} items
                     </span>
                   </h2>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 auto-rows-fr">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
                     {categoryDishes.map((dish) => {
                       const displayPrice = dish.priceDisplay
                 ? dish.priceDisplay
@@ -312,10 +312,9 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
               return (
                 <motion.div
                   key={dish.id}
-                  layout
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                   className="bg-white rounded-2xl border border-[#1a1a1a]/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative overflow-hidden h-full"
                 >
                   {/* Dish Image or Placeholder */}
