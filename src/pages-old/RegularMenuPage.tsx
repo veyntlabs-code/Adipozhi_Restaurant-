@@ -159,13 +159,6 @@ export const RegularMenuPage: React.FC<RegularMenuPageProps> = ({
         </div>
       </section>
 
-      {/* 2. Special Promo Banner (Family Pack Offer) */}
-      <div className="bg-[#7c2627] text-[#f8efdc] py-3 px-4 shadow-sm text-center text-xs sm:text-sm font-medium border-b border-[#f8efdc]/20">
-        <p>
-          🎉 <strong>FAMILY PACK — ONLY PARCEL:</strong> Half Bucket Chicken Biryani gets <strong>1/4 KG Chicken 65 Free!</strong> | Full Bucket gets <strong>1/2 KG Chicken 65 Free!</strong> Call Us
-        </p>
-      </div>
-
       {/* 3. Filter Bar & Search (Normal flow, does not stick or follow scroll) */}
       <div className="relative z-10 backdrop-blur-md bg-[#1a0407]/80 border-y border-[#f8efdc]/20 shadow-xl transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 space-y-3">

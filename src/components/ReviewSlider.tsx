@@ -88,7 +88,9 @@ export default function ReviewSlider({
 
     const repeats = useMemo(() => {
         if (!loop || width <= 0 || step <= 0 || source.length === 0) return 1
-        return Math.max(1, Math.ceil((width + step * 2) / (source.length * step)))
+        // Ensure there are enough slides to cover the entire width plus extra buffer on both sides
+        const minNeeded = Math.ceil((width + step * 4) / (source.length * step))
+        return Math.max(3, minNeeded + 1)
     }, [loop, width, step, source.length])
 
     const slides = useMemo(() => {
@@ -180,7 +182,9 @@ export default function ReviewSlider({
 
                 const raw = i * c.step - current.current + pad
 
-                const x = c.loop ? wrap(raw + c.step, span) - c.step : raw
+                // Use a generous wrap margin (at least 2 * step) so cards enter smoothly before reaching the edge
+                const wrapMargin = Math.max(c.step * 2, c.slideWidth)
+                const x = c.loop ? wrap(raw + wrapMargin, span) - wrapMargin : raw
 
                 const left = c.flip ? c.width - c.slideWidth - x : x
                 node.style.transform = `translate3d(${left}px, -50%, 0)`

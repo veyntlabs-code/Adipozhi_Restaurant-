@@ -130,8 +130,8 @@ export const WaitingForSection: React.FC<WaitingForSectionProps> = ({
           </a>
         </div>
 
-        {/* Google Reviews Slider */}
-        <div className="pt-16 mt-8 w-full relative z-10 h-[400px] sm:h-[420px] -mx-4 sm:mx-0 w-[calc(100%+2rem)] sm:w-full overflow-visible">
+        {/* Google Reviews Slider - Full bleed across the viewport without side clipping */}
+        <div className="pt-16 mt-8 relative z-10 h-[400px] sm:h-[420px] w-screen left-1/2 -translate-x-1/2 overflow-hidden pointer-events-auto">
           <ReviewSlider
             direction="left"
             slideWidth={280}

@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
   const burgerColorClass = isHeroMode ? 'text-[#f8efdc] hover:text-[#f8efdc]/70' : 'text-[#1a1a1a] hover:text-[#de2b2b]';
 
   return (
-    <header className={`sticky top-0 z-40 border-b transition-all duration-300 select-none ${headerBgClass}`}>
+    <header className={`sticky top-0 z-50 w-full border-b transition-all duration-300 select-none ${headerBgClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
         {/* Left Nav */}
         <nav className={`hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide ${textColorClass}`}>
